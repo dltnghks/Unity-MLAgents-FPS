@@ -7,14 +7,20 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance = null;
 
+    private static int _gamePhase = 1;
+
     private float _playTime;
-    private int _gamePhase = 0;
     private List<float> _phaseClearTimeList = new List<float>();
     public bool IsTrainning;
 
     public static GameManager Instance
     {
         get { return _instance; }
+    }
+
+    public static int GamePhase
+    {
+        get { return _gamePhase; }
     }
 
     private void Start()
