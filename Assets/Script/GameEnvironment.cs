@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class GameEnvironment : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public PlayerSpawner _playerSpawner;
+    public EnemySpawner _enemySpawner;
+
+    private void Start()
     {
-        
+        _playerSpawner = GetComponentInChildren<PlayerSpawner>();
+        _enemySpawner= GetComponentInChildren<EnemySpawner>();
+        StartEpisode();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartEpisode()
     {
-        
+        SpawnPlayer();
+        SpawnEnemy();
+    }
+
+    public void EndEpisode()
+    {
+
+    }
+
+    private void SpawnPlayer()
+    {
+        _playerSpawner.OnePointRandomSpawn();
+    }
+
+    private void SpawnEnemy()
+    {
+        _enemySpawner.OnePointRandomSpawn();
     }
 }
