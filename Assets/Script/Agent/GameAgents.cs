@@ -34,11 +34,6 @@ public class GameAgents : Agent
 
     private Rigidbody rBody;
 
-    private void Awake()
-    {
-        rBody = GetComponent<Rigidbody>();
-    }
-
     public void Action(ActionBuffers actionBuffers)
     {
         ActionSegment<int> act = actionBuffers.DiscreteActions;
