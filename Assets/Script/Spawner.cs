@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     public GameObject spawnObject;
     private List<GameObject> spawnObjectList = new List<GameObject>();
 
-    private void Start()
+    private void Awake()
     {
         int count = transform.childCount;
         for (int i = 0; i < count; i++)
@@ -34,13 +34,14 @@ public class Spawner : MonoBehaviour
         return returnObject;
     }
 
-    public void OnePointRandomSpawn()
+    public GameObject OnePointRandomSpawn()
     {
         var spawnedObject = InstantiateObject();
         int pointIndex = Random.Range(0, spawnPointList.Count);
-        Vector3 position = spawnPointList[pointIndex].transform.position;
-        spawnedObject.transform.position = position;
-        spawnedObject.transform.rotation = Quaternion.identity;
+        Vector3 position = spawnPointList[pointIndex].transform.localPosition;
+        spawnedObject.transform.localPosition = position;
+        spawnedObject.transform.localRotation = Quaternion.identity;
+        return spawnedObject;
     }
 
     public void OnePointSpawn(Vector3 position, Quaternion rotation)
@@ -54,16 +55,10 @@ public class Spawner : MonoBehaviour
         foreach(var point in spawnPointList)
         {
             var spawnedObject = InstantiateObject();
-            Vector3 position = point.transform.position;
-            spawnedObject.transform.position = position;
+            Vector3 position = point.transform.localPosition;
+            spawnedObject.transform.localPosition = position;
             //spawnedObject.transform.rotation = Quaternion.identity;
         }
     }
 
-    public void PlayerDirectSpawn(Vector3 playerPosition, Vector3 playerDirectionVector)
-    {
-        var spawnedObject = InstantiateObject();
-        var position = playerPosition + playerDirectionVector * 10f;
-        spawnedObject.transform.position = position;
-    }
 }

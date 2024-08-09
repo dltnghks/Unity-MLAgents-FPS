@@ -15,12 +15,12 @@ public class GameEnvironment : MonoBehaviour
         _playerSpawner = GetComponentInChildren<PlayerSpawner>();
         _enemySpawner= GetComponentInChildren<EnemySpawner>();
         _obstacleSpawner = GetComponentInChildren<ObstacleSpawner>();
-        _gameAgents = GetComponentInChildren<GameAgents>();
         StartEpisode();
     }
 
     public void StartEpisode()
     {
+        Debug.Log("Phase : " + GameManager.GamePhase);
         _playerSpawner.Clear();
         _enemySpawner.Clear();
         _obstacleSpawner.Clear();
@@ -28,24 +28,28 @@ public class GameEnvironment : MonoBehaviour
         switch (GameManager.GamePhase)
         {
             case 1:
-                _playerSpawner.OnePointRandomSpawn();
-                _enemySpawner.PlayerDirectSpawn(_gameAgents.transform.position, _gameAgents.transform.forward);
-                _obstacleSpawner.AllPointSpawn();
+                // Player - 센터
+                // Enemy - 에이전트 정면 생성
+                _gameAgents = _playerSpawner.OnePointRandomSpawn().GetComponent<GameAgents>();
+                _enemySpawner.PlayerDirectSpawn(_gameAgents.transform.localPosition, _gameAgents.transform.forward);
                 break;
             case 2:
                 // Player - 센터
                 // Enemy - 센터에서 살짝 벗어나게
-
+                _gameAgents = _playerSpawner.OnePointRandomSpawn().GetComponent<GameAgents>();
+                _enemySpawner.PlayerDirectSpawn(_gameAgents.transform.localPosition, _gameAgents.transform.forward);
                 break;
             case 3:
                 // Player - 센터
                 // Enemy - 센터 주위에 랜덤 생성
-
+                _gameAgents = _playerSpawner.OnePointRandomSpawn().GetComponent<GameAgents>();
+                _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition);
                 break;
             case 4:
                 // Player - 센터
                 // Enemy - 센터 주위에 랜덤 생성 + 움직임
-
+                _gameAgents = _playerSpawner.OnePointRandomSpawn().GetComponent<GameAgents>();
+                _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition);
                 break;
             case 5:
                 // Player - 센터

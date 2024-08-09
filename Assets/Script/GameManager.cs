@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         get { return _gamePhase; }
     }
 
-    private void Start()
+    private void Awake()
     {
         _instance = this;
         Init();
