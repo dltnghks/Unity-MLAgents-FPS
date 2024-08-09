@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
-        _gamePhase = 0;
+        _gamePhase = 3;
         _playTime = 0;
         _phaseClearTimeList.Clear();
     }

@@ -1,12 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
-using Unity.MLAgents.Sensors;
 using UnityEngine;
 
-public class GameAgents : Agent
+public class Character : MonoBehaviour
 {
     protected WallJumpSettings m_WallJumpSettings;
     [Header("JumpSetting")]
@@ -189,5 +186,4 @@ public class GameAgents : Agent
             return false;
         }
     }
-
 }
