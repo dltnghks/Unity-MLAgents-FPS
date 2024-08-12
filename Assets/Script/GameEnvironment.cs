@@ -10,8 +10,11 @@ public class GameEnvironment : MonoBehaviour
 
     public GameAgents _gameAgents;
 
+    public float MapSize = 40;
+
     private void Start()
     {
+        MapSize *= transform.localScale.x;
         _playerSpawner = GetComponentInChildren<PlayerSpawner>();
         _enemySpawner= GetComponentInChildren<EnemySpawner>();
         _obstacleSpawner = GetComponentInChildren<ObstacleSpawner>();
@@ -78,6 +81,8 @@ public class GameEnvironment : MonoBehaviour
             default:
                 break;
         }
+
+        _gameAgents.Init(this);
     }
 
     public void EndEpisode()

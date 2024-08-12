@@ -6,7 +6,7 @@ using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 
-public class GameAgents : Agent
+public class GameAgents : Player
 {
     protected WallJumpSettings m_WallJumpSettings;
     [Header("JumpSetting")]
@@ -29,10 +29,36 @@ public class GameAgents : Agent
     public float ShootCount = 30;
 
     [Header("Agent")]
-    IAgentController conroller;
+    public List<Controller> _controllerList = new List<Controller>();
 
+    public Rigidbody rBody;
+    public Vector3 targetDir;
+    public float targetDistance;
 
-    private Rigidbody rBody;
+    public void Awake()
+    {
+        m_WallJumpSettings = FindObjectOfType<WallJumpSettings>();
+        rBody = GetComponent<Rigidbody>();
+        var controllerList = GetComponentsInChildren<Controller>();
+        foreach (var controller in controllerList)
+        {
+            controller.myAgent = this;
+            _controllerList.Add(controller);
+        }
+    }
+
+    public void Init(GameEnvironment environment)
+    {
+        m_WallJumpSettings = FindObjectOfType<WallJumpSettings>();
+        rBody = GetComponent<Rigidbody>();
+        var controllerList = GetComponentsInChildren<Controller>();
+        foreach (var controller in controllerList)
+        {
+            controller.myAgent = this;
+            controller.environment = environment;
+            _controllerList.Add(controller);
+        }
+    }
 
     public void Action(ActionBuffers actionBuffers)
     {
