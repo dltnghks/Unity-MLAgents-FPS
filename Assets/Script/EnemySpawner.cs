@@ -13,6 +13,15 @@ public class EnemySpawner : Spawner
         return returnObject;
 
     }
+
+    public void OnEnemyRandomMove()
+    {
+        foreach(var enemy in spawnObjectList)
+        {
+            enemy.GetComponent<NonPlayerCharacter>().OnRandomMove();
+        }
+    }
+
     public void PlayerDirectSpawn(Vector3 playerPosition, Vector3 playerDirectionVector, float range = 10f)
     {
         var spawnedObject = InstantiateObject();

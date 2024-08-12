@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class NonPlayerCharacter : Character
 {
     public float moveRadius = 10f;    // NPC가 이동할 범위
@@ -16,11 +17,17 @@ public class NonPlayerCharacter : Character
     {
         navMeshagent = GetComponent<NavMeshAgent>();
         base.Init();
+        Debug.Log("NPC Init");
     }
 
     public override int AddHP(int val)
     {
         return base.AddHP(val);
+    }
+
+    public void OnRandomMove()
+    {
+        StartCoroutine(MoveToRandomPosition());
     }
 
     IEnumerator MoveToRandomPosition()
@@ -55,4 +62,5 @@ public class NonPlayerCharacter : Character
 
         return navHit.position;
     }
+
 }
