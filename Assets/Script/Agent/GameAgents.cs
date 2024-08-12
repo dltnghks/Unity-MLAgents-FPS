@@ -22,6 +22,7 @@ public class GameAgents : Player
 
 
     [Header("AttackSetting")]
+    public int AttackDamage = 10;
     public float AttackRange = 10;
     public float ShootCoolDown = 0.5f;
     public float ShootTime = 0.0f;
@@ -31,25 +32,16 @@ public class GameAgents : Player
     [Header("Agent")]
     public List<Controller> _controllerList = new List<Controller>();
 
+    public GameEnvironment environment;
     public Rigidbody rBody;
     public Vector3 targetDir;
     public float targetDistance;
 
-    public void Awake()
-    {
-        m_WallJumpSettings = FindObjectOfType<WallJumpSettings>();
-        rBody = GetComponent<Rigidbody>();
-        var controllerList = GetComponentsInChildren<Controller>();
-        foreach (var controller in controllerList)
-        {
-            controller.myAgent = this;
-            _controllerList.Add(controller);
-        }
-    }
-
     public void Init(GameEnvironment environment)
     {
+        Debug.Log("Agent Init");
         base.Init();
+        this.environment = environment;
         m_WallJumpSettings = FindObjectOfType<WallJumpSettings>();
         rBody = GetComponent<Rigidbody>();
         var controllerList = GetComponentsInChildren<Controller>();
@@ -137,7 +129,6 @@ public class GameAgents : Player
         var AttackAction = act;
 
         ShootTime -= Time.deltaTime;
-
         if (ShootCount > 0 && ShootTime <= 0 && AttackAction == 1)
         {
             Debug.Log("Attack");
@@ -146,13 +137,21 @@ public class GameAgents : Player
 
             Debug.DrawRay(rBody.position, transform.forward * AttackRange, Color.blue);
             RaycastHit hitinfo;
-            if (Physics.Raycast(rBody.position, transform.forward * AttackRange, out hitinfo, AttackRange))
+            if (Physics.Raycast(rBody.position, transform.forward, out hitinfo, AttackRange))
             {
+                Debug.Log(hitinfo.collider.tag);
                 if (hitinfo.collider.tag == "Target")
                 {
                     Debug.Log("Hit");
-                    hitinfo.collider.gameObject.GetComponent<Character>().AddHP(-20);
+                    if(0 >= hitinfo.collider.gameObject.GetComponent<Character>().AddHP(-AttackDamage))
+                    {
+                        environment.EndEpisode();
+                    }
                 }
+            }
+            else
+            {
+                Debug.Log("Miss");
             }
         }
     }

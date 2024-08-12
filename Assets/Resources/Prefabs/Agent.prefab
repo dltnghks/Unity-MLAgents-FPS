@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: -2360035201129449898}
   m_Layer: 0
   m_Name: Agent
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,7 +306,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   hp: 100
-  attackDelay: 0
   jumpingTime: 2
   jumpTime: 2
   fallingForce: 111
@@ -315,12 +314,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  AttackDamage: 10
   AttackRange: 10
   ShootCoolDown: 0.5
   ShootTime: 0
   ShootAmount: 30
   ShootCount: 30
   _controllerList: []
+  environment: {fileID: 0}
   rBody: {fileID: 0}
   targetDir: {x: 0, y: 0, z: 0}
   targetDistance: 0

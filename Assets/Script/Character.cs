@@ -7,11 +7,9 @@ public class Character : MonoBehaviour
 {
     [Header("Info")]
     [SerializeField]
-    protected int maxHP;
+    protected int maxHP = 100;
     [SerializeField]
     protected int hp;
-    [SerializeField]
-    protected int attackDelay;
 
     public virtual void Init()
     {
@@ -23,9 +21,11 @@ public class Character : MonoBehaviour
         get { return hp; }
     }
 
-    public void AddHP(int val)
+    public virtual int AddHP(int val)
     {
+        Debug.Log("hp : " + hp);
         hp += val;
+        Debug.Log("hp : " + hp);
         if (maxHP < HP)
         {
             hp = maxHP;
@@ -33,7 +33,7 @@ public class Character : MonoBehaviour
         else if (hp < 0)
         {
             hp = 0;
-
         }
+        return hp;
     }
 }

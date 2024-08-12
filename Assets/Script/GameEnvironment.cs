@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.AI;
 
 public class GameEnvironment : MonoBehaviour
 {
@@ -83,6 +84,8 @@ public class GameEnvironment : MonoBehaviour
         }
 
         _gameAgents.Init(this);
+        NavMeshBuilder.ClearAllNavMeshes();
+        NavMeshBuilder.BuildNavMesh();
     }
 
     public void EndEpisode()

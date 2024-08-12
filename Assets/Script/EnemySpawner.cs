@@ -8,6 +8,7 @@ public class EnemySpawner : Spawner
     protected override GameObject InstantiateObject()
     {
         GameObject returnObject = base.InstantiateObject();
+        Debug.Log("NPC Spawn");
         returnObject.GetComponent<Character>().Init();
         return returnObject;
 
