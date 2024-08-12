@@ -351,8 +351,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  AttackDamage: 50
-  AttackRange: 10
+  AttackDamage: 25
+  AttackRange: 30
   ShootCoolDown: 0.5
   ShootTime: 0
   ShootAmount: 30

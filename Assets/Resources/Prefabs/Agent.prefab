@@ -315,8 +315,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  AttackDamage: 10
-  AttackRange: 10
+  AttackDamage: 25
+  AttackRange: 30
   ShootCoolDown: 0.5
   ShootTime: 0
   ShootAmount: 30
@@ -326,6 +326,7 @@ MonoBehaviour:
   rBody: {fileID: 0}
   targetDir: {x: 0, y: 0, z: 0}
   targetDistance: 0
+  AttackObject: {fileID: 0}
 --- !u!114 &-2360035201129449898
 MonoBehaviour:
   m_ObjectHideFlags: 0

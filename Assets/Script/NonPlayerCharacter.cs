@@ -11,11 +11,11 @@ public class NonPlayerCharacter : Character
     public float waitTime = 2f;       // 다음 이동 전 대기 시간
 
     private Vector3 targetPosition;   // 목표 위치
-    private NavMeshAgent navMeshagent;       // NavMeshAgent 컴포넌트
+    private NavMeshAgent navMeshAgent;       // NavMeshAgent 컴포넌트
 
     public override void Init()
     {
-        navMeshagent = GetComponent<NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
         base.Init();
         Debug.Log("NPC Init");
     }
@@ -38,10 +38,20 @@ public class NonPlayerCharacter : Character
             targetPosition = GetRandomPosition();
 
             // NPC를 해당 위치로 이동
-            navMeshagent.SetDestination(targetPosition);
+            navMeshAgent.SetDestination(targetPosition);
+
+            // 경로가 유효한지 확인
+            yield return new WaitUntil(() => !navMeshAgent.pathPending);
+
+            if (navMeshAgent.pathStatus == NavMeshPathStatus.PathInvalid || !navMeshAgent.hasPath)
+            {
+                //Debug.LogWarning("경로가 유효하지 않음. 다른 위치를 시도합니다.");
+                // 경로가 유효하지 않다면, 다시 새로운 위치를 시도
+                continue;
+            }
 
             // NPC가 목표 위치에 도착할 때까지 대기
-            while (!navMeshagent.pathPending && navMeshagent.remainingDistance > navMeshagent.stoppingDistance)
+            while (!navMeshAgent.pathPending && navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
             {
                 yield return null;
             }

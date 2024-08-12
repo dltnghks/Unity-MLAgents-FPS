@@ -22,8 +22,8 @@ public class GameAgents : Player
 
 
     [Header("AttackSetting")]
-    public int AttackDamage = 10;
-    public float AttackRange = 10;
+    public int AttackDamage = 25;
+    public float AttackRange = 30;
     public float ShootCoolDown = 0.5f;
     public float ShootTime = 0.0f;
     public float ShootAmount = 30.0f;

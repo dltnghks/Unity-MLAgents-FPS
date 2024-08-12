@@ -9,9 +9,16 @@ public class GameManager : MonoBehaviour
 
     private static int _gamePhase = 1;
 
-    private float _playTime;
-    private List<float> _phaseClearTimeList = new List<float>();
+    private static float _playTime;
+    private static List<float> _phaseClearTimeList = new List<float>();
+
+    public static int ClearCount = 0;
+    public static int RequireClear = 1;
+
     public bool IsTrainning;
+
+    public Camera MyCamera;
+    public List<GameEnvironment> gameEnvironmentList = new List<GameEnvironment>();
 
     public static GameManager Instance
     {
@@ -21,6 +28,7 @@ public class GameManager : MonoBehaviour
     public static int GamePhase
     {
         get { return _gamePhase; }
+        set { _gamePhase = value; }
     }
 
     private void Awake()
@@ -32,19 +40,57 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
-        _gamePhase = 3;
+        ClearCount = 0;
+        _gamePhase = 1;
         _playTime = 0;
         _phaseClearTimeList.Clear();
+        var environmentList = GetComponentsInChildren<GameEnvironment>();
+        foreach(var environment in environmentList)
+        {
+            gameEnvironmentList.Add(environment);
+        }
     }
 
     private void Update()
     {
         _playTime += Time.deltaTime;
+        for (int i = 0; i < gameEnvironmentList.Count; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.F1 + i))
+            {
+                Vector3 newPosition = gameEnvironmentList[i].transform.position;
+                newPosition.y = 50.0f;
+                // 카메라 위치에 새 위치 할당
+                MyCamera.transform.position = newPosition;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            Vector3 newPosition = new Vector3(50, 150, 50);
+            // 카메라 위치에 새 위치 할당
+            MyCamera.transform.position = newPosition;
+        }
     }
 
-    public void AddGamePhase()
+    public static void AddGamePhase()
     {
-        _gamePhase++;
+        if(_gamePhase <= 7)
+            _gamePhase++;
         _phaseClearTimeList.Add(_playTime);
+    }
+
+    public static void GameClear(GameEnvironment environment)
+    {
+        environment.EndEpisode();
+        ClearCount++;
+        if (RequireClear <= ClearCount)
+        {
+            foreach (var gameEnvironment in _instance.gameEnvironmentList)
+            {
+                gameEnvironment.EndEpisode();
+            }
+            ClearCount = 0;
+            AddGamePhase();
+        }
     }
 }

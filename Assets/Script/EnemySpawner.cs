@@ -26,9 +26,7 @@ public class EnemySpawner : Spawner
     {
         var spawnedObject = InstantiateObject();
         var position = playerPosition + playerDirectionVector * range;
-        spawnedObject.gameObject.GetComponent<NavMeshAgent>().enabled = false;
-        spawnedObject.transform.localPosition = position;
-        spawnedObject.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+        SetEnemyPosition(spawnedObject, position);
         Debug.Log(position);
     }
 
@@ -41,6 +39,13 @@ public class EnemySpawner : Spawner
         // 각도에 기반한 랜덤 방향 벡터를 생성합니다.
         Vector3 randomDirection = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
         var position = playerPosition + randomDirection*range;
+        SetEnemyPosition(spawnedObject, position);
+    }
+
+    private void SetEnemyPosition(GameObject spawnedObject, Vector3 position)
+    {
+        spawnedObject.gameObject.GetComponent<NavMeshAgent>().enabled = false;
         spawnedObject.transform.localPosition = position;
+        spawnedObject.gameObject.GetComponent<NavMeshAgent>().enabled = true;
     }
 }
