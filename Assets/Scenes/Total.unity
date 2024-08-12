@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: c4b75cd43518a564e9ed0d88b11c859a, type: 2}
 --- !u!1 &148693869
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cfa1f9953859e4cba5d74affc64b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentRunSpeed: 4
+  agentRunSpeed: 2
   agentJumpHeight: 4
   goalScoredMaterial: {fileID: 0}
   failMaterial: {fileID: 0}

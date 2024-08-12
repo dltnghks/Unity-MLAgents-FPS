@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemySpawner : Spawner
 {
@@ -15,7 +16,10 @@ public class EnemySpawner : Spawner
     {
         var spawnedObject = InstantiateObject();
         var position = playerPosition + playerDirectionVector * range;
+        spawnedObject.gameObject.GetComponent<NavMeshAgent>().enabled = false;
         spawnedObject.transform.localPosition = position;
+        spawnedObject.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+        Debug.Log(position);
     }
 
     public void PlayerCenterRandomSpawn(Vector3 playerPosition, float range = 10f)
