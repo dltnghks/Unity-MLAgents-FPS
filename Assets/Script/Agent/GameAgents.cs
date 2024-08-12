@@ -36,11 +36,17 @@ public class GameAgents : Player
     public Rigidbody rBody;
     public Vector3 targetDir;
     public float targetDistance;
+    public GameObject AttackObject;
 
     public void Init(GameEnvironment environment)
     {
         Debug.Log("Agent Init");
         base.Init();
+        AttackObject = transform.GetChild(0).gameObject;
+        float attackObjectScale = AttackRange;
+        AttackObject.transform.localScale = new Vector3(0.1f, 0.1f, attackObjectScale);
+        AttackObject.transform.localPosition = new Vector3(0, 0, attackObjectScale / 2);
+        AttackObject.SetActive(false);
         this.environment = environment;
         m_WallJumpSettings = FindObjectOfType<WallJumpSettings>();
         rBody = GetComponent<Rigidbody>();
@@ -135,6 +141,7 @@ public class GameAgents : Player
             ShootTime = ShootCoolDown;
             ShootCount--;
 
+            StartCoroutine(AttackDelay());
             Debug.DrawRay(rBody.position, transform.forward * AttackRange, Color.blue);
             RaycastHit hitinfo;
             if (Physics.Raycast(rBody.position, transform.forward, out hitinfo, AttackRange))
@@ -145,7 +152,7 @@ public class GameAgents : Player
                     Debug.Log("Hit");
                     if(0 >= hitinfo.collider.gameObject.GetComponent<Character>().AddHP(-AttackDamage))
                     {
-                        environment.EndEpisode();
+                        GameManager.GameClear(environment);
                     }
                 }
             }
@@ -154,6 +161,13 @@ public class GameAgents : Player
                 Debug.Log("Miss");
             }
         }
+    }
+
+    IEnumerator AttackDelay()
+    {
+        AttackObject.SetActive(true);
+        yield return new WaitForSeconds(Time.deltaTime);
+        AttackObject.SetActive(false);
     }
 
     public void Jump()
