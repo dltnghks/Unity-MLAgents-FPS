@@ -4,4 +4,9 @@ using UnityEngine;
 
 public class Player : Character
 {
+    public override void Init()
+    {
+        base.Init();
+    }
+
 }

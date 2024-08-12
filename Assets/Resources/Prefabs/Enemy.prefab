@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 5166312308123962432}
   - component: {fileID: 8269076223130493828}
   - component: {fileID: 2331105040697307368}
-  - component: {fileID: 8328433094751001203}
+  - component: {fileID: -5448207420784161539}
+  - component: {fileID: -6167483427411885719}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +111,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8328433094751001203
+--- !u!114 &-5448207420784161539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,9 +120,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 1691081968074839543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c679a60b65e45240b476bec3bf8dcee, type: 3}
+  m_Script: {fileID: 11500000, guid: fb1ed72b968356a4a80092040ea831b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHP: 100
+  hp: 100
+  attackDelay: 0
+--- !u!54 &-6167483427411885719
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691081968074839543}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &4263067724306216829
 GameObject:
   m_ObjectHideFlags: 0

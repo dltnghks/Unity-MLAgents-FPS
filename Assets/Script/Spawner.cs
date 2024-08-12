@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour
         spawnObjectList.Clear();
     }
 
-    protected GameObject InstantiateObject()
+    protected virtual GameObject InstantiateObject()
     {
         var returnObject = Instantiate(spawnObject);
         spawnObjectList.Add(returnObject);

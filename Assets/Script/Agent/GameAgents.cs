@@ -49,6 +49,7 @@ public class GameAgents : Player
 
     public void Init(GameEnvironment environment)
     {
+        base.Init();
         m_WallJumpSettings = FindObjectOfType<WallJumpSettings>();
         rBody = GetComponent<Rigidbody>();
         var controllerList = GetComponentsInChildren<Controller>();
@@ -60,9 +61,8 @@ public class GameAgents : Player
         }
     }
 
-    public void Action(ActionBuffers actionBuffers)
+    public void MovementAction(int[] act)
     {
-        ActionSegment<int> act = actionBuffers.DiscreteActions;
         var smallGrounded = DoGroundCheck(true);
         var largeGrounded = DoGroundCheck(false);
 
@@ -128,14 +128,19 @@ public class GameAgents : Player
 
         transform.Rotate(rotateDir, Time.fixedDeltaTime * 300f);
 
+    }
 
+
+    public void AttackAction(int act)
+    {
         // attack
-        var AttackAction = act[4];
+        var AttackAction = act;
 
         ShootTime -= Time.deltaTime;
 
         if (ShootCount > 0 && ShootTime <= 0 && AttackAction == 1)
         {
+            Debug.Log("Attack");
             ShootTime = ShootCoolDown;
             ShootCount--;
 
@@ -145,6 +150,8 @@ public class GameAgents : Player
             {
                 if (hitinfo.collider.tag == "Target")
                 {
+                    Debug.Log("Hit");
+                    hitinfo.collider.gameObject.GetComponent<Character>().AddHP(-20);
                 }
             }
         }

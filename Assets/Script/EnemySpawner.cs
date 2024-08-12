@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class EnemySpawner : Spawner
 {
+    protected override GameObject InstantiateObject()
+    {
+        GameObject returnObject = base.InstantiateObject();
+        returnObject.GetComponent<Character>().Init();
+        return returnObject;
+
+    }
     public void PlayerDirectSpawn(Vector3 playerPosition, Vector3 playerDirectionVector, float range = 10f)
     {
         var spawnedObject = InstantiateObject();

@@ -33,8 +33,10 @@ public class MovementController : Controller
 
     public override void OnActionReceived(ActionBuffers actions)
     {
+        ActionSegment<int> act = actions.DiscreteActions;
         base.OnActionReceived(actions);
-        myAgent.Action(actions);
+        int[] tmp = { act[0], act[1], act[2], act[3] };
+        myAgent.MovementAction(tmp);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -63,13 +65,6 @@ public class MovementController : Controller
         if (Input.GetKey(KeyCode.E))
         {
             discreteActionsOut[3] = 2;
-        }
-        if (myAgent.ShootTime <= 0.0f)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                discreteActionsOut[4] = 1;
-            }
         }
 
         // มกวม

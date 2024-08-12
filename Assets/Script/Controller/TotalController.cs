@@ -34,8 +34,12 @@ public class TotalController : Controller
 
     public override void OnActionReceived(ActionBuffers actions)
     {
+        ActionSegment<int> act = actions.DiscreteActions;
         base.OnActionReceived(actions);
-        myAgent.Action(actions);
+        int[] tmp = { act[0], act[1], act[2], act[3] };
+        myAgent.MovementAction(tmp);
+        myAgent.AttackAction(act[4]);
+        
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)

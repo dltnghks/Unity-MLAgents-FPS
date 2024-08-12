@@ -260,7 +260,7 @@ MonoBehaviour:
   maxHP: 100
   hp: 100
   attackDelay: 0
-  jumpingTime: 2
+  jumpingTime: 0
   jumpTime: 2
   fallingForce: 111
   hitGroundColliders:
@@ -324,12 +324,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 11
+    VectorObservationSize: 8
     NumStackedVectorObservations: 20
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 0300000003000000020000000300000002000000
-    VectorActionSize: 0300000003000000020000000300000002000000
+      BranchSizes: 03000000
+    VectorActionSize: 03000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1

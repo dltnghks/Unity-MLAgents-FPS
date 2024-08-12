@@ -13,6 +13,11 @@ public class Character : MonoBehaviour
     [SerializeField]
     protected int attackDelay;
 
+    public virtual void Init()
+    {
+        hp = maxHP;
+    }
+
     public int HP
     {
         get { return hp; }

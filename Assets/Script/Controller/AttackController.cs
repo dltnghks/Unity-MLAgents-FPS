@@ -17,62 +17,28 @@ public class AttackController : Controller
         sensor.AddObservation(agentPos / environment.MapSize);
 
         // Agent rotation 1
-        sensor.AddObservation(myAgent.transform.eulerAngles.y / 360);
-
-        var localVelocity = myAgent.transform.InverseTransformDirection(myAgent.rBody.velocity);
-        // Agent velocity 3
-        sensor.AddObservation(localVelocity.x);
-        sensor.AddObservation(localVelocity.y);
-        sensor.AddObservation(localVelocity.z);
+        sensor.AddObservation(myAgent.rBody.transform.eulerAngles.y / 360);
 
         sensor.AddObservation(myAgent.targetDir);
-        // 공격 사거리로 해보기
-        //sensor.AddObservation(targetDistance / AttackRange);
         sensor.AddObservation(myAgent.targetDistance / environment.MapSize);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
+        ActionSegment<int> act = actions.DiscreteActions;
         base.OnActionReceived(actions);
-        myAgent.Action(actions);
+        myAgent.AttackAction(act[0]);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var discreteActionsOut = actionsOut.DiscreteActions;
-        if (Input.GetKey(KeyCode.D))
-        {
-            discreteActionsOut[1] = 1;
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            discreteActionsOut[0] = 1;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            discreteActionsOut[1] = 2;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            discreteActionsOut[0] = 2;
-        }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            discreteActionsOut[3] = 1;
-        }
-        if (Input.GetKey(KeyCode.E))
-        {
-            discreteActionsOut[3] = 2;
-        }
         if (myAgent.ShootTime <= 0.0f)
         {
             if (Input.GetMouseButton(0))
             {
-                discreteActionsOut[4] = 1;
+                discreteActionsOut[0] = 1;
             }
         }
-
-        // 점프
-        discreteActionsOut[2] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
 }
