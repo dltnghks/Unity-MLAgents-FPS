@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc449b308a09e14086387a2e998ca6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TeamID: 1
   maxHP: 100
   hp: 0
   moveRadius: 40

@@ -93,7 +93,8 @@ public class GameManager : MonoBehaviour
 
     public static void AddGamePhase(int value)
     {
-        _gamePhase += value;
+        _gamePhase = (_gamePhase + value) % 8;
+        if (_gamePhase == 0) _gamePhase = 8;
     }
 
     public static void AddGamePhase()

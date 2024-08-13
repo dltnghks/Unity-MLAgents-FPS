@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 7373816576511341814}
   - component: {fileID: -2360035201129449898}
   m_Layer: 0
-  m_Name: Agent
+  m_Name: Agent 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,7 +176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 04be259c590de46f69db4cbd1da877d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_InferenceDevice: 0
   m_BehaviorType: 1
   m_BehaviorName: My Behavior
-  TeamId: 0
+  TeamId: 1
   m_UseChildSensors: 1
   m_UseChildActuators: 1
   m_DeterministicInference: 0
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c679a60b65e45240b476bec3bf8dcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeamID: 0
+  TeamID: 1
   maxHP: 100
   hp: 100
   jumpingTime: 2
@@ -343,7 +343,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 5000
+  MaxStep: 0
   environment: {fileID: 0}
   myAgent: {fileID: 7373816576511341814}
 --- !u!1 &7754987298688716212
@@ -487,9 +487,9 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: My Behavior
-  TeamId: 0
+  TeamId: 1
   m_UseChildSensors: 1
   m_UseChildActuators: 1
   m_DeterministicInference: 0
@@ -509,9 +509,9 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 5000
   environment: {fileID: 0}
-  myAgent: {fileID: 0}
+  myAgent: {fileID: 7373816576511341814}
 --- !u!114 &7783025509262050800
 MonoBehaviour:
   m_ObjectHideFlags: 0

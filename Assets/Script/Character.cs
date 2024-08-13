@@ -6,6 +6,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [Header("Info")]
+    public int TeamID;
     [SerializeField]
     protected int maxHP = 100;
     [SerializeField]

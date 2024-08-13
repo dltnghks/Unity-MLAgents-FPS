@@ -38,6 +38,7 @@ public class GameAgents : Player
     public float targetDistance;
     public GameObject AttackObject;
 
+
     public void Init(GameEnvironment environment)
     {
         Debug.Log("Agent Init");
@@ -147,7 +148,7 @@ public class GameAgents : Player
             if (Physics.Raycast(rBody.position, transform.forward, out hitinfo, AttackRange))
             {
                 Debug.Log(hitinfo.collider.tag);
-                if (hitinfo.collider.tag == "Target")
+                if (hitinfo.collider.tag == "Target" || (hitinfo.collider.tag == "Player" && hitinfo.collider.gameObject.GetComponent<Character>().TeamID != this.TeamID))
                 {
                     Debug.Log("Hit");
                     if(0 >= hitinfo.collider.gameObject.GetComponent<Character>().AddHP(-AttackDamage))

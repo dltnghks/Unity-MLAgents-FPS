@@ -8,6 +8,7 @@ public class GameEnvironment : MonoBehaviour
     public PlayerSpawner _playerSpawner;
     public EnemySpawner _enemySpawner;
     public ObstacleSpawner _obstacleSpawner;
+    public Spawner _selfPlaySpawner;
 
     public GameAgents _gameAgents;
 
@@ -19,6 +20,7 @@ public class GameEnvironment : MonoBehaviour
         _playerSpawner = GetComponentInChildren<PlayerSpawner>();
         _enemySpawner= GetComponentInChildren<EnemySpawner>();
         _obstacleSpawner = GetComponentInChildren<ObstacleSpawner>();
+        _selfPlaySpawner = GetComponentInChildren<SelfPlaySpawner>();
         StartEpisode();
     }
 
@@ -38,6 +40,7 @@ public class GameEnvironment : MonoBehaviour
         _playerSpawner.Clear();
         _enemySpawner.Clear();
         _obstacleSpawner.Clear();
+        _selfPlaySpawner.Clear();
 
         switch (GameManager.GamePhase)
         {
@@ -100,8 +103,10 @@ public class GameEnvironment : MonoBehaviour
                 break;
             case 8:
                 // self-play
-                _gameAgents = _playerSpawner.OnePointRandomSpawn(1).GetComponent<GameAgents>();
-                _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition);
+                randomIndex = Random.Range(0, 8);
+                _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
+                npcIndex = (randomIndex + 4) % 8;
+                _selfPlaySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<GameAgents>().Init(this);
                 _obstacleSpawner.AllPointSpawn();
                 break;
             default:

@@ -497,6 +497,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1264590432298964559, guid: d32df7fe9e831db49b332d18f20caf18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2178826088785997148, guid: d32df7fe9e831db49b332d18f20caf18, type: 3}
       propertyPath: m_Name
       value: Map4
@@ -504,6 +508,34 @@ PrefabInstance:
     - target: {fileID: 2178826088785997148, guid: d32df7fe9e831db49b332d18f20caf18, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3014675349944558551, guid: d32df7fe9e831db49b332d18f20caf18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597272503451219537, guid: d32df7fe9e831db49b332d18f20caf18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4584368415088620560, guid: d32df7fe9e831db49b332d18f20caf18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118811825932946759, guid: d32df7fe9e831db49b332d18f20caf18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209242091123184881, guid: d32df7fe9e831db49b332d18f20caf18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7855626474713069275, guid: d32df7fe9e831db49b332d18f20caf18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8776097748189588735, guid: d32df7fe9e831db49b332d18f20caf18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -539,7 +571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c5afbb8fc2c1b429bb3b687ca52d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsTrainning: 1
+  IsTest: 1
   MyCamera: {fileID: 148693871}
   gameEnvironmentList:
   - {fileID: 1851657549}
