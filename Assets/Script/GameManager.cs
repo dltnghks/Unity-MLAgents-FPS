@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
     {
         environment.EndEpisode();
         ClearCount++;
-        if (RequireClear <= ClearCount)
+        if (RequireClear <= ClearCount && _gamePhase != 8)
         {
             RestEnvrionment();
             ClearCount = 0;
