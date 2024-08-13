@@ -11,14 +11,23 @@ public class GameEnvironment : MonoBehaviour
     public Spawner _selfPlaySpawner;
 
     public GameAgents _gameAgents;
+    public GameAgents _selfPlayAgents;
+
+    [Header("Agents")]
+    public List<Controller> ControllerList = new List<Controller>();
 
     public float MapSize = 40;
+    public int MaxEnvironmentSteps = 5000;
 
-    private void Start()
+
+    private bool initialized;
+
+
+    void Initialize()
     {
         MapSize *= transform.localScale.x;
         _playerSpawner = GetComponentInChildren<PlayerSpawner>();
-        _enemySpawner= GetComponentInChildren<EnemySpawner>();
+        _enemySpawner = GetComponentInChildren<EnemySpawner>();
         _obstacleSpawner = GetComponentInChildren<ObstacleSpawner>();
         _selfPlaySpawner = GetComponentInChildren<SelfPlaySpawner>();
         StartEpisode();
@@ -41,6 +50,7 @@ public class GameEnvironment : MonoBehaviour
         _enemySpawner.Clear();
         _obstacleSpawner.Clear();
         _selfPlaySpawner.Clear();
+        ControllerList.Clear();
 
         switch (GameManager.GamePhase)
         {
@@ -106,7 +116,7 @@ public class GameEnvironment : MonoBehaviour
                 randomIndex = Random.Range(0, 8);
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
                 npcIndex = (randomIndex + 4) % 8;
-                _selfPlaySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<GameAgents>().Init(this);
+                _selfPlayAgents = _selfPlaySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<GameAgents>();
                 _obstacleSpawner.AllPointSpawn();
                 break;
             default:
@@ -114,23 +124,68 @@ public class GameEnvironment : MonoBehaviour
         }
 
         _gameAgents.Init(this);
+        if (_selfPlayAgents)
+        {
+            _selfPlayAgents.Init(this);
+            var _selfAgentControllerList = _selfPlayAgents.GetComponentsInChildren<Controller>();
+            foreach (var controller in _selfAgentControllerList)
+            {
+                ControllerList.Add(controller);
+            }
+        }
+        
+        var controllerList = _gameAgents.GetComponentsInChildren<Controller>();
+        foreach (var controller in controllerList)
+        {
+            ControllerList.Add(controller);
+        }
+
         NavMeshBuilder.ClearAllNavMeshes();
         NavMeshBuilder.BuildNavMesh();
+        initialized = true;
+    }
+
+
+    // 제한시간
+    private int resetTimer;
+    public void FixedUpdate()
+    {
+        if (!initialized) return;
+
+        //RESET SCENE IF WE MaxEnvironmentSteps
+        resetTimer += 1;
+        if (resetTimer >= MaxEnvironmentSteps)
+        {
+            foreach(var controller in ControllerList)
+            {
+                controller.EpisodeInterrupted();
+            }
+            ResetEnvironment();
+        }
     }
 
     public void EndEpisode()
     {
         StartEpisode();
-        //StartCoroutine(Delay());
     }
 
-    private void SpawnPlayer()
+    private void ResetEnvironment()
     {
-        _playerSpawner.OnePointRandomSpawn();
+        StopAllCoroutines();
+        resetTimer = 0;
+        _playerSpawner.Clear();
+        _enemySpawner.Clear();
+        _obstacleSpawner.Clear();
+        _selfPlaySpawner.Clear();
+        ControllerList.Clear();
+        StartEpisode();
     }
 
-    private void SpawnEnemy()
+    void Update()
     {
-        _enemySpawner.OnePointRandomSpawn();
+        if (!initialized)
+        {
+            Initialize();
+        }
     }
 }
