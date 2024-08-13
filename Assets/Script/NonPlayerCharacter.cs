@@ -27,6 +27,7 @@ public class NonPlayerCharacter : Character
 
     public void OnRandomMove()
     {
+        Debug.Log("OnRandomMove");
         StartCoroutine(MoveToRandomPosition());
     }
 

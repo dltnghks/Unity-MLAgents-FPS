@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
             spawnPointList.Add(transform.GetChild(i).gameObject);
         }
     }
-
+    
     public void Clear()
     {
         foreach(var obj in spawnObjectList)
@@ -34,13 +34,22 @@ public class Spawner : MonoBehaviour
         return returnObject;
     }
 
-    public GameObject OnePointRandomSpawn()
+    public virtual GameObject OnePointRandomSpawn(int startIndex = 0, int endIndex = -1)
     {
+        if (endIndex == -1) endIndex = spawnPointList.Count;
         var spawnedObject = InstantiateObject();
-        int pointIndex = Random.Range(0, spawnPointList.Count);
+        int pointIndex = Random.Range(startIndex, endIndex);
         Vector3 position = spawnPointList[pointIndex].transform.localPosition;
         spawnedObject.transform.localPosition = position;
         spawnedObject.transform.localRotation = Quaternion.identity;
+        return spawnedObject;
+    }
+
+    public GameObject OnePointSpawn(int index)
+    {
+        var spawnedObject = InstantiateObject();
+        Vector3 position = spawnPointList[index].transform.localPosition;
+        spawnedObject.transform.localPosition = position;
         return spawnedObject;
     }
 

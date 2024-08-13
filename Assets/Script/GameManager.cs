@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public static int ClearCount = 0;
     public static int RequireClear = 1;
 
-    public bool IsTrainning;
+    public bool IsTest;
 
     public Camera MyCamera;
     public List<GameEnvironment> gameEnvironmentList = new List<GameEnvironment>();
@@ -64,12 +64,36 @@ public class GameManager : MonoBehaviour
                 MyCamera.transform.position = newPosition;
             }
         }
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.F12))
         {
             Vector3 newPosition = new Vector3(50, 150, 50);
             // 카메라 위치에 새 위치 할당
             MyCamera.transform.position = newPosition;
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && IsTest)
+        {
+            AddGamePhase(-1);
+            RestEnvrionment();
+        }
+        if (Input.GetKeyDown(KeyCode.RightShift) && IsTest)
+        {
+            AddGamePhase();
+            RestEnvrionment();
+        }
+    }
+
+    public static void RestEnvrionment()
+    {
+        foreach (var gameEnvironment in _instance.gameEnvironmentList)
+        {
+            gameEnvironment.EndEpisode();
+        }
+    }
+
+    public static void AddGamePhase(int value)
+    {
+        _gamePhase += value;
     }
 
     public static void AddGamePhase()
@@ -85,10 +109,7 @@ public class GameManager : MonoBehaviour
         ClearCount++;
         if (RequireClear <= ClearCount)
         {
-            foreach (var gameEnvironment in _instance.gameEnvironmentList)
-            {
-                gameEnvironment.EndEpisode();
-            }
+            RestEnvrionment();
             ClearCount = 0;
             AddGamePhase();
         }
