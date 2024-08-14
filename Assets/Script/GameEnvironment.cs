@@ -45,7 +45,6 @@ public class GameEnvironment : MonoBehaviour
 
     public void StartEpisode()
     {
-        Debug.Log("Phase : " + GameManager.GamePhase);
         _playerSpawner.Clear();
         _enemySpawner.Clear();
         _obstacleSpawner.Clear();

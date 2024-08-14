@@ -34,6 +34,7 @@ public class TotalController : Controller
 
     public override void OnActionReceived(ActionBuffers actions)
     {
+        TickReward();
         ActionSegment<int> act = actions.DiscreteActions;
         base.OnActionReceived(actions);
         int[] tmp = { act[0], act[1], act[2], act[3] };

@@ -17,7 +17,7 @@ public class NonPlayerCharacter : Character
     {
         if (!base.Init()) return false;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        Debug.Log("NPC Init");
+        //Debug.Log("NPC Init");
         return true;
     }
 
@@ -28,7 +28,7 @@ public class NonPlayerCharacter : Character
 
     public void OnRandomMove()
     {
-        Debug.Log("OnRandomMove");
+        //Debug.Log("OnRandomMove");
         StartCoroutine(MoveToRandomPosition());
     }
 

@@ -17,24 +17,36 @@ public class Controller : Agent
     public float AttackMissRewardValue;
     public float AgentHitRewardValue;
     public float AgentDieRewardValue;
+    public float TickRewardValue;
 
-    public virtual void KillTargetReward()
+    public void TickReward()
     {
+        SetReward(TickRewardValue);
     }
-    public virtual void AttackHitReward()
-    {
 
+    public void KillTargetReward()
+    {
+        AddReward(KillTargetRewardValue);
+        //Debug.Log("KillTargetReward : " + KillTargetRewardValue);
     }
-    public virtual void AttackMissReward()
+    public void AttackHitReward()
     {
-
+        AddReward(AttackHitRewardValue);
+        //Debug.Log("AttackHitReward : " + AttackHitRewardValue);
     }
-    public virtual void AgentHitReward()
+    public void AttackMissReward()
     {
-
+        AddReward(AttackMissRewardValue);
+        //Debug.Log("AttackMissReward : " + AttackMissRewardValue);
     }
-    public virtual void AgentDieReward()
+    public void AgentHitReward()
     {
-
+        SetReward(AgentHitRewardValue);
+        //Debug.Log("AgentHitReward : " + AgentHitRewardValue);
+    }
+    public void AgentDieReward()
+    {
+        AddReward(AgentDieRewardValue);
+        //Debug.Log("AgentDieReward : " + AgentDieRewardValue);
     }
 }

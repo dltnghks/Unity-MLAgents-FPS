@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
         }
     }
     
-    public void Clear()
+    public virtual void Clear()
     {
         foreach(var obj in spawnObjectList)
         {

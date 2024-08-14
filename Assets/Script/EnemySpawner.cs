@@ -5,10 +5,20 @@ using UnityEngine.AI;
 
 public class EnemySpawner : Spawner
 {
+
+    public override void Clear()
+    {
+        foreach (var obj in spawnObjectList)
+        {
+            obj.GetComponent<Character>().CharacterSetActive(false);
+        }
+        //spawnObjectList.Clear();
+    }
+
     protected override GameObject InstantiateObject()
     {
         GameObject returnObject = base.InstantiateObject();
-        Debug.Log("NPC Spawn");
+        //Debug.Log("NPC Spawn");
         returnObject.GetComponent<Character>().Init();
         return returnObject;
 
@@ -27,7 +37,7 @@ public class EnemySpawner : Spawner
         var spawnedObject = InstantiateObject();
         var position = playerPosition + playerDirectionVector * range;
         SetEnemyPosition(spawnedObject, position);
-        Debug.Log(position);
+        //Debug.Log(position);
     }
 
     public void PlayerCenterRandomSpawn(Vector3 playerPosition, float range = 10f, float start = 0.0f, float end = 2.0f * 2f * Mathf.PI)

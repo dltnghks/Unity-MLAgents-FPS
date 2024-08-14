@@ -30,19 +30,29 @@ public class Character : MonoBehaviour
 
     public virtual int AddHP(int val)
     {
-        Debug.Log("hp : " + hp);
+        //Debug.Log("hp : " + hp);
         hp += val;
-        Debug.Log("hp : " + hp);
+        //Debug.Log("hp : " + hp);
         if (maxHP < HP)
         {
             hp = maxHP;
-            _initialized = false;
-            gameObject.SetActive(false);
+            CharacterSetActive(false);
         }
         else if (hp < 0)
         {
             hp = 0;
         }
         return hp;
+    }
+
+
+    public void CharacterSetActive(bool b)
+    {
+        gameObject.SetActive(b);
+        if(b == false)
+        {
+            _initialized = false;
+        }
+
     }
 }

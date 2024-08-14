@@ -41,11 +41,19 @@ public class GameAgents : Player
         return true;
     }
 
+    private bool _isSetting = false;
     public void Init(GameEnvironment environment)
     {
         if (!base.Init()) return;
 
-        Debug.Log("Agent Init");
+        if(AttackObject)
+            AttackObject.SetActive(false);
+        ShootCount = ShootAmount;
+
+        if (_isSetting) return;
+
+        _isSetting = true;
+        //Debug.Log("Agent Init");
         AttackObject = transform.GetChild(0).gameObject;
         float attackObjectScale = AttackRange;
         AttackObject.transform.localScale = new Vector3(0.1f, 0.1f, attackObjectScale);
@@ -141,7 +149,7 @@ public class GameAgents : Player
         ShootTime -= Time.deltaTime;
         if (ShootCount > 0 && ShootTime <= 0 && AttackAction == 1)
         {
-            Debug.Log("Attack");
+            //Debug.Log("Attack");
             ShootTime = ShootCoolDown;
             ShootCount--;
 
@@ -160,11 +168,11 @@ public class GameAgents : Player
                         GameManager.GameClear(environment);
                     }
                 }
-            }
-            else
-            {
-                //Debug.Log("Miss");
-                AddReward(ERewardType.AttackMiss);
+                else
+                {
+                    //Debug.Log("Miss");
+                    AddReward(ERewardType.AttackMiss);
+                }
             }
         }
     }
@@ -250,4 +258,5 @@ public class GameAgents : Player
         }
         return curHP;
     }
+
 }
