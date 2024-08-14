@@ -29,18 +29,16 @@ public class TotalController : Controller
         sensor.AddObservation(myAgent.targetDir);
         // 공격 사거리로 해보기
         //sensor.AddObservation(targetDistance / AttackRange);
-        sensor.AddObservation(myAgent.targetDistance / environment.MapSize);
+        sensor.AddObservation(myAgent.targetDistance);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        TickReward();
         ActionSegment<int> act = actions.DiscreteActions;
         base.OnActionReceived(actions);
         int[] tmp = { act[0], act[1], act[2], act[3] };
         myAgent.MovementAction(tmp);
         myAgent.AttackAction(act[4]);
-        
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)

@@ -18,6 +18,7 @@ public class Controller : Agent
     public float AgentHitRewardValue;
     public float AgentDieRewardValue;
     public float TickRewardValue;
+    public float SeeingEnemyRewardValue;
 
     public void TickReward()
     {
@@ -48,5 +49,10 @@ public class Controller : Agent
     {
         AddReward(AgentDieRewardValue);
         //Debug.Log("AgentDieReward : " + AgentDieRewardValue);
+    }
+
+    public void SeeingEnemyReward()
+    {
+        AddReward(SeeingEnemyRewardValue);
     }
 }

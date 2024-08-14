@@ -13,6 +13,8 @@ public class Player : Character
         AttackMiss,
         AgentHit,
         AgentDie,
+        Tick,
+        SeeingEnemy,
     }
 
     [Header("Agent")]
@@ -26,6 +28,7 @@ public class Player : Character
 
     protected void AddReward(ERewardType rewardType)
     {
+        //Debug.Log(name + " : " + rewardType.ToString());
         foreach(var controller in _controllerList)
         {
             switch (rewardType)
@@ -44,6 +47,12 @@ public class Player : Character
                     break;
                 case ERewardType.AgentDie:
                     controller.AgentDieReward();
+                    break;
+                case ERewardType.Tick:
+                    controller.TickReward();
+                    break;
+                case ERewardType.SeeingEnemy:
+                    controller.SeeingEnemyReward();
                     break;
                 default:
                     Debug.LogError("정의되지 않은 보상 타입입니다.");

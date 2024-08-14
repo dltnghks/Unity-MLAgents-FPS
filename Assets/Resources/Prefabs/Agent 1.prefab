@@ -270,11 +270,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   AttackDamage: 25
-  AttackRange: 30
+  AttackRange: 50
   ShootCoolDown: 0.5
   ShootTime: 0
-  ShootAmount: 30
-  ShootCount: 30
+  ShootAmount: 150
+  ShootCount: 150
   environment: {fileID: 0}
   rBody: {fileID: 0}
   targetDir: {x: 0, y: 0, z: 0}
