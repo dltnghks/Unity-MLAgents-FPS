@@ -13,11 +13,12 @@ public class NonPlayerCharacter : Character
     private Vector3 targetPosition;   // 목표 위치
     private NavMeshAgent navMeshAgent;       // NavMeshAgent 컴포넌트
 
-    public override void Init()
+    public override bool Init()
     {
+        if (!base.Init()) return false;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        base.Init();
         Debug.Log("NPC Init");
+        return true;
     }
 
     public override int AddHP(int val)

@@ -38,11 +38,17 @@ public class GameAgents : Player
     public float targetDistance;
     public GameObject AttackObject;
 
+    public override bool Init()
+    {
+        if (!base.Init()) return false;
+        return true;
+    }
 
     public void Init(GameEnvironment environment)
     {
+        if (!base.Init()) return;
+
         Debug.Log("Agent Init");
-        base.Init();
         AttackObject = transform.GetChild(0).gameObject;
         float attackObjectScale = AttackRange;
         AttackObject.transform.localScale = new Vector3(0.1f, 0.1f, attackObjectScale);

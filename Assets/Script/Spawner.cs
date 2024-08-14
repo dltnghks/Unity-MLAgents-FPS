@@ -21,13 +21,24 @@ public class Spawner : MonoBehaviour
     {
         foreach(var obj in spawnObjectList)
         {
-            Destroy(obj);
+            obj.SetActive(false);
         }
-        spawnObjectList.Clear();
+        //spawnObjectList.Clear();
     }
 
     protected virtual GameObject InstantiateObject()
     {
+        if(spawnObjectList.Count > 0)
+        {
+            foreach(var obj in spawnObjectList)
+            {
+                if (!obj.activeSelf)
+                {
+                    obj.SetActive(true);
+                    return obj;
+                }
+            }
+        }
         var returnObject = Instantiate(spawnObject);
         spawnObjectList.Add(returnObject);
         returnObject.transform.SetParent(this.transform);

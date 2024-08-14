@@ -12,9 +12,15 @@ public class Character : MonoBehaviour
     [SerializeField]
     protected int hp;
 
-    public virtual void Init()
+    private bool _initialized = false;
+
+    public virtual bool Init()
     {
+        if (_initialized) return false;
+        gameObject.SetActive(true);
+        _initialized = true;
         hp = maxHP;
+        return true;
     }
 
     public int HP
@@ -30,6 +36,8 @@ public class Character : MonoBehaviour
         if (maxHP < HP)
         {
             hp = maxHP;
+            _initialized = false;
+            gameObject.SetActive(false);
         }
         else if (hp < 0)
         {

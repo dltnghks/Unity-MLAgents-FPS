@@ -6,8 +6,9 @@ using UnityEngine;
 public class Player : Character
 {
 
-    public override void Init()
+    public override bool Init()
     {
-        base.Init();
+        if (!base.Init()) return false;
+        return true;
     }
 }
