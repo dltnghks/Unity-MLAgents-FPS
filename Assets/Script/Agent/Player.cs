@@ -9,7 +9,6 @@ public class Player : Character
     protected enum ERewardType
     {
         KillTarget,
-        TimeOver,
         AttackHit,
         AttackMiss,
         AgentHit,
@@ -33,9 +32,6 @@ public class Player : Character
             {
                 case ERewardType.KillTarget:
                     controller.KillTargetReward();
-                    break;
-                case ERewardType.TimeOver:
-                    controller.TimeOverReward();
                     break;
                 case ERewardType.AttackHit:
                     controller.AttackHitReward();

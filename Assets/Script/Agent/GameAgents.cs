@@ -29,9 +29,6 @@ public class GameAgents : Player
     public float ShootAmount = 30.0f;
     public float ShootCount = 30;
 
-    [Header("Agent")]
-    public List<Controller> _controllerList = new List<Controller>();
-
     public GameEnvironment environment;
     public Rigidbody rBody;
     public Vector3 targetDir;
@@ -153,19 +150,21 @@ public class GameAgents : Player
             RaycastHit hitinfo;
             if (Physics.Raycast(rBody.position, transform.forward, out hitinfo, AttackRange))
             {
-                Debug.Log(hitinfo.collider.tag);
                 if (hitinfo.collider.tag == "Target" || (hitinfo.collider.tag == "Player" && hitinfo.collider.gameObject.GetComponent<Character>().TeamID != this.TeamID))
                 {
-                    Debug.Log("Hit");
-                    if(0 >= hitinfo.collider.gameObject.GetComponent<Character>().AddHP(-AttackDamage))
+                    //Debug.Log("Hit");
+                    AddReward(ERewardType.AttackHit);
+                    if (0 >= hitinfo.collider.gameObject.GetComponent<Character>().AddHP(-AttackDamage))
                     {
+                        AddReward(ERewardType.KillTarget);
                         GameManager.GameClear(environment);
                     }
                 }
             }
             else
             {
-                Debug.Log("Miss");
+                //Debug.Log("Miss");
+                AddReward(ERewardType.AttackMiss);
             }
         }
     }
@@ -238,4 +237,17 @@ public class GameAgents : Player
         }
     }
 
+    public override int AddHP(int val)
+    {
+        int curHP = base.AddHP(val);
+        if (curHP <= 0)
+        {
+            AddReward(ERewardType.AgentDie);
+        }
+        if (val > 0)
+        {
+            AddReward(ERewardType.AgentHit);
+        }
+        return curHP;
+    }
 }
