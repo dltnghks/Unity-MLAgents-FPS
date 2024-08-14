@@ -10,4 +10,37 @@ public class Controller : Agent
 {
     public GameEnvironment environment;
     public GameAgents myAgent;
+
+    [Header("Reward Value")]
+    public float KillTargetRewardValue;
+    public float TimeOverRewardValue;
+    public float AttackHitRewardValue;
+    public float AttackMissRewardValue;
+    public float AgentHitRewardValue;
+    public float AgentDieRewardValue;
+
+    public virtual void KillTargetReward()
+    {
+
+    }
+    public virtual void TimeOverReward()
+    {
+
+    }
+    public virtual void AttackHitReward()
+    {
+
+    }
+    public virtual void AttackMissReward()
+    {
+
+    }
+    public virtual void AgentHitReward()
+    {
+
+    }
+    public virtual void AgentDieReward()
+    {
+
+    }
 }
