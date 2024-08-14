@@ -12,6 +12,7 @@ public class GameEnvironment : MonoBehaviour
 
     public GameAgents _gameAgents;
     public GameAgents _selfPlayAgents;
+    public NonPlayerCharacter Enemy;
 
     [Header("Agents")]
     public List<Controller> ControllerList = new List<Controller>();
@@ -57,25 +58,25 @@ public class GameEnvironment : MonoBehaviour
                 // Player - 센터
                 // Enemy - 에이전트 정면 생성
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 8).GetComponent<GameAgents>();
-                _enemySpawner.PlayerDirectSpawn(_gameAgents.transform.localPosition, _gameAgents.transform.forward);
+                Enemy = _enemySpawner.PlayerDirectSpawn(_gameAgents.transform.localPosition, _gameAgents.transform.forward).GetComponent<NonPlayerCharacter>();
                 break;
             case 2:
                 // Player - 센터
                 // Enemy - 센터에서 살짝 벗어나게
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
-                _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition, 10, 0.7f * Mathf.PI, 0.3f*Mathf.PI);
+                Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition, 10, 0.7f * Mathf.PI, 0.3f*Mathf.PI).GetComponent<NonPlayerCharacter>();
                 break;
             case 3:
                 // Player - 센터
                 // Enemy - 센터 주위에 랜덤 생성
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
-                _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition);
+                Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
                 break;
             case 4:
                 // Player - 센터
                 // Enemy - 센터 주위에 랜덤 생성 + 움직임
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
-                _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition);
+                Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
                 _enemySpawner.OnEnemyRandomMove();
                 break;
             case 5:
@@ -83,7 +84,7 @@ public class GameEnvironment : MonoBehaviour
                 // Enemy - 센터 주위에 랜덤 생성 + 움직임
                 // Obstacle - 4개 생성
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
-                _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition);
+                Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
                 _enemySpawner.OnEnemyRandomMove();
                 _obstacleSpawner.AllPointSpawn();
                 break;
@@ -96,7 +97,7 @@ public class GameEnvironment : MonoBehaviour
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
                 int npcIndex = (randomIndex + 4) % 8;
                 Debug.Log("npcIndex : " + npcIndex);
-                _enemySpawner.OnePointRandomSpawn(npcIndex, npcIndex);
+                Enemy = _enemySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<NonPlayerCharacter>();
                 _obstacleSpawner.AllPointSpawn();
                 break;
             case 7:
@@ -106,7 +107,7 @@ public class GameEnvironment : MonoBehaviour
                 randomIndex = Random.Range(0, 8);
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
                 npcIndex = (randomIndex + 4) % 8;
-                _enemySpawner.OnePointRandomSpawn(npcIndex, npcIndex);
+                Enemy = _enemySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<NonPlayerCharacter>();
                 _enemySpawner.OnEnemyRandomMove();
                 _obstacleSpawner.AllPointSpawn();
                 break;

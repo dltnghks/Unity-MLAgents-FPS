@@ -32,15 +32,16 @@ public class EnemySpawner : Spawner
         }
     }
 
-    public void PlayerDirectSpawn(Vector3 playerPosition, Vector3 playerDirectionVector, float range = 10f)
+    public GameObject PlayerDirectSpawn(Vector3 playerPosition, Vector3 playerDirectionVector, float range = 10f)
     {
         var spawnedObject = InstantiateObject();
         var position = playerPosition + playerDirectionVector * range;
         SetEnemyPosition(spawnedObject, position);
+        return spawnedObject;
         //Debug.Log(position);
     }
 
-    public void PlayerCenterRandomSpawn(Vector3 playerPosition, float range = 10f, float start = 0.0f, float end = 2.0f * 2f * Mathf.PI)
+    public GameObject PlayerCenterRandomSpawn(Vector3 playerPosition, float range = 10f, float start = 0.0f, float end = 2.0f * 2f * Mathf.PI)
     {
         var spawnedObject = InstantiateObject();
         // 0에서 2π 사이의 랜덤 각도를 생성합니다.
@@ -50,6 +51,7 @@ public class EnemySpawner : Spawner
         Vector3 randomDirection = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
         var position = playerPosition + randomDirection*range;
         SetEnemyPosition(spawnedObject, position);
+        return spawnedObject;
     }
 
     public override GameObject OnePointRandomSpawn(int startIndex = 0, int endIndex = -1)
