@@ -10,14 +10,15 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.barracuda": {
-      "version": "file:C:/Users/user/Downloads/barracuda-release-release-3.0.1/barracuda-release-release-3.0.1",
+      "version": "3.0.0",
       "depth": 0,
-      "source": "local",
+      "source": "registry",
       "dependencies": {
         "com.unity.burst": "1.6.0",
         "com.unity.modules.jsonserialize": "1.0.0",
         "com.unity.modules.imageconversion": "1.0.0"
-      }
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
       "version": "1.8.10",
@@ -75,7 +76,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ml-agents": {
-      "version": "file:C:/Users/user/Desktop/ProjectML/ml-agents/com.unity.ml-agents",
+      "version": "file:C:/Users/Administrator/Desktop/ml-agents-release_20/ml-agents-release_20/com.unity.ml-agents",
       "depth": 0,
       "source": "local",
       "dependencies": {
