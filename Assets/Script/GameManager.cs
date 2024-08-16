@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
         _instance = this;
         Init();
         DontDestroyOnLoad(gameObject);
+        Random.InitState(0);
     }
 
     private void Init()
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         _playTime += Time.deltaTime;
+   
         for (int i = 0; i < gameEnvironmentList.Count; i++)
         {
             if (Input.GetKeyDown(KeyCode.F1 + i))
@@ -152,11 +154,14 @@ public class GameManager : MonoBehaviour
     {
         environment.EndEpisode();
         ClearCount++;
+        //Debug.Log(_gamePhase + " : " + ClearCount + " , " + RequireClear);
         if (RequireClear <= ClearCount && _gamePhase != 8)
         {
+            AddGamePhase();
             RestEnvrionment();
             ClearCount = 0;
-            AddGamePhase();
+            if (_gamePhase >= 5)
+                RequireClear = 2;
         }
     }
 }

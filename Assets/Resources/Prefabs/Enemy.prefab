@@ -128,7 +128,7 @@ MonoBehaviour:
   hp: 0
   moveRadius: 40
   moveSpeed: 20
-  waitTime: 0.5
+  waitTime: 0.1
 --- !u!195 &3723167300939046594
 NavMeshAgent:
   m_ObjectHideFlags: 0

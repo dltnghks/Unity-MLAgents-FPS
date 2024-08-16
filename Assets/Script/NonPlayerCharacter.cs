@@ -26,8 +26,11 @@ public class NonPlayerCharacter : Character
         return base.AddHP(val);
     }
 
-    public void OnRandomMove()
+    public void OnRandomMove(float waitTime = 2, float radius = 5, float speed = 8)
     {
+        this.waitTime = waitTime;
+        this.navMeshAgent.acceleration = speed;
+        this.moveRadius = radius;
         //Debug.Log("OnRandomMove");
         StartCoroutine(MoveToRandomPosition());
     }

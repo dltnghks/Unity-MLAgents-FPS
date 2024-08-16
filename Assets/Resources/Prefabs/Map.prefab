@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPointList: []
   spawnObject: {fileID: 4563536745442894770, guid: 1c5c2506cbda657488f7a0545228e9fe, type: 3}
+  spawnObjectList: []
 --- !u!1 &1109334457094025365
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +363,7 @@ MonoBehaviour:
   ControllerList: []
   MapSize: 40
   MaxEnvironmentSteps: 5000
+  resetTimer: 0
 --- !u!1 &2236991038726827739
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,6 +1074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPointList: []
   spawnObject: {fileID: 7685460101876671744, guid: 49eff17ac7eea3e4d9b6becf1a2106e9, type: 3}
+  spawnObjectList: []
 --- !u!1 &6294921703258090292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,6 +1191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPointList: []
   spawnObject: {fileID: 1691081968074839543, guid: 124a9b891d963554bb62087981663216, type: 3}
+  spawnObjectList: []
 --- !u!1 &7154663990510610928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,6 +1706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPointList: []
   spawnObject: {fileID: 4563536745442894770, guid: ad7f2d60d8622b9448a01e2465891e54, type: 3}
+  spawnObjectList: []
 --- !u!1 &9137038255342600182
 GameObject:
   m_ObjectHideFlags: 0
