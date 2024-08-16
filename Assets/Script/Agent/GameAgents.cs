@@ -175,6 +175,10 @@ public class GameAgents : Player
                     if (0 >= hitinfo.collider.gameObject.GetComponent<Character>().AddHP(-AttackDamage))
                     {
                         AddReward(ERewardType.KillTarget);
+                        if(hitinfo.collider.tag == "Player")
+                        {
+                            hitinfo.collider.gameObject.GetComponent<GameAgents>().AddReward(ERewardType.AgentDie);
+                        }
                         GameManager.GameClear(environment);
                     }
                 }
@@ -260,7 +264,7 @@ public class GameAgents : Player
         int curHP = base.AddHP(val);
         if (curHP <= 0)
         {
-            AddReward(ERewardType.AgentDie);
+            //AddReward(ERewardType.AgentDie);
         }
         if (val > 0)
         {

@@ -42,12 +42,12 @@ public class Controller : Agent
     }
     public void AgentHitReward()
     {
-        SetReward(AgentHitRewardValue);
+        AddReward(AgentHitRewardValue);
         //Debug.Log("AgentHitReward : " + AgentHitRewardValue);
     }
     public void AgentDieReward()
     {
-        AddReward(AgentDieRewardValue);
+        SetReward(AgentDieRewardValue);
         //Debug.Log("AgentDieReward : " + AgentDieRewardValue);
     }
 

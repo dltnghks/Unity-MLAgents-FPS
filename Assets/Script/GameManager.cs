@@ -143,7 +143,9 @@ public class GameManager : MonoBehaviour
     {
         if(_gamePhase <= 7)
             _gamePhase++;
+        Debug.Log("AddGamePhase : " + _gamePhase + ", ClearTime : " + _playTime);
         _phaseClearTimeList.Add(_playTime);
+        _playTime = 0;
     }
 
     public static void GameClear(GameEnvironment environment)
