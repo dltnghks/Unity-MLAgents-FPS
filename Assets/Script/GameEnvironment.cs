@@ -16,9 +16,8 @@ public class GameEnvironment : MonoBehaviour
 
     [Header("Agents")]
     public List<Controller> ControllerList = new List<Controller>();
-
+    
     public float MapSize = 40;
-    public int MaxEnvironmentSteps = 5000;
 
 
     private bool initialized;
@@ -52,6 +51,7 @@ public class GameEnvironment : MonoBehaviour
         _selfPlaySpawner.Clear();
         ControllerList.Clear();
 
+        Debug.Log(GameManager.GamePhase);
         switch (GameManager.GamePhase)
         {
             case 1:
@@ -90,14 +90,15 @@ public class GameEnvironment : MonoBehaviour
                 break;
             case 6:
                 // Player - 8개 포인트 랜덤 생성
-                // Enemy - Player 반대편
+                // Enemy - Player 반대편+ 움직임
                 // Obstacle - 4개 생성
                 int randomIndex = Random.Range(0, 8);
-                Debug.Log("randomIndex : " + randomIndex);
+                //Debug.Log("randomIndex : " + randomIndex);
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
                 int npcIndex = (randomIndex + 4) % 8;
-                Debug.Log("npcIndex : " + npcIndex);
+                //Debug.Log("npcIndex : " + npcIndex);
                 Enemy = _enemySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<NonPlayerCharacter>();
+                _enemySpawner.OnEnemyRandomMove();
                 _obstacleSpawner.AllPointSpawn();
                 break;
             case 7:
@@ -108,7 +109,7 @@ public class GameEnvironment : MonoBehaviour
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
                 npcIndex = (randomIndex + 4) % 8;
                 Enemy = _enemySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<NonPlayerCharacter>();
-                _enemySpawner.OnEnemyRandomMove();
+                _enemySpawner.OnEnemyRandomMove(0.5f, 40, 20);
                 _obstacleSpawner.AllPointSpawn();
                 break;
             case 8:
@@ -146,33 +147,15 @@ public class GameEnvironment : MonoBehaviour
     }
 
 
-    // 제한시간
-    private int resetTimer;
-    public void FixedUpdate()
-    {
-        if (!initialized) return;
-
-        //RESET SCENE IF WE MaxEnvironmentSteps
-        resetTimer += 1;
-        if (resetTimer >= MaxEnvironmentSteps)
-        {
-            foreach(var controller in ControllerList)
-            {
-                controller.EpisodeInterrupted();
-            }
-            ResetEnvironment();
-        }
-    }
-
     public void EndEpisode()
     {
-        StartEpisode();
+        ResetEnvironment();
     }
 
     private void ResetEnvironment()
     {
         StopAllCoroutines();
-        resetTimer = 0;
+        _environmentPlayTime = 0;
         _playerSpawner.Clear();
         _enemySpawner.Clear();
         _obstacleSpawner.Clear();
@@ -181,11 +164,25 @@ public class GameEnvironment : MonoBehaviour
         StartEpisode();
     }
 
+    private float _environmentPlayTime = 0.0f;
+    public float EvironmentMaxTime = 20.0f;
     void Update()
     {
         if (!initialized)
         {
             Initialize();
+        }
+        else
+        {
+            _environmentPlayTime += Time.deltaTime;
+            if(_environmentPlayTime >= EvironmentMaxTime)
+            {
+                foreach (var controller in ControllerList)
+                {
+                    controller.EpisodeInterrupted();
+                }
+                ResetEnvironment();
+            }
         }
     }
 }

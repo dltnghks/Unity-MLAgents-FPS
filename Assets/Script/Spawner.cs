@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public List<GameObject> spawnPointList = new List<GameObject>();
     public GameObject spawnObject;
-    protected List<GameObject> spawnObjectList = new List<GameObject>();
+    public List<GameObject> spawnObjectList = new List<GameObject>();
 
     private void Awake()
     {

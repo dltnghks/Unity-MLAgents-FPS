@@ -90,7 +90,7 @@ MonoBehaviour:
   AgentHitRewardValue: -0.2
   AgentDieRewardValue: -1
   TickRewardValue: -0.001
-  SeeingEnemyRewardValue: 0.001
+  SeeingEnemyRewardValue: 0.002
 --- !u!114 &5745841155396183194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_RaysPerDirection: 6
   m_MaxRayDegrees: 90
   m_SphereCastRadius: 0.5
-  m_RayLength: 20
+  m_RayLength: 60
   m_RayLayerMask:
     serializedVersion: 2
     m_Bits: 4294967291

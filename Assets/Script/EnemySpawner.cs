@@ -24,11 +24,11 @@ public class EnemySpawner : Spawner
 
     }
 
-    public void OnEnemyRandomMove()
+    public void OnEnemyRandomMove(float waitTime = 2, float radius = 5, float speed = 8)
     {
         foreach(var enemy in spawnObjectList)
         {
-            enemy.GetComponent<NonPlayerCharacter>().OnRandomMove();
+            enemy.GetComponent<NonPlayerCharacter>().OnRandomMove(waitTime, speed, radius);
         }
     }
 
