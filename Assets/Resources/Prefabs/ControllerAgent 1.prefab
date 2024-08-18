@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 5160145975814829563}
   - component: {fileID: 7373816576511341814}
   m_Layer: 0
-  m_Name: ControllerAgent
+  m_Name: ControllerAgent 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,7 +257,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 04be259c590de46f69db4cbd1da877d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c679a60b65e45240b476bec3bf8dcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeamID: 0
+  TeamID: 1
   maxHP: 100
   hp: 100
   _controllerList: []
@@ -477,6 +477,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5061432206791315978}
     m_Modifications:
+    - target: {fileID: 5260397785423381221, guid: 8b4233da1e366744fb80f0eff615cfc5, type: 3}
+      propertyPath: TeamId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5343382321224091216, guid: 8b4233da1e366744fb80f0eff615cfc5, type: 3}
       propertyPath: m_Name
       value: AttackController
@@ -539,17 +543,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5061432206791315978}
     m_Modifications:
-    - target: {fileID: 947252917157464048, guid: 16f9eb71cfad95b46bbe819384c224a7, type: 3}
-      propertyPath: m_DetectableTags.Array.data[0]
-      value: Target
-      objectReference: {fileID: 0}
-    - target: {fileID: 947252917157464048, guid: 16f9eb71cfad95b46bbe819384c224a7, type: 3}
-      propertyPath: m_DetectableTags.Array.data[1]
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 947252917157464048, guid: 16f9eb71cfad95b46bbe819384c224a7, type: 3}
-      propertyPath: m_DetectableTags.Array.data[2]
-      value: Wall
+    - target: {fileID: 4867427006318490629, guid: 16f9eb71cfad95b46bbe819384c224a7, type: 3}
+      propertyPath: TeamId
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5374601108881601636, guid: 16f9eb71cfad95b46bbe819384c224a7, type: 3}
       propertyPath: m_Name

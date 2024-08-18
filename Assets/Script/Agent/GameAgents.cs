@@ -142,8 +142,19 @@ public class GameAgents : Player
 
     public void FixedUpdate()
     {
-        targetDir = (environment.Enemy.transform.position - transform.position).normalized;
-        targetDistance = Vector3.Distance(transform.position, environment.Enemy.transform.position) / environment.MapSize;
+        GameObject target;
+        if (GameManager.GamePhase < 8)
+            target = environment.Enemy.gameObject;
+        else
+        {
+            if (TeamID == 0)
+                target = environment._selfPlayAgents.gameObject;
+            else
+                target = environment._gameAgents.gameObject;
+        }
+        
+        targetDir = (target.transform.position - transform.position).normalized;
+        targetDistance = Vector3.Distance(transform.position, target.transform.position) / environment.MapSize;
         AddReward(ERewardType.Tick);
         if(Vector3.Angle(transform.forward, targetDir) < 15.0f)
         {

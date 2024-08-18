@@ -28,31 +28,32 @@ public class Controller : Agent
     public void KillTargetReward()
     {
         AddReward(KillTargetRewardValue);
-        //Debug.Log("KillTargetReward : " + KillTargetRewardValue);
+        //Debug.Log(name + ", KillTargetReward : " + KillTargetRewardValue);
     }
     public void AttackHitReward()
     {
         AddReward(AttackHitRewardValue);
-        //Debug.Log("AttackHitReward : " + AttackHitRewardValue);
+        //Debug.Log(name + ", AttackHitReward : " + AttackHitRewardValue);
     }
     public void AttackMissReward()
     {
         AddReward(AttackMissRewardValue);
-        //Debug.Log("AttackMissReward : " + AttackMissRewardValue);
+        //Debug.Log(name + ", AttackMissReward : " + AttackMissRewardValue);
     }
     public void AgentHitReward()
     {
         AddReward(AgentHitRewardValue);
-        //Debug.Log("AgentHitReward : " + AgentHitRewardValue);
+        //Debug.Log(name + ", AgentHitReward : " + AgentHitRewardValue);
     }
     public void AgentDieReward()
     {
         SetReward(AgentDieRewardValue);
-        //Debug.Log("AgentDieReward : " + AgentDieRewardValue);
+        //Debug.Log(name + ", AgentDieReward : " + AgentDieRewardValue);
     }
 
     public void SeeingEnemyReward()
     {
         AddReward(SeeingEnemyRewardValue);
+        Debug.Log(name + ", SeeingEnemyReward : " + SeeingEnemyRewardValue);
     }
 }

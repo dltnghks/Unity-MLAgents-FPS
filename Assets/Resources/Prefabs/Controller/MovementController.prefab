@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4867427006318490629}
   - component: {fileID: 2106383200763791147}
   - component: {fileID: 5844393528337668698}
+  - component: {fileID: 947252917157464048}
   m_Layer: 0
   m_Name: MovementController
   m_TagString: Untagged
@@ -51,15 +52,15 @@ MonoBehaviour:
     NumStackedVectorObservations: 20
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 0300000003000000020000000300000002000000
-    VectorActionSize: 0300000003000000020000000300000002000000
+      BranchSizes: 03000000030000000200000003000000
+    VectorActionSize: 03000000030000000200000003000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
-  m_BehaviorName: My Behavior
+  m_BehaviorType: 0
+  m_BehaviorName: Movement
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -80,15 +81,16 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 5000
   environment: {fileID: 0}
   myAgent: {fileID: 0}
-  KillTargetRewardValue: 0
+  KillTargetRewardValue: 1
   AttackHitRewardValue: 0
   AttackMissRewardValue: 0
-  AgentHitRewardValue: 0
-  AgentDieRewardValue: 0
-  TickRewardValue: 0
+  AgentHitRewardValue: -0.2
+  AgentDieRewardValue: -1
+  TickRewardValue: -0.005
+  SeeingEnemyRewardValue: 0.01
 --- !u!114 &5844393528337668698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,3 +105,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
+--- !u!114 &947252917157464048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5374601108881601636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensor
+  m_DetectableTags:
+  - Target
+  - Player
+  - Wall
+  m_RaysPerDirection: 6
+  m_MaxRayDegrees: 90
+  m_SphereCastRadius: 0.5
+  m_RayLength: 60
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
+  m_ObservationStacks: 1
+  m_AlternatingRayOrder: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 0
+  m_EndVerticalOffset: 0

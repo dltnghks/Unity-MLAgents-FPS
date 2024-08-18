@@ -55,7 +55,7 @@ public class Player : Character
                     controller.SeeingEnemyReward();
                     break;
                 default:
-                    Debug.LogError("Á¤ÀÇµÇÁö ¾ÊÀº º¸»ó Å¸ÀÔÀÔ´Ï´Ù.");
+                    Debug.LogError("ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½Ô´Ï´ï¿½.");
                     break;
             }
         }
