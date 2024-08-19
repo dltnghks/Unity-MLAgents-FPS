@@ -54,6 +54,6 @@ public class Controller : Agent
     public void SeeingEnemyReward()
     {
         AddReward(SeeingEnemyRewardValue);
-        Debug.Log(name + ", SeeingEnemyReward : " + SeeingEnemyRewardValue);
+        //Debug.Log(name + ", SeeingEnemyReward : " + SeeingEnemyRewardValue);
     }
 }
