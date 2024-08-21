@@ -23,18 +23,27 @@ public class Player : Character
     public override bool Init()
     {
         if (!base.Init()) return false;
+        bDeath = false;
+        bKill = false;
         return true;
     }
 
+    private bool bDeath = false;
+    private bool bKill = false;
     protected void AddReward(ERewardType rewardType)
     {
-        //Debug.Log(name + " : " + rewardType.ToString());
-        foreach(var controller in _controllerList)
+        if (bDeath || bKill)
+        {
+            return;
+        }
+            //Debug.Log(name + " : " + rewardType.ToString());
+        foreach (var controller in _controllerList)
         {
             switch (rewardType)
             {
                 case ERewardType.KillTarget:
                     controller.KillTargetReward();
+                    //bKill = true;
                     break;
                 case ERewardType.AttackHit:
                     controller.AttackHitReward();
@@ -46,6 +55,7 @@ public class Player : Character
                     controller.AgentHitReward();
                     break;
                 case ERewardType.AgentDie:
+                    //bDeath = true;
                     controller.AgentDieReward();
                     break;
                 case ERewardType.Tick:

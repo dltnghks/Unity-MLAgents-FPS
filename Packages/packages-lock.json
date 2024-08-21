@@ -76,7 +76,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ml-agents": {
-      "version": "file:C:/Users/Administrator/Desktop/ml-agents-release_20/ml-agents-release_20/com.unity.ml-agents",
+      "version": "file:C:/Users/user/Desktop/ProjectML/ml-agents/com.unity.ml-agents",
       "depth": 0,
       "source": "local",
       "dependencies": {

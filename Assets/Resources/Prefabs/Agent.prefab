@@ -142,7 +142,7 @@ Transform:
   - {fileID: 1732562219191378448}
   - {fileID: 8877414720930595732}
   - {fileID: 6543516247544550244}
-  - {fileID: 2653709870572172235}
+  - {fileID: 8137897400825928713}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2038809017627091127
@@ -270,7 +270,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   AttackDamage: 25
-  AttackRange: 50
+  AttackRange: 60
   ShootCoolDown: 0.5
   ShootTime: 0
   ShootAmount: 150
@@ -468,7 +468,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &2575927459630014826
+--- !u!1001 &8611948878532497064
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -525,8 +525,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6af0a5b49e742f4fabf555f1120cca6, type: 3}
---- !u!4 &2653709870572172235 stripped
+--- !u!4 &8137897400825928713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 534898599969755809, guid: e6af0a5b49e742f4fabf555f1120cca6, type: 3}
-  m_PrefabInstance: {fileID: 2575927459630014826}
+  m_PrefabInstance: {fileID: 8611948878532497064}
   m_PrefabAsset: {fileID: 0}
