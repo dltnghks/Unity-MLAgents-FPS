@@ -38,7 +38,7 @@ public class GameEnvironment : MonoBehaviour
         _playerSpawner.Clear();
         _enemySpawner.Clear();
         _obstacleSpawner.Clear();
-        // ÀÌµ¿ ÈÄ ´ë±â ½Ã°£¸¸Å­ ´ë±â
+        // ì´ë™ í›„ ëŒ€ê¸° ì‹œê°„ë§Œí¼ ëŒ€ê¸°
         yield return new WaitForSeconds(1f);
         StartEpisode();
     }
@@ -51,47 +51,47 @@ public class GameEnvironment : MonoBehaviour
         _selfPlaySpawner.Clear();
         ControllerList.Clear();
 
-        Debug.Log(GameManager.GamePhase);
+        //Debug.Log(GameManager.GamePhase);
         switch (GameManager.GamePhase)
         {
             case 1:
-                // Player - ¼¾ÅÍ
-                // Enemy - ¿¡ÀÌÀüÆ® Á¤¸é »ı¼º
+                // Player - ì„¼í„°
+                // Enemy - ì—ì´ì „íŠ¸ ì •ë©´ ìƒì„±
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 8).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerDirectSpawn(_gameAgents.transform.localPosition, _gameAgents.transform.forward).GetComponent<NonPlayerCharacter>();
                 break;
             case 2:
-                // Player - ¼¾ÅÍ
-                // Enemy - ¼¾ÅÍ¿¡¼­ »ìÂ¦ ¹ş¾î³ª°Ô
+                // Player - ì„¼í„°
+                // Enemy - ì„¼í„°ì—ì„œ ì‚´ì§ ë²—ì–´ë‚˜ê²Œ
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition, 10, 0.7f * Mathf.PI, 0.3f*Mathf.PI).GetComponent<NonPlayerCharacter>();
                 break;
             case 3:
-                // Player - ¼¾ÅÍ
-                // Enemy - ¼¾ÅÍ ÁÖÀ§¿¡ ·£´ı »ı¼º
+                // Player - ì„¼í„°
+                // Enemy - ì„¼í„° ì£¼ìœ„ì— ëœë¤ ìƒì„±
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
                 break;
             case 4:
-                // Player - ¼¾ÅÍ
-                // Enemy - ¼¾ÅÍ ÁÖÀ§¿¡ ·£´ı »ı¼º + ¿òÁ÷ÀÓ
+                // Player - ì„¼í„°
+                // Enemy - ì„¼í„° ì£¼ìœ„ì— ëœë¤ ìƒì„± + ì›€ì§ì„
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
                 _enemySpawner.OnEnemyRandomMove();
                 break;
             case 5:
-                // Player - ¼¾ÅÍ
-                // Enemy - ¼¾ÅÍ ÁÖÀ§¿¡ ·£´ı »ı¼º + ¿òÁ÷ÀÓ
-                // Obstacle - 4°³ »ı¼º
+                // Player - ì„¼í„°
+                // Enemy - ì„¼í„° ì£¼ìœ„ì— ëœë¤ ìƒì„± + ì›€ì§ì„
+                // Obstacle - 4ê°œ ìƒì„±
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
                 _enemySpawner.OnEnemyRandomMove();
                 _obstacleSpawner.AllPointSpawn();
                 break;
             case 6:
-                // Player - 8°³ Æ÷ÀÎÆ® ·£´ı »ı¼º
-                // Enemy - Player ¹İ´ëÆí+ ¿òÁ÷ÀÓ
-                // Obstacle - 4°³ »ı¼º
+                // Player - 8ê°œ í¬ì¸íŠ¸ ëœë¤ ìƒì„±
+                // Enemy - Player ë°˜ëŒ€í¸+ ì›€ì§ì„
+                // Obstacle - 4ê°œ ìƒì„±
                 int randomIndex = Random.Range(0, 8);
                 //Debug.Log("randomIndex : " + randomIndex);
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
@@ -102,9 +102,9 @@ public class GameEnvironment : MonoBehaviour
                 _obstacleSpawner.AllPointSpawn();
                 break;
             case 7:
-                // Player - 8°³ Æ÷ÀÎÆ® ·£´ı »ı¼º
-                // Enemy - Player ¹İ´ëÆí + ¿òÁ÷ÀÓ
-                // Obstacle - 4°³ »ı¼º
+                // Player - 8ê°œ í¬ì¸íŠ¸ ëœë¤ ìƒì„±
+                // Enemy - Player ë°˜ëŒ€í¸ + ì›€ì§ì„
+                // Obstacle - 4ê°œ ìƒì„±
                 randomIndex = Random.Range(0, 8);
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
                 npcIndex = (randomIndex + 4) % 8;
