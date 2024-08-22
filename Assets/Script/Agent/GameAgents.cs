@@ -183,6 +183,10 @@ public class GameAgents : Player
                 {
                     //Debug.Log("Hit");
                     AddReward(ERewardType.AttackHit);
+                    if (hitinfo.collider.tag == "Player")
+                    {
+                        hitinfo.collider.gameObject.GetComponent<GameAgents>().AddReward(ERewardType.AgentHit);
+                    }
                     if (0 >= hitinfo.collider.gameObject.GetComponent<Character>().AddHP(-AttackDamage))
                     {
                         AddReward(ERewardType.KillTarget);
