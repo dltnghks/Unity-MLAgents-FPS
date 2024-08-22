@@ -15,11 +15,15 @@ public class GameManager : MonoBehaviour
     public static int ClearCount = 0;
     public static int RequireClear = 1;
 
-    public bool IsTest;
-
     public Camera MyCamera;
     public List<GameEnvironment> gameEnvironmentList = new List<GameEnvironment>();
-
+    
+    [Header("Test Environment")]
+    public bool IsTest;
+    public List<GameEnvironment> testEnvironmentList = new List<GameEnvironment>();
+    public int GameCount;
+    public int EndGameCount;
+    
     public static GameManager Instance
     {
         get { return _instance; }
@@ -42,7 +46,13 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         ClearCount = 0;
-        _gamePhase = 8;
+        _gamePhase = 1;
+        if (IsTest)
+        {
+            _gamePhase = 8;
+            GameCount = 0;
+        }
+        
         _playTime = 0;
         _phaseClearTimeList.Clear();
         var environmentList = GetComponentsInChildren<GameEnvironment>();
@@ -62,23 +72,23 @@ public class GameManager : MonoBehaviour
             {
                 Vector3 newPosition = gameEnvironmentList[i].transform.position;
                 newPosition.y = 50.0f;
-                // Ä«¸Ş¶ó À§Ä¡¿¡ »õ À§Ä¡ ÇÒ´ç
+                // ì¹´ë©”ë¼ ìœ„ì¹˜ì— ìƒˆ ìœ„ì¹˜ í• ë‹¹
                 MyCamera.transform.position = newPosition;
             }
         }
         if (Input.GetKeyDown(KeyCode.F12))
         {
             Vector3 newPosition = new Vector3(50, 150, 50);
-            // Ä«¸Ş¶ó À§Ä¡¿¡ »õ À§Ä¡ ÇÒ´ç
+            // ì¹´ë©”ë¼ ìœ„ì¹˜ì— ìƒˆ ìœ„ì¹˜ í• ë‹¹
             MyCamera.transform.position = newPosition;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && IsTest)
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             AddGamePhase(-1);
             RestEnvrionment();
         }
-        if (Input.GetKeyDown(KeyCode.RightShift) && IsTest)
+        if (Input.GetKeyDown(KeyCode.RightShift))
         {
             AddGamePhase();
             RestEnvrionment();
@@ -129,9 +139,19 @@ public class GameManager : MonoBehaviour
 
     public static void RestEnvrionment()
     {
-        foreach (var gameEnvironment in _instance.gameEnvironmentList)
+        if (!_instance.IsTest)
         {
-            gameEnvironment.EndEpisode();
+            foreach (var gameEnvironment in _instance.gameEnvironmentList)
+            {
+                gameEnvironment.EndEpisode();
+            }
+        }
+        else
+        {
+            foreach (var gameEnvironment in _instance.testEnvironmentList)
+            {
+                gameEnvironment.EndEpisode();
+            }
         }
     }
 
@@ -154,14 +174,42 @@ public class GameManager : MonoBehaviour
     {
         environment.EndEpisode();
         ClearCount++;
+        _instance.GameCount++;
         //Debug.Log(_gamePhase + " : " + ClearCount + " , " + RequireClear);
-        if (RequireClear <= ClearCount && _gamePhase != 8)
+        if (RequireClear <= ClearCount && _gamePhase != 8 && !_instance.IsTest)
         {
             AddGamePhase();
             RestEnvrionment();
             ClearCount = 0;
             if (_gamePhase >= 5)
                 RequireClear = 2;
+        }
+
+        if (_instance.EndGameCount <= ClearCount && _instance.IsTest)
+        {
+            var agent1 = _instance.testEnvironmentList[0]._gameAgents;
+            Debug.Log("name : " + agent1.name);
+            Debug.Log("KillCount : " + agent1._saveData.KillCount);
+            Debug.Log("AttackCount : " + agent1._saveData.AttackCount);
+            Debug.Log("MissCount : " + agent1._saveData.MissCount);
+            Debug.Log("HitCount : " + agent1._saveData.HitCount);
+            Debug.Log("DeathCount : " + agent1._saveData.DeathCount);
+            
+            var agent2 = _instance.testEnvironmentList[0]._selfPlayAgents;
+            Debug.Log("name : " + agent2.name);
+            Debug.Log("KillCount : " + agent2._saveData.KillCount);
+            Debug.Log("AttackCount : " + agent2._saveData.AttackCount);
+            Debug.Log("MissCount : " + agent2._saveData.MissCount);
+            Debug.Log("HitCount : " + agent2._saveData.HitCount);
+            Debug.Log("DeathCount : " + agent2._saveData.DeathCount);
+
+            
+            
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit(); // ì–´í”Œë¦¬ì¼€ì´ì…˜ ì¢…ë£Œ
+#endif
         }
     }
 }
