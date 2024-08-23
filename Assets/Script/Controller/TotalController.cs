@@ -11,10 +11,10 @@ public class TotalController : Controller
 {
     public override void CollectObservations(VectorSensor sensor)
     {
-        // ì—ì´ì „íŠ¸ì˜ í˜„ì¬ ìœ„ì¹˜ë¥¼ ìƒëŒ€ ì¢Œí‘œë¡œ ê³„ì‚°
+        // ¿¡ÀÌÀüÆ®ÀÇ ÇöÀç À§Ä¡¸¦ »ó´ë ÁÂÇ¥·Î °è»ê
         var agentPos = myAgent.transform.position - environment.transform.position;
 
-        // ìƒëŒ€ ì¢Œí‘œë¥¼ ì •ê·œí™”í•˜ê³  ê´€ì¸¡ ë°ì´í„°ë¡œ ì¶”ê°€ 3, map scaleë¡œ ë‚˜ëˆ ì¤Œ
+        // »ó´ë ÁÂÇ¥¸¦ Á¤±ÔÈ­ÇÏ°í °üÃø µ¥ÀÌÅÍ·Î Ãß°¡ 3, map scale·Î ³ª´²ÁÜ
         sensor.AddObservation(agentPos / environment.MapSize);
 
         // Agent rotation 1
@@ -27,7 +27,7 @@ public class TotalController : Controller
         sensor.AddObservation(localVelocity.z);
 
         sensor.AddObservation(myAgent.targetDir);
-        // ê³µê²© ì‚¬ê±°ë¦¬ë¡œ í•´ë³´ê¸°
+        // °ø°İ »ç°Å¸®·Î ÇØº¸±â
         //sensor.AddObservation(targetDistance / AttackRange);
         sensor.AddObservation(myAgent.targetDistance);
     }
@@ -76,7 +76,7 @@ public class TotalController : Controller
             }
         }
 
-        // ì í”„
+        // Á¡ÇÁ
         discreteActionsOut[2] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
 }

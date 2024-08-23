@@ -6,12 +6,12 @@ using UnityEngine.AI;
 
 public class NonPlayerCharacter : Character
 {
-    public float moveRadius = 10f;    // NPCê°€ ì´ë™í•  ë²”ìœ„
-    public float moveSpeed = 3.5f;    // ì´ë™ ì†ë„
-    public float waitTime = 2f;       // ë‹¤ìŒ ì´ë™ ì „ ëŒ€ê¸° ì‹œê°„
+    public float moveRadius = 10f;    // NPC°¡ ÀÌµ¿ÇÒ ¹üÀ§
+    public float moveSpeed = 3.5f;    // ÀÌµ¿ ¼Óµµ
+    public float waitTime = 2f;       // ´ÙÀ½ ÀÌµ¿ Àü ´ë±â ½Ã°£
 
-    private Vector3 targetPosition;   // ëª©í‘œ ìœ„ì¹˜
-    private NavMeshAgent navMeshAgent;       // NavMeshAgent ì»´í¬ë„ŒíŠ¸
+    private Vector3 targetPosition;   // ¸ñÇ¥ À§Ä¡
+    private NavMeshAgent navMeshAgent;       // NavMeshAgent ÄÄÆ÷³ÍÆ®
 
     public override bool Init()
     {
@@ -39,36 +39,36 @@ public class NonPlayerCharacter : Character
     {
         while (true)
         {
-            // ëœë¤í•œ ìœ„ì¹˜ë¥¼ ìƒì„±
+            // ·£´ıÇÑ À§Ä¡¸¦ »ı¼º
             targetPosition = GetRandomPosition();
 
-            // NPCë¥¼ í•´ë‹¹ ìœ„ì¹˜ë¡œ ì´ë™
+            // NPC¸¦ ÇØ´ç À§Ä¡·Î ÀÌµ¿
             navMeshAgent.SetDestination(targetPosition);
 
-            // ê²½ë¡œê°€ ìœ íš¨í•œì§€ í™•ì¸
+            // °æ·Î°¡ À¯È¿ÇÑÁö È®ÀÎ
             yield return new WaitUntil(() => !navMeshAgent.pathPending);
 
             if (navMeshAgent.pathStatus == NavMeshPathStatus.PathInvalid || !navMeshAgent.hasPath)
             {
-                //Debug.LogWarning("ê²½ë¡œê°€ ìœ íš¨í•˜ì§€ ì•ŠìŒ. ë‹¤ë¥¸ ìœ„ì¹˜ë¥¼ ì‹œë„í•©ë‹ˆë‹¤.");
-                // ê²½ë¡œê°€ ìœ íš¨í•˜ì§€ ì•Šë‹¤ë©´, ë‹¤ì‹œ ìƒˆë¡œìš´ ìœ„ì¹˜ë¥¼ ì‹œë„
+                //Debug.LogWarning("°æ·Î°¡ À¯È¿ÇÏÁö ¾ÊÀ½. ´Ù¸¥ À§Ä¡¸¦ ½ÃµµÇÕ´Ï´Ù.");
+                // °æ·Î°¡ À¯È¿ÇÏÁö ¾Ê´Ù¸é, ´Ù½Ã »õ·Î¿î À§Ä¡¸¦ ½Ãµµ
                 continue;
             }
 
-            // NPCê°€ ëª©í‘œ ìœ„ì¹˜ì— ë„ì°©í•  ë•Œê¹Œì§€ ëŒ€ê¸°
+            // NPC°¡ ¸ñÇ¥ À§Ä¡¿¡ µµÂøÇÒ ¶§±îÁö ´ë±â
             while (!navMeshAgent.pathPending && navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
             {
                 yield return null;
             }
 
-            // ì´ë™ í›„ ëŒ€ê¸° ì‹œê°„ë§Œí¼ ëŒ€ê¸°
+            // ÀÌµ¿ ÈÄ ´ë±â ½Ã°£¸¸Å­ ´ë±â
             yield return new WaitForSeconds(waitTime);
         }
     }
 
     Vector3 GetRandomPosition()
     {
-        // NPCì˜ í˜„ì¬ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ moveRadius ë²”ìœ„ ë‚´ì˜ ëœë¤ ìœ„ì¹˜ë¥¼ ì°¾ìŒ
+        // NPCÀÇ ÇöÀç À§Ä¡¸¦ ±âÁØÀ¸·Î moveRadius ¹üÀ§ ³»ÀÇ ·£´ı À§Ä¡¸¦ Ã£À½
         Vector3 randomDirection = Random.insideUnitSphere * moveRadius;
         randomDirection += transform.position;
 
