@@ -85,7 +85,7 @@ MonoBehaviour:
   myAgent: {fileID: 0}
   KillTargetRewardValue: 1
   AttackHitRewardValue: 0.25
-  AttackMissRewardValue: -0.006
+  AttackMissRewardValue: -0.1
   AgentHitRewardValue: 0
   AgentDieRewardValue: 0
   TickRewardValue: -0.005

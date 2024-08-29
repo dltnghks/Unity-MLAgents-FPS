@@ -57,9 +57,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: fe3e016f62e57654886386d601f50bca, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: Movement
   TeamId: 0
   m_UseChildSensors: 1
@@ -87,7 +87,7 @@ MonoBehaviour:
   KillTargetRewardValue: 1
   AttackHitRewardValue: 0
   AttackMissRewardValue: 0
-  AgentHitRewardValue: -0.2
+  AgentHitRewardValue: -0.25
   AgentDieRewardValue: -1
   TickRewardValue: -0.005
   SeeingEnemyRewardValue: 0.01

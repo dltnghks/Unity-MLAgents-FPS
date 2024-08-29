@@ -39,30 +39,33 @@ public class Player : Character
 
     protected void AddReward(ERewardType rewardType)
     {
-        switch (rewardType)
+        if (GameManager._instance.IsTest)
         {
-            case ERewardType.KillTarget:
-                _saveData.KillCount++;
-                break;
-            case ERewardType.AttackHit:
-                _saveData.AttackCount++;
-                break;
-            case ERewardType.AttackMiss:
-                _saveData.MissCount++;
-                break;
-            case ERewardType.AgentHit:
-                _saveData.HitCount++;
-                break;
-            case ERewardType.AgentDie:
-                _saveData.DeathCount++;
-                break;
-            case ERewardType.Tick:
-                break;
-            case ERewardType.SeeingEnemy:
-                break;
-            default:
-                Debug.LogError("���ǵ��� ���� ���� Ÿ���Դϴ�.");
-                break;
+            switch (rewardType)
+            {
+                case ERewardType.KillTarget:
+                    _saveData.KillCount++;
+                    break;
+                case ERewardType.AttackHit:
+                    _saveData.AttackCount++;
+                    break;
+                case ERewardType.AttackMiss:
+                    _saveData.MissCount++;
+                    break;
+                case ERewardType.AgentHit:
+                    _saveData.HitCount++;
+                    break;
+                case ERewardType.AgentDie:
+                    _saveData.DeathCount++;
+                    break;
+                case ERewardType.Tick:
+                    break;
+                case ERewardType.SeeingEnemy:
+                    break;
+                default:
+                    Debug.LogError("���ǵ��� ���� ���� Ÿ���Դϴ�.");
+                    break;
+            }
         }
 
 

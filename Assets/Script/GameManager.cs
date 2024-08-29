@@ -5,7 +5,7 @@ using UnityEngine.Diagnostics;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance = null;
+    public static GameManager _instance = null;
 
     private static int _gamePhase = 1;
 
