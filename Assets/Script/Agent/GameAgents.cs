@@ -34,6 +34,7 @@ public class GameAgents : Player
     public Vector3 targetDir;
     public float targetDistance;
     public GameObject AttackObject;
+    public GameObject target;
 
     public override bool Init()
     {
@@ -142,7 +143,7 @@ public class GameAgents : Player
 
     public void FixedUpdate()
     {
-        GameObject target;
+        //GameObject target;
         if (GameManager.GamePhase < 8)
             target = environment.Enemy.gameObject;
         else
@@ -193,6 +194,7 @@ public class GameAgents : Player
                         if(hitinfo.collider.tag == "Player")
                         {
                             hitinfo.collider.gameObject.GetComponent<GameAgents>().AddReward(ERewardType.AgentDie);
+                            Debug.Log(name + " Win");
                         }
                         GameManager.GameClear(environment);
                     }

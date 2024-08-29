@@ -26,6 +26,16 @@ public class Spawner : MonoBehaviour
         //spawnObjectList.Clear();
     }
 
+    public virtual void SpawnObjectListClear()
+    {
+        foreach (var obj in spawnObjectList)
+        {
+            Destroy(obj);
+        }
+        spawnObjectList.Clear();
+        //spawnObjectList.Clear();
+    }
+
     protected virtual GameObject InstantiateObject()
     {
         if(spawnObjectList.Count > 0)
@@ -39,6 +49,7 @@ public class Spawner : MonoBehaviour
                 }
             }
         }
+
         var returnObject = Instantiate(spawnObject);
         spawnObjectList.Add(returnObject);
         returnObject.transform.SetParent(this.transform);
@@ -52,7 +63,37 @@ public class Spawner : MonoBehaviour
         int pointIndex = Random.Range(startIndex, endIndex);
         Vector3 position = spawnPointList[pointIndex].transform.localPosition;
         spawnedObject.transform.localPosition = position;
-        spawnedObject.transform.localRotation = Quaternion.identity;
+
+        Quaternion rotation = Quaternion.identity;
+
+        switch (pointIndex)
+        {
+            case 0:
+                rotation = Quaternion.Euler(0, 270, 0); // 90 + 180 = 270
+                break;
+            case 1:
+                rotation = Quaternion.Euler(0, 225, 0); // 45 + 180 = 225
+                break;
+            case 2:
+                rotation = Quaternion.Euler(0, 180, 0); // 0 + 180 = 180
+                break;
+            case 3:
+                rotation = Quaternion.Euler(0, 135, 0); // -45 + 180 = 135
+                break;
+            case 4:
+                rotation = Quaternion.Euler(0, 90, 0);  // -90 + 180 = 90
+                break;
+            case 5:
+                rotation = Quaternion.Euler(0, 45, 0);  // -135 + 180 = 45
+                break;
+            case 6:
+                rotation = Quaternion.Euler(0, 0, 0);   // -180 + 180 = 0
+                break;
+            case 7:
+                rotation = Quaternion.Euler(0, -45, 0); // -225 + 180 = -45
+                break;
+        }
+        spawnedObject.transform.localRotation = rotation;
         return spawnedObject;
     }
 

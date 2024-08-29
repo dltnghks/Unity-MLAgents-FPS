@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +13,26 @@ public class Player : Character
         public int HitCount;
         public int AttackCount;
         public int MissCount;
+
+        public void ResetCount()
+        {
+            KillCount = 0;
+            DeathCount = 0;
+            HitCount = 0;
+            AttackCount = 0;
+            MissCount = 0;
+        }
     }
-    
-    
+
+    public struct FGameData
+    {
+        public int HitCount;
+        public int AttackCount;
+        public int MissCount;
+    }
+
+
+
     protected enum ERewardType
     {
         KillTarget,
@@ -30,7 +48,8 @@ public class Player : Character
     public List<Controller> _controllerList = new List<Controller>();
 
     public FSaveData _saveData;
-    
+    public FGameData _gameData;
+
     public override bool Init()
     {
         if (!base.Init()) return false;
@@ -48,23 +67,36 @@ public class Player : Character
             return;
         }
             //Debug.Log(name + " : " + rewardType.ToString());
-        foreach (var controller in _controllerList)
         switch (rewardType)
         {
             case ERewardType.KillTarget:
+                _saveData.AttackCount += _gameData.AttackCount;
+                _saveData.MissCount += _gameData.MissCount;
+
+                /*_gameData.AttackCount = 0;
+                _gameData.MissCount = 0;
+                _gameData.HitCount = 0;*/
+
                 _saveData.KillCount++;
                 break;
             case ERewardType.AttackHit:
                 _saveData.AttackCount++;
+                //_gameData.AttackCount++;
                 break;
             case ERewardType.AttackMiss:
                 _saveData.MissCount++;
+                //_gameData.MissCount++;
                 break;
             case ERewardType.AgentHit:
                 _saveData.HitCount++;
+                //_gameData.AttackCount++;
                 break;
             case ERewardType.AgentDie:
-                _saveData.DeathCount++;
+                /*_gameData.AttackCount = 0;
+                _gameData.MissCount = 0;
+                _gameData.HitCount = 0;*/
+
+               _saveData.DeathCount++;
                 break;
             case ERewardType.Tick:
                 break;

@@ -11,10 +11,10 @@ public class TotalController : Controller
 {
     public override void CollectObservations(VectorSensor sensor)
     {
-        // 에이전트의 현재 위치를 상대 좌표로 계산
+        // ?�이?�트???�재 ?�치�??��? 좌표�?계산
         var agentPos = myAgent.transform.position - environment.transform.position;
 
-        // 상대 좌표를 정규화하고 관측 데이터로 추가 3, map scale로 나눠줌
+        // ?��? 좌표�??�규?�하�?관�??�이?�로 추�? 3, map scale�??�눠�?
         sensor.AddObservation(agentPos / environment.MapSize);
 
         // Agent rotation 1
@@ -27,7 +27,7 @@ public class TotalController : Controller
         sensor.AddObservation(localVelocity.z);
 
         sensor.AddObservation(myAgent.targetDir);
-        // 공격 사거리로 해보기
+        // 공격 ?�거리로 ?�보�?
         //sensor.AddObservation(targetDistance / AttackRange);
         sensor.AddObservation(myAgent.targetDistance);
     }
@@ -76,7 +76,7 @@ public class TotalController : Controller
             }
         }
 
-        // 점프
+        // ?�프
         discreteActionsOut[2] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
 }

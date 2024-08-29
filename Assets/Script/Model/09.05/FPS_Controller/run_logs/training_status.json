@@ -1,0 +1,755 @@
+{
+    "Movement": {
+        "checkpoints": [
+            {
+                "steps": 25999983,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-25999983.onnx",
+                "reward": -0.0017441878051951873,
+                "creation_time": 1724083601.848447,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-25999983.pt"
+                ]
+            },
+            {
+                "steps": 27999897,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-27999897.onnx",
+                "reward": 0.21220183750153135,
+                "creation_time": 1724094008.317639,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-27999897.pt"
+                ]
+            },
+            {
+                "steps": 29999933,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-29999933.onnx",
+                "reward": 0.3563533833012321,
+                "creation_time": 1724104725.188171,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-29999933.pt"
+                ]
+            },
+            {
+                "steps": 31999937,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-31999937.onnx",
+                "reward": 0.09205178972111043,
+                "creation_time": 1724114350.9279325,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-31999937.pt"
+                ]
+            },
+            {
+                "steps": 33999921,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-33999921.onnx",
+                "reward": 0.25910256536773,
+                "creation_time": 1724122389.1544435,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-33999921.pt"
+                ]
+            },
+            {
+                "steps": 35999865,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-35999865.onnx",
+                "reward": 0.1697727320433566,
+                "creation_time": 1724129531.1236846,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-35999865.pt"
+                ]
+            },
+            {
+                "steps": 37999985,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-37999985.onnx",
+                "reward": 0.0031249839812517166,
+                "creation_time": 1724137921.542596,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-37999985.pt"
+                ]
+            },
+            {
+                "steps": 39999944,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-39999944.onnx",
+                "reward": 0.28167721259560957,
+                "creation_time": 1724146033.28825,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-39999944.pt"
+                ]
+            },
+            {
+                "steps": 41999997,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-41999997.onnx",
+                "reward": 0.28552147485544344,
+                "creation_time": 1724154308.629181,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-41999997.pt"
+                ]
+            },
+            {
+                "steps": 43999958,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-43999958.onnx",
+                "reward": 0.4935958915173191,
+                "creation_time": 1724162542.9561212,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-43999958.pt"
+                ]
+            },
+            {
+                "steps": 45999945,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-45999945.onnx",
+                "reward": 0.9083613335123646,
+                "creation_time": 1724171119.7859771,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-45999945.pt"
+                ]
+            },
+            {
+                "steps": 47999971,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-47999971.onnx",
+                "reward": 0.1894329919182148,
+                "creation_time": 1724180283.6821508,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-47999971.pt"
+                ]
+            },
+            {
+                "steps": 49999975,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-49999975.onnx",
+                "reward": 0.5589380531014111,
+                "creation_time": 1724189235.763321,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-49999975.pt"
+                ]
+            },
+            {
+                "steps": 51999886,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-51999886.onnx",
+                "reward": 0.42699999311430886,
+                "creation_time": 1724198419.9840078,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-51999886.pt"
+                ]
+            },
+            {
+                "steps": 53999924,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-53999924.onnx",
+                "reward": 0.5041391911298965,
+                "creation_time": 1724207725.2812665,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-53999924.pt"
+                ]
+            },
+            {
+                "steps": 55999918,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-55999918.onnx",
+                "reward": 0.40767856943421066,
+                "creation_time": 1724216805.7573137,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-55999918.pt"
+                ]
+            },
+            {
+                "steps": 57999923,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-57999923.onnx",
+                "reward": 0.4388510652362032,
+                "creation_time": 1724226301.1150327,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-57999923.pt"
+                ]
+            },
+            {
+                "steps": 59999929,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-59999929.onnx",
+                "reward": 0.16000000149011612,
+                "creation_time": 1724235856.1148925,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-59999929.pt"
+                ]
+            },
+            {
+                "steps": 61999950,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-61999950.onnx",
+                "reward": 0.3899760740991842,
+                "creation_time": 1724245730.7348487,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-61999950.pt"
+                ]
+            },
+            {
+                "steps": 63999921,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-63999921.onnx",
+                "reward": 0.3663333290567001,
+                "creation_time": 1724255376.7360134,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-63999921.pt"
+                ]
+            },
+            {
+                "steps": 65999970,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-65999970.onnx",
+                "reward": 0.5468552074820747,
+                "creation_time": 1724265182.7076302,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-65999970.pt"
+                ]
+            },
+            {
+                "steps": 67999923,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-67999923.onnx",
+                "reward": 0.43095238142641923,
+                "creation_time": 1724274636.801675,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-67999923.pt"
+                ]
+            },
+            {
+                "steps": 69999978,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-69999978.onnx",
+                "reward": 0.4174125835273441,
+                "creation_time": 1724284070.296263,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-69999978.pt"
+                ]
+            },
+            {
+                "steps": 71999943,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-71999943.onnx",
+                "reward": 0.4262299466539513,
+                "creation_time": 1724294155.4702356,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-71999943.pt"
+                ]
+            },
+            {
+                "steps": 73999960,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-73999960.onnx",
+                "reward": 0.3598790323031285,
+                "creation_time": 1724304034.0052044,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-73999960.pt"
+                ]
+            },
+            {
+                "steps": 75999985,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-75999985.onnx",
+                "reward": 0.5369104446704263,
+                "creation_time": 1724313814.1700194,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-75999985.pt"
+                ]
+            },
+            {
+                "steps": 77999947,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-77999947.onnx",
+                "reward": 0.5459803942883131,
+                "creation_time": 1724323750.1191423,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-77999947.pt"
+                ]
+            },
+            {
+                "steps": 79021601,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-79021601.onnx",
+                "reward": 0.5021428497774261,
+                "creation_time": 1724328966.805529,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-79021601.pt"
+                ]
+            },
+            {
+                "steps": 79999987,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-79999987.onnx",
+                "reward": 0.5950892844802833,
+                "creation_time": 1725040408.1264765,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-79999987.pt"
+                ]
+            },
+            {
+                "steps": 81999981,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-81999981.onnx",
+                "reward": 0.5916666674657144,
+                "creation_time": 1725048441.1056192,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-81999981.pt"
+                ]
+            },
+            {
+                "steps": 83999996,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-83999996.onnx",
+                "reward": 0.6260178526065179,
+                "creation_time": 1725056426.9037538,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-83999996.pt"
+                ]
+            },
+            {
+                "steps": 85999974,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-85999974.onnx",
+                "reward": 0.3886764838415034,
+                "creation_time": 1725064496.5619557,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-85999974.pt"
+                ]
+            },
+            {
+                "steps": 87999979,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-87999979.onnx",
+                "reward": 0.6352452857068406,
+                "creation_time": 1725072852.3274117,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-87999979.pt"
+                ]
+            },
+            {
+                "steps": 89999982,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-89999982.onnx",
+                "reward": 0.4939999908208847,
+                "creation_time": 1725081230.932458,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-89999982.pt"
+                ]
+            },
+            {
+                "steps": 91999976,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-91999976.onnx",
+                "reward": 0.6868260866435973,
+                "creation_time": 1725089435.4790974,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-91999976.pt"
+                ]
+            },
+            {
+                "steps": 93999915,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-93999915.onnx",
+                "reward": 0.7975000292062759,
+                "creation_time": 1725098326.9180741,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-93999915.pt"
+                ]
+            },
+            {
+                "steps": 95999981,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-95999981.onnx",
+                "reward": 0.6817357517547249,
+                "creation_time": 1725108990.776212,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-95999981.pt"
+                ]
+            },
+            {
+                "steps": 97999895,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-97999895.onnx",
+                "reward": 0.6024166667922621,
+                "creation_time": 1725119937.8825374,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-97999895.pt"
+                ]
+            },
+            {
+                "steps": 99999981,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-99999981.onnx",
+                "reward": 0.5146726182706299,
+                "creation_time": 1725128422.7719257,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-99999981.pt"
+                ]
+            },
+            {
+                "steps": 100000034,
+                "file_path": "results\\FPS_Controller\\Movement\\Movement-100000034.onnx",
+                "reward": 0.5063609460578162,
+                "creation_time": 1725128422.9428663,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Movement\\Movement-100000034.pt"
+                ]
+            }
+        ],
+        "elo": 2804.7538881501964,
+        "final_checkpoint": {
+            "steps": 100000034,
+            "file_path": "results\\FPS_Controller\\Movement.onnx",
+            "reward": 0.5063609460578162,
+            "creation_time": 1725128422.9428663,
+            "auxillary_file_paths": [
+                "results\\FPS_Controller\\Movement\\Movement-100000034.pt"
+            ]
+        }
+    },
+    "Attack": {
+        "checkpoints": [
+            {
+                "steps": 25999983,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-25999983.onnx",
+                "reward": 0.3306279406298039,
+                "creation_time": 1724083602.0078387,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-25999983.pt"
+                ]
+            },
+            {
+                "steps": 27999897,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-27999897.onnx",
+                "reward": -0.5276145675313582,
+                "creation_time": 1724094008.4892926,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-27999897.pt"
+                ]
+            },
+            {
+                "steps": 29999933,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-29999933.onnx",
+                "reward": 0.5215413942372888,
+                "creation_time": 1724104725.340637,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-29999933.pt"
+                ]
+            },
+            {
+                "steps": 31999937,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-31999937.onnx",
+                "reward": 0.28284068145525765,
+                "creation_time": 1724114351.0503328,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-31999937.pt"
+                ]
+            },
+            {
+                "steps": 33999921,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-33999921.onnx",
+                "reward": 0.39743595123768616,
+                "creation_time": 1724122389.2652981,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-33999921.pt"
+                ]
+            },
+            {
+                "steps": 35999865,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-35999865.onnx",
+                "reward": -0.6134089768835993,
+                "creation_time": 1724129531.225586,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-35999865.pt"
+                ]
+            },
+            {
+                "steps": 37999985,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-37999985.onnx",
+                "reward": 0.24937504157423973,
+                "creation_time": 1724137921.6737723,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-37999985.pt"
+                ]
+            },
+            {
+                "steps": 39999944,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-39999944.onnx",
+                "reward": 0.442879786879956,
+                "creation_time": 1724146033.411846,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-39999944.pt"
+                ]
+            },
+            {
+                "steps": 41999997,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-41999997.onnx",
+                "reward": 0.45478531824527707,
+                "creation_time": 1724154308.7268522,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-41999997.pt"
+                ]
+            },
+            {
+                "steps": 43999958,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-43999958.onnx",
+                "reward": 0.6201712712645531,
+                "creation_time": 1724162543.0642614,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-43999958.pt"
+                ]
+            },
+            {
+                "steps": 45999945,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-45999945.onnx",
+                "reward": 0.7893025688396594,
+                "creation_time": 1724171119.9051123,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-45999945.pt"
+                ]
+            },
+            {
+                "steps": 47999971,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-47999971.onnx",
+                "reward": 0.4452062136272794,
+                "creation_time": 1724180283.798177,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-47999971.pt"
+                ]
+            },
+            {
+                "steps": 49999975,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-49999975.onnx",
+                "reward": 0.7076401449630042,
+                "creation_time": 1724189235.87746,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-49999975.pt"
+                ]
+            },
+            {
+                "steps": 51999886,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-51999886.onnx",
+                "reward": 0.515618230199272,
+                "creation_time": 1724198420.0820262,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-51999886.pt"
+                ]
+            },
+            {
+                "steps": 53999924,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-53999924.onnx",
+                "reward": 0.6260952730236691,
+                "creation_time": 1724207725.3600204,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-53999924.pt"
+                ]
+            },
+            {
+                "steps": 55999918,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-55999918.onnx",
+                "reward": 0.554464327437537,
+                "creation_time": 1724216805.8704603,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-55999918.pt"
+                ]
+            },
+            {
+                "steps": 57999923,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-57999923.onnx",
+                "reward": 0.5726808909406054,
+                "creation_time": 1724226301.2299705,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-57999923.pt"
+                ]
+            },
+            {
+                "steps": 59999929,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-59999929.onnx",
+                "reward": 0.32440003782510757,
+                "creation_time": 1724235856.2301886,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-59999929.pt"
+                ]
+            },
+            {
+                "steps": 61999950,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-61999950.onnx",
+                "reward": 0.5131818564412626,
+                "creation_time": 1724245730.831097,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-61999950.pt"
+                ]
+            },
+            {
+                "steps": 63999921,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-63999921.onnx",
+                "reward": 0.5116666927933693,
+                "creation_time": 1724255376.8494852,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-63999921.pt"
+                ]
+            },
+            {
+                "steps": 65999970,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-65999970.onnx",
+                "reward": 0.6729638327157538,
+                "creation_time": 1724265182.8188035,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-65999970.pt"
+                ]
+            },
+            {
+                "steps": 67999923,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-67999923.onnx",
+                "reward": 0.5674709342198357,
+                "creation_time": 1724274636.9127064,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-67999923.pt"
+                ]
+            },
+            {
+                "steps": 69999978,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-69999978.onnx",
+                "reward": 0.5333566827165497,
+                "creation_time": 1724284070.3739705,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-69999978.pt"
+                ]
+            },
+            {
+                "steps": 71999943,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-71999943.onnx",
+                "reward": 0.5883422792854316,
+                "creation_time": 1724294155.567465,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-71999943.pt"
+                ]
+            },
+            {
+                "steps": 73999960,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-73999960.onnx",
+                "reward": 0.4887500394195799,
+                "creation_time": 1724304034.081959,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-73999960.pt"
+                ]
+            },
+            {
+                "steps": 75999985,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-75999985.onnx",
+                "reward": 0.6326119782430912,
+                "creation_time": 1724313814.283311,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-75999985.pt"
+                ]
+            },
+            {
+                "steps": 77999947,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-77999947.onnx",
+                "reward": 0.610686314602693,
+                "creation_time": 1724323750.2009902,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-77999947.pt"
+                ]
+            },
+            {
+                "steps": 79021601,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-79021601.onnx",
+                "reward": 0.5564286201482728,
+                "creation_time": 1724328966.9278328,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-79021601.pt"
+                ]
+            },
+            {
+                "steps": 79999987,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-79999987.onnx",
+                "reward": 0.6697321761632338,
+                "creation_time": 1725040408.1974766,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-79999987.pt"
+                ]
+            },
+            {
+                "steps": 81999981,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-81999981.onnx",
+                "reward": 0.6629710485213909,
+                "creation_time": 1725048441.180622,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-81999981.pt"
+                ]
+            },
+            {
+                "steps": 83999996,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-83999996.onnx",
+                "reward": 0.7042678933291296,
+                "creation_time": 1725056426.9822183,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-83999996.pt"
+                ]
+            },
+            {
+                "steps": 85999974,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-85999974.onnx",
+                "reward": 0.5822059167001177,
+                "creation_time": 1725064496.6459556,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-85999974.pt"
+                ]
+            },
+            {
+                "steps": 87999979,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-87999979.onnx",
+                "reward": 0.7333962564057899,
+                "creation_time": 1725072852.400534,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-87999979.pt"
+                ]
+            },
+            {
+                "steps": 89999982,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-89999982.onnx",
+                "reward": 0.5755000427365303,
+                "creation_time": 1725081231.011477,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-89999982.pt"
+                ]
+            },
+            {
+                "steps": 91999976,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-91999976.onnx",
+                "reward": 0.7432348180359797,
+                "creation_time": 1725089435.5570972,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-91999976.pt"
+                ]
+            },
+            {
+                "steps": 93999915,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-93999915.onnx",
+                "reward": 0.8700000252574682,
+                "creation_time": 1725098327.0170736,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-93999915.pt"
+                ]
+            },
+            {
+                "steps": 95999981,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-95999981.onnx",
+                "reward": 0.7294767183961028,
+                "creation_time": 1725108990.9282453,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-95999981.pt"
+                ]
+            },
+            {
+                "steps": 97999895,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-97999895.onnx",
+                "reward": 0.7081071767268614,
+                "creation_time": 1725119937.9868193,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-97999895.pt"
+                ]
+            },
+            {
+                "steps": 99999981,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-99999981.onnx",
+                "reward": 0.6062202754241991,
+                "creation_time": 1725128422.8508637,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-99999981.pt"
+                ]
+            },
+            {
+                "steps": 100000034,
+                "file_path": "results\\FPS_Controller\\Attack\\Attack-100000034.onnx",
+                "reward": 0.6010947118970681,
+                "creation_time": 1725128423.00887,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller\\Attack\\Attack-100000034.pt"
+                ]
+            }
+        ],
+        "elo": 2721.611446088388,
+        "final_checkpoint": {
+            "steps": 100000034,
+            "file_path": "results\\FPS_Controller\\Attack.onnx",
+            "reward": 0.6010947118970681,
+            "creation_time": 1725128423.00887,
+            "auxillary_file_paths": [
+                "results\\FPS_Controller\\Attack\\Attack-100000034.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.2.1"
+    }
+}

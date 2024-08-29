@@ -6,12 +6,12 @@ using UnityEngine.AI;
 
 public class NonPlayerCharacter : Character
 {
-    public float moveRadius = 10f;    // NPC가 이동할 범위
-    public float moveSpeed = 3.5f;    // 이동 속도
-    public float waitTime = 2f;       // 다음 이동 전 대기 시간
+    public float moveRadius = 10f;    // NPC가 ?�동??범위
+    public float moveSpeed = 3.5f;    // ?�동 ?�도
+    public float waitTime = 2f;       // ?�음 ?�동 ???��??�간
 
-    private Vector3 targetPosition;   // 목표 위치
-    private NavMeshAgent navMeshAgent;       // NavMeshAgent 컴포넌트
+    private Vector3 targetPosition;   // 목표 ?�치
+    private NavMeshAgent navMeshAgent;       // NavMeshAgent 컴포?�트
 
     public override bool Init()
     {
@@ -39,36 +39,36 @@ public class NonPlayerCharacter : Character
     {
         while (true)
         {
-            // 랜덤한 위치를 생성
+            // ?�덤???�치�??�성
             targetPosition = GetRandomPosition();
 
-            // NPC를 해당 위치로 이동
+            // NPC�??�당 ?�치�??�동
             navMeshAgent.SetDestination(targetPosition);
 
-            // 경로가 유효한지 확인
+            // 경로가 ?�효?��? ?�인
             yield return new WaitUntil(() => !navMeshAgent.pathPending);
 
             if (navMeshAgent.pathStatus == NavMeshPathStatus.PathInvalid || !navMeshAgent.hasPath)
             {
-                //Debug.LogWarning("경로가 유효하지 않음. 다른 위치를 시도합니다.");
-                // 경로가 유효하지 않다면, 다시 새로운 위치를 시도
+                //Debug.LogWarning("경로가 ?�효?��? ?�음. ?�른 ?�치�??�도?�니??");
+                // 경로가 ?�효?��? ?�다�? ?�시 ?�로???�치�??�도
                 continue;
             }
 
-            // NPC가 목표 위치에 도착할 때까지 대기
+            // NPC가 목표 ?�치???�착???�까지 ?��?
             while (!navMeshAgent.pathPending && navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
             {
                 yield return null;
             }
 
-            // 이동 후 대기 시간만큼 대기
+            // ?�동 ???��??�간만큼 ?��?
             yield return new WaitForSeconds(waitTime);
         }
     }
 
     Vector3 GetRandomPosition()
     {
-        // NPC의 현재 위치를 기준으로 moveRadius 범위 내의 랜덤 위치를 찾음
+        // NPC???�재 ?�치�?기�??�로 moveRadius 범위 ?�의 ?�덤 ?�치�?찾음
         Vector3 randomDirection = Random.insideUnitSphere * moveRadius;
         randomDirection += transform.position;
 

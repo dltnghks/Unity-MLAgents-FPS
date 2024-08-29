@@ -20,7 +20,7 @@ public class GameEnvironment : MonoBehaviour
     public float MapSize = 40;
 
 
-    private bool initialized;
+    public bool initialized;
 
 
     void Initialize()
@@ -38,7 +38,7 @@ public class GameEnvironment : MonoBehaviour
         _playerSpawner.Clear();
         _enemySpawner.Clear();
         _obstacleSpawner.Clear();
-        // 이동 후 대기 시간만큼 대기
+        // ?�동 ???��??�간만큼 ?��?
         yield return new WaitForSeconds(1f);
         StartEpisode();
     }
@@ -55,43 +55,43 @@ public class GameEnvironment : MonoBehaviour
         switch (GameManager.GamePhase)
         {
             case 1:
-                // Player - 센터
-                // Enemy - 에이전트 정면 생성
+                // Player - ?�터
+                // Enemy - ?�이?�트 ?�면 ?�성
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 8).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerDirectSpawn(_gameAgents.transform.localPosition, _gameAgents.transform.forward).GetComponent<NonPlayerCharacter>();
                 break;
             case 2:
-                // Player - 센터
-                // Enemy - 센터에서 살짝 벗어나게
+                // Player - ?�터
+                // Enemy - ?�터?�서 ?�짝 벗어?�게
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition, 10, 0.7f * Mathf.PI, 0.3f*Mathf.PI).GetComponent<NonPlayerCharacter>();
                 break;
             case 3:
-                // Player - 센터
-                // Enemy - 센터 주위에 랜덤 생성
+                // Player - ?�터
+                // Enemy - ?�터 주위???�덤 ?�성
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
                 break;
             case 4:
-                // Player - 센터
-                // Enemy - 센터 주위에 랜덤 생성 + 움직임
+                // Player - ?�터
+                // Enemy - ?�터 주위???�덤 ?�성 + ?�직임
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
                 _enemySpawner.OnEnemyRandomMove();
                 break;
             case 5:
-                // Player - 센터
-                // Enemy - 센터 주위에 랜덤 생성 + 움직임
-                // Obstacle - 4개 생성
+                // Player - ?�터
+                // Enemy - ?�터 주위???�덤 ?�성 + ?�직임
+                // Obstacle - 4�??�성
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
                 _enemySpawner.OnEnemyRandomMove();
                 _obstacleSpawner.AllPointSpawn();
                 break;
             case 6:
-                // Player - 8개 포인트 랜덤 생성
-                // Enemy - Player 반대편+ 움직임
-                // Obstacle - 4개 생성
+                // Player - 8�??�인???�덤 ?�성
+                // Enemy - Player 반�??? ?�직임
+                // Obstacle - 4�??�성
                 int randomIndex = Random.Range(0, 8);
                 //Debug.Log("randomIndex : " + randomIndex);
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
@@ -102,9 +102,9 @@ public class GameEnvironment : MonoBehaviour
                 _obstacleSpawner.AllPointSpawn();
                 break;
             case 7:
-                // Player - 8개 포인트 랜덤 생성
-                // Enemy - Player 반대편 + 움직임
-                // Obstacle - 4개 생성
+                // Player - 8�??�인???�덤 ?�성
+                // Enemy - Player 반�???+ ?�직임
+                // Obstacle - 4�??�성
                 randomIndex = Random.Range(0, 8);
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
                 npcIndex = (randomIndex + 4) % 8;
@@ -114,6 +114,16 @@ public class GameEnvironment : MonoBehaviour
                 break;
             case 8:
                 // self-play
+                if (GameManager.Instance.IsTest)
+                {
+                    randomIndex = GameManager.Instance.GameCount % 8;
+                    _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
+                    npcIndex = (randomIndex + 4) % 8;
+                    _selfPlayAgents = _selfPlaySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<GameAgents>();
+                    _obstacleSpawner.AllPointSpawn();
+                    break;
+                }
+
                 randomIndex = Random.Range(0, 8);
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
                 npcIndex = (randomIndex + 4) % 8;
@@ -164,24 +174,34 @@ public class GameEnvironment : MonoBehaviour
         StartEpisode();
     }
 
-    private float _environmentPlayTime = 0.0f;
+    public void ClearEnvironment()
+    {
+        _playerSpawner.SpawnObjectListClear();
+        _selfPlaySpawner.SpawnObjectListClear();
+     }
+
+    public float _environmentPlayTime = 0.0f;
     public float EvironmentMaxTime = 20.0f;
     void Update()
     {
-        if (!initialized)
+        if (GameManager.Instance._init)
         {
-            Initialize();
-        }
-        else
-        {
-            _environmentPlayTime += Time.deltaTime;
-            if(_environmentPlayTime >= EvironmentMaxTime)
+            if (!initialized)
             {
-                foreach (var controller in ControllerList)
+                Initialize();
+            }
+            else
+            {
+                _environmentPlayTime += Time.deltaTime;
+                if (_environmentPlayTime >= EvironmentMaxTime)
                 {
-                    controller.EpisodeInterrupted();
+                    Debug.Log("Time Out");
+                    foreach (var controller in ControllerList)
+                    {
+                        controller.EpisodeInterrupted();
+                    }
+                    GameManager.GameClear(this);
                 }
-                ResetEnvironment();
             }
         }
     }

@@ -1,0 +1,11 @@
+Episode,Agent Name,Kill Count,Attack Count,Miss Count,Hit Count,Death Count
+0,TestControllerAgent_Origin(Clone),191,1545,45814,1637,164
+0,TestTotalAgent_MissReward(Clone),164,1637,43474,1545,191
+1,TestControllerAgent_Origin(Clone),184,1525,45407,1690,169
+1,TestTotalAgent_MissReward(Clone),169,1690,43097,1525,184
+2,TestControllerAgent_Origin(Clone),183,1527,45791,1620,160
+2,TestTotalAgent_MissReward(Clone),160,1620,43470,1527,183
+3,TestControllerAgent_Origin(Clone),186,1475,45679,1597,160
+3,TestTotalAgent_MissReward(Clone),160,1597,43361,1475,186
+4,TestControllerAgent_Origin(Clone),162,1488,46317,1628,162
+4,TestTotalAgent_MissReward(Clone),162,1628,44099,1488,162
