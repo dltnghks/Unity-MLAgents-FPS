@@ -270,7 +270,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   AttackDamage: 25
-  AttackRange: 50
+  AttackRange: 60
   ShootCoolDown: 0.5
   ShootTime: 0
   ShootAmount: 150
@@ -280,6 +280,7 @@ MonoBehaviour:
   targetDir: {x: 0, y: 0, z: 0}
   targetDistance: 0
   AttackObject: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1 &7754987298688716212
 GameObject:
   m_ObjectHideFlags: 0

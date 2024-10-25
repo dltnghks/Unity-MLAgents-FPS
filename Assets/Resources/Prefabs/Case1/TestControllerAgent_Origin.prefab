@@ -298,7 +298,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -364,6 +364,7 @@ MonoBehaviour:
   targetDir: {x: 0, y: 0, z: 0}
   targetDistance: 0
   AttackObject: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1 &9010273024106035454
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +489,14 @@ PrefabInstance:
     - target: {fileID: 5260397785423381221, guid: 8b4233da1e366744fb80f0eff615cfc5, type: 3}
       propertyPath: m_BehaviorType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260397785423381221, guid: 8b4233da1e366744fb80f0eff615cfc5, type: 3}
+      propertyPath: m_BrainParameters.VectorActionSize.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260397785423381221, guid: 8b4233da1e366744fb80f0eff615cfc5, type: 3}
+      propertyPath: m_BrainParameters.m_ActionSpec.BranchSizes.Array.data[0]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5343382321224091216, guid: 8b4233da1e366744fb80f0eff615cfc5, type: 3}
       propertyPath: m_Name

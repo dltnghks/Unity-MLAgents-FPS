@@ -403,7 +403,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -469,6 +469,7 @@ MonoBehaviour:
   targetDir: {x: 0, y: 0, z: 0}
   targetDistance: 0
   AttackObject: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1001 &4084083119645081874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -479,7 +480,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5260397785423381221, guid: 8b4233da1e366744fb80f0eff615cfc5, type: 3}
       propertyPath: TeamId
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5260397785423381221, guid: 8b4233da1e366744fb80f0eff615cfc5, type: 3}
       propertyPath: m_Model
@@ -553,7 +554,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4867427006318490629, guid: 16f9eb71cfad95b46bbe819384c224a7, type: 3}
       propertyPath: TeamId
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4867427006318490629, guid: 16f9eb71cfad95b46bbe819384c224a7, type: 3}
       propertyPath: m_Model

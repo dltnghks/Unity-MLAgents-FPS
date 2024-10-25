@@ -364,6 +364,7 @@ MonoBehaviour:
   targetDir: {x: 0, y: 0, z: 0}
   targetDistance: 0
   AttackObject: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1 &9010273024106035454
 GameObject:
   m_ObjectHideFlags: 0

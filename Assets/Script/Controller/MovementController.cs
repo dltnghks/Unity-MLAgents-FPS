@@ -8,10 +8,11 @@ using UnityEngine;
 
 public class MovementController : Controller
 {
+    public Vector3 agentPos;
     public override void CollectObservations(VectorSensor sensor)
     {
         // 에이전트의 현재 위치를 상대 좌표로 계산
-        var agentPos = myAgent.transform.position - environment.transform.position;
+        agentPos = myAgent.transform.position - environment.transform.position;
 
         // 상대 좌표를 정규화하고 관측 데이터로 추가 3, map scale로 나눠줌
         sensor.AddObservation(agentPos / environment.MapSize);

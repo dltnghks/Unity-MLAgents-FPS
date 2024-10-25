@@ -43,6 +43,9 @@ public class GameEnvironment : MonoBehaviour
         StartEpisode();
     }
 
+    private int[] testPointList = { 0, 2, 4, 6};
+    private int randomIndex = 0;
+
     public void StartEpisode()
     {
         _playerSpawner.Clear();
@@ -92,7 +95,7 @@ public class GameEnvironment : MonoBehaviour
                 // Player - 8Í∞??¨Ïù∏???úÎç§ ?ùÏÑ±
                 // Enemy - Player Î∞òÎ??? ?ÄÏßÅÏûÑ
                 // Obstacle - 4Í∞??ùÏÑ±
-                int randomIndex = Random.Range(0, 8);
+                randomIndex = Random.Range(0, 8);
                 //Debug.Log("randomIndex : " + randomIndex);
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
                 int npcIndex = (randomIndex + 4) % 8;
@@ -116,7 +119,7 @@ public class GameEnvironment : MonoBehaviour
                 // self-play
                 if (GameManager.Instance.IsTest)
                 {
-                    randomIndex = GameManager.Instance.GameCount % 8;
+                    randomIndex = Random.Range(0, 8);
                     _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
                     npcIndex = (randomIndex + 4) % 8;
                     _selfPlayAgents = _selfPlaySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<GameAgents>();

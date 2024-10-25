@@ -214,7 +214,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c679a60b65e45240b476bec3bf8dcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeamID: 0
+  TeamID: 1
   maxHP: 100
   hp: 100
   _controllerList: []
@@ -270,7 +270,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   AttackDamage: 25
-  AttackRange: 50
+  AttackRange: 60
   ShootCoolDown: 0.5
   ShootTime: 0
   ShootAmount: 150
@@ -280,6 +280,7 @@ MonoBehaviour:
   targetDir: {x: 0, y: 0, z: 0}
   targetDistance: 0
   AttackObject: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1 &7754987298688716212
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,12 +518,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2524623920990009922, guid: e6af0a5b49e742f4fabf555f1120cca6, type: 3}
+      propertyPath: TeamId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524623920990009922, guid: e6af0a5b49e742f4fabf555f1120cca6, type: 3}
       propertyPath: m_Model
       value: 
       objectReference: {fileID: 5022602860645237092, guid: e74087f39230cd84a887ac7d07f65141, type: 3}
     - target: {fileID: 2524623920990009922, guid: e6af0a5b49e742f4fabf555f1120cca6, type: 3}
       propertyPath: m_BehaviorType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524623920990009922, guid: e6af0a5b49e742f4fabf555f1120cca6, type: 3}
+      propertyPath: m_InferenceDevice
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5639967881274360289, guid: e6af0a5b49e742f4fabf555f1120cca6, type: 3}
       propertyPath: m_Name

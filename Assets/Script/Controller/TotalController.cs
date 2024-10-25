@@ -9,10 +9,11 @@ using UnityEngine;
 
 public class TotalController : Controller
 {
+    public Vector3 agentPos;
     public override void CollectObservations(VectorSensor sensor)
     {
         // ?ì´?„íŠ¸???„ì¬ ?„ì¹˜ë¥??ë? ì¢Œí‘œë¡?ê³„ì‚°
-        var agentPos = myAgent.transform.position - environment.transform.position;
+        agentPos = myAgent.transform.position - environment.transform.position;
 
         // ?ë? ì¢Œí‘œë¥??•ê·œ?”í•˜ê³?ê´€ì¸??°ì´?°ë¡œ ì¶”ê? 3, map scaleë¡??˜ëˆ ì¤?
         sensor.AddObservation(agentPos / environment.MapSize);

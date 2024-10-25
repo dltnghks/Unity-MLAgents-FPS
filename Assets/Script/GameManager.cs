@@ -89,13 +89,12 @@ public class GameManager : MonoBehaviour
         _playTime = 0;
         _phaseClearTimeList.Clear();
 
-        AgentList[testIndex].agent1.GetComponent<GameAgents>().TeamID = 0;
-        AgentList[testIndex].agent2.GetComponent<GameAgents>().TeamID = 1;
-
         Debug.Log(AgentList[testIndex].agent1);
         _instance.testEnvironmentList[0].ClearEnvironment();
         _instance.testEnvironmentList[0]._playerSpawner.spawnObject = AgentList[testIndex].agent1;
+        _instance.testEnvironmentList[0]._playerSpawner.spawnObject.GetComponent<GameAgents>().TeamID = 0;
         _instance.testEnvironmentList[0]._selfPlaySpawner.spawnObject = AgentList[testIndex].agent2;
+        _instance.testEnvironmentList[0]._selfPlaySpawner.spawnObject.GetComponent<GameAgents>().TeamID = 1;
         _init = true;
         _instance.testEnvironmentList[0].initialized = false;
     }

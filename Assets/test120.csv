@@ -1,0 +1,45 @@
+Episode,Agent Name,Kill Count,Attack Count,Miss Count,Hit Count,Death Count,,,,,
+Episode,Agent Name,Kill Count,Attack Count,Miss Count,Hit Count,Death Count,,,,,
+Episode,Agent Name,Kill Count,Attack Count,Miss Count,Hit Count,Death Count,,,,,
+Episode,Agent Name,Kill Count,Attack Count,Miss Count,Hit Count,Death Count,,,,,
+Episode,Agent Name,Kill Count,Attack Count,Miss Count,Hit Count,Death Count,,,,,
+0,TestTotalAgent_Origin(Clone),33,247,6216,245,40,34.17258883,250.304812,5889.259635,256.4327796,43.24289026
+0,TestControllerAgent_Origin(Clone),40,245,7180,247,33,43.24289026,256.4327796,6898.937922,250.304812,34.17258883
+1,TestTotalAgent_Origin(Clone),34,260,5766,258,43,22.58452091,,,,
+1,TestControllerAgent_Origin(Clone),43,258,6922,260,34,,,,,
+2,TestTotalAgent_Origin(Clone),34,236,6003,250,44,,,,,
+2,TestControllerAgent_Origin(Clone),44,250,7046,236,34,,,,,
+3,TestTotalAgent_Origin(Clone),34,253,5379,274,48,,,,,
+3,TestControllerAgent_Origin(Clone),48,274,6250,253,34,,,,,
+4,TestTotalAgent_Origin(Clone),36,257,6165,257,42,,,,,
+4,TestControllerAgent_Origin(Clone),42,257,7190,257,36,,,,,
+0,TestTotalAgent_Origin(Clone),40,266,5750,240,39,40.0377436,262.9162131,5784.662648,244.204779,37.45601274
+0,TestControllerAgent_MissReward(Clone),39,240,6795,266,40,37.45601274,244.204779,6736.671855,262.9162131,40.0377436
+1,TestTotalAgent_Origin(Clone),38,250,6040,262,41,22.50624366,,,,
+1,TestControllerAgent_MissReward(Clone),41,262,6793,250,38,,,,,
+2,TestTotalAgent_Origin(Clone),46,282,5474,242,35,,,,,
+2,TestControllerAgent_MissReward(Clone),35,242,6390,282,46,,,,,
+3,TestTotalAgent_Origin(Clone),35,253,6211,247,38,,,,,
+3,TestControllerAgent_MissReward(Clone),38,247,7108,253,35,,,,,
+4,TestTotalAgent_Origin(Clone),43,266,5519,232,35,,,,,
+4,TestControllerAgent_MissReward(Clone),35,232,6638,266,43,,,,,
+0,TestTotalAgent_MissReward(Clone),66,313,6720,190,23,61.74668029,310.2848395,7169.034846,187.0917601,23.83312773
+0,TestControllerAgent_Origin(Clone),23,190,4387,313,66,23.83312773,187.0917601,4402.517866,310.2848395,61.74668029
+1,TestTotalAgent_MissReward(Clone),65,318,7002,191,28,14.42019198,,,,
+1,TestControllerAgent_Origin(Clone),28,191,4120,318,65,,,,,
+2,TestTotalAgent_MissReward(Clone),55,296,7691,190,23,,,,,
+2,TestControllerAgent_Origin(Clone),23,190,4922,296,55,,,,,
+3,TestTotalAgent_MissReward(Clone),62,323,6725,179,22,,,,,
+3,TestControllerAgent_Origin(Clone),22,179,4115,323,62,,,,,
+4,TestTotalAgent_MissReward(Clone),62,303,7868,186,24,,,,,
+4,TestControllerAgent_Origin(Clone),24,186,4569,303,62,,,,,
+0,TestTotalAgent_MissReward(Clone),50,276,7426,231,31,53.7092815,286.9423871,7125.41642,222.9262177,29.0124218
+0,TestControllerAgent_MissReward(Clone),31,231,6831,276,50,29.0124218,222.9262177,6556.150864,286.9423871,53.7092815
+1,TestTotalAgent_MissReward(Clone),50,278,7239,231,32,17.27829669,,,,
+1,TestControllerAgent_MissReward(Clone),32,231,6657,278,50,,,,,
+2,TestTotalAgent_MissReward(Clone),61,297,6952,211,27,,,,,
+2,TestControllerAgent_MissReward(Clone),27,211,6364,297,61,,,,,
+3,TestTotalAgent_MissReward(Clone),55,294,7220,218,26,,,,,
+3,TestControllerAgent_MissReward(Clone),26,218,6693,294,55,,,,,
+4,TestTotalAgent_MissReward(Clone),54,291,6823,225,30,,,,,
+4,TestControllerAgent_MissReward(Clone),30,225,6270,291,54,,,,,
