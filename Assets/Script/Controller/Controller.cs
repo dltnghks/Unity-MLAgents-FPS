@@ -19,15 +19,19 @@ public class Controller : Agent
     public float AgentDieRewardValue;
     public float TickRewardValue;
     public float SeeingEnemyRewardValue;
+    public float timeOutRewardValue;
 
     public void TickReward()
     {
-        SetReward(TickRewardValue);
+        AddReward(TickRewardValue);
+        /*Debug.Log(name + ", TickReward : " + TickRewardValue);
+        Debug.Log(GetCumulativeReward());*/
     }
 
     public void KillTargetReward()
     {
         AddReward(KillTargetRewardValue);
+        //Debug.Log(GetCumulativeReward());
         //Debug.Log(name + ", KillTargetReward : " + KillTargetRewardValue);
     }
     public void AttackHitReward()
@@ -47,13 +51,19 @@ public class Controller : Agent
     }
     public void AgentDieReward()
     {
-        SetReward(AgentDieRewardValue);
+        AddReward(AgentDieRewardValue);
         //Debug.Log(name + ", AgentDieReward : " + AgentDieRewardValue);
     }
 
     public void SeeingEnemyReward()
     {
         AddReward(SeeingEnemyRewardValue);
+        //Debug.Log(name + ", SeeingEnemyReward : " + SeeingEnemyRewardValue);
+    }
+
+    public void TimeOutReward()
+    {
+        AddReward(timeOutRewardValue);
         //Debug.Log(name + ", SeeingEnemyReward : " + SeeingEnemyRewardValue);
     }
 }

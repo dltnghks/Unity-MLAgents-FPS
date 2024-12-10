@@ -37,9 +37,9 @@ public class TotalController : Controller
     {
         ActionSegment<int> act = actions.DiscreteActions;
         base.OnActionReceived(actions);
-        int[] tmp = { act[0], act[1], act[2], act[3] };
+        int[] tmp = { act[0], act[1], act[2]};
         myAgent.MovementAction(tmp);
-        myAgent.AttackAction(act[4]);
+        myAgent.AttackAction(act[3]);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -63,21 +63,21 @@ public class TotalController : Controller
         }
         if (Input.GetKey(KeyCode.Q))
         {
-            discreteActionsOut[3] = 1;
+            discreteActionsOut[2] = 1;
         }
         if (Input.GetKey(KeyCode.E))
         {
-            discreteActionsOut[3] = 2;
+            discreteActionsOut[2] = 2;
         }
         if (myAgent.ShootTime <= 0.0f)
         {
             if (Input.GetMouseButton(0))
             {
-                discreteActionsOut[4] = 1;
+                discreteActionsOut[3] = 1;
             }
         }
 
         // ?í”„
-        discreteActionsOut[2] = Input.GetKey(KeyCode.Space) ? 1 : 0;
+        //discreteActionsOut[2] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
 }

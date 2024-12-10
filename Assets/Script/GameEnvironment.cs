@@ -8,7 +8,7 @@ public class GameEnvironment : MonoBehaviour
     public PlayerSpawner _playerSpawner;
     public EnemySpawner _enemySpawner;
     public ObstacleSpawner _obstacleSpawner;
-    public Spawner _selfPlaySpawner;
+    public SelfPlaySpawner _selfPlaySpawner;
 
     public GameAgents _gameAgents;
     public GameAgents _selfPlayAgents;
@@ -162,6 +162,7 @@ public class GameEnvironment : MonoBehaviour
 
     public void EndEpisode()
     {
+        //Debug.Log(gameObject.name);
         ResetEnvironment();
     }
 
@@ -201,9 +202,18 @@ public class GameEnvironment : MonoBehaviour
                     Debug.Log("Time Out");
                     foreach (var controller in ControllerList)
                     {
+                        //Debug.Log(controller.GetCumulativeReward());
+                        //controller.TimeOutReward();
                         controller.EpisodeInterrupted();
                     }
-                    GameManager.GameClear(this);
+                    if (GameManager.Instance.IsTest)
+                    {
+                        GameManager.GameClear(this);
+                    }
+                    else
+                    {
+                        ResetEnvironment();
+                    }
                 }
             }
         }

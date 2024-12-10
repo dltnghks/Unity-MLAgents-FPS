@@ -36,7 +36,7 @@ public class MovementController : Controller
     {
         ActionSegment<int> act = actions.DiscreteActions;
         base.OnActionReceived(actions);
-        int[] tmp = { act[0], act[1], act[2], act[3] };
+        int[] tmp = { act[0], act[1], act[2]};
         myAgent.MovementAction(tmp);
     }
 
@@ -61,14 +61,14 @@ public class MovementController : Controller
         }
         if (Input.GetKey(KeyCode.Q))
         {
-            discreteActionsOut[3] = 1;
+            discreteActionsOut[2] = 1;
         }
         if (Input.GetKey(KeyCode.E))
         {
-            discreteActionsOut[3] = 2;
+            discreteActionsOut[2] = 2;
         }
 
         // มกวม
-        discreteActionsOut[2] = Input.GetKey(KeyCode.Space) ? 1 : 0;
+        //discreteActionsOut[2] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
 }

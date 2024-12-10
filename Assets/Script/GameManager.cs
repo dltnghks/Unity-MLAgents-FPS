@@ -17,6 +17,7 @@ public struct BattleAgent
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance = null;
+    private List<float[]> allGameData = new List<float[]>();  // 에피소드 데이터를 저장할 리스트
 
     private static int _gamePhase = 1;
 
@@ -66,9 +67,8 @@ public class GameManager : MonoBehaviour
     {
         // CSV 파일 경로 설정
         filePath = Path.Combine(Application.dataPath, "game_log.csv");
-
         // 파일 헤더 작성
-        WriteToCSV(new string[] { "Episode", "Agent Name", "Kill Count", "Attack Count", "Miss Count", "Hit Count", "Death Count" });
+        //WriteToCSV(new string[] { "Episode", "Agent Name", "Kill Count", "Attack Count", "Miss Count", "Hit Count", "Death Count" });
     }
 
     public bool _init = false;
@@ -83,20 +83,20 @@ public class GameManager : MonoBehaviour
             _gamePhase = 8;
             GameCount = 0;
             GameEpisodeCount = 0;
-            Time.timeScale = 9;
+            Time.timeScale = 4;
+            //Debug.Log(AgentList[testIndex].agent1);
+            _instance.testEnvironmentList[0].ClearEnvironment();
+            _instance.testEnvironmentList[0]._playerSpawner.spawnObject = AgentList[testIndex].agent1;
+            _instance.testEnvironmentList[0]._playerSpawner.spawnObject.GetComponent<GameAgents>().TeamID = 0;
+            _instance.testEnvironmentList[0]._selfPlaySpawner.spawnObject = AgentList[testIndex].agent2;
+            _instance.testEnvironmentList[0]._selfPlaySpawner.spawnObject.GetComponent<GameAgents>().TeamID = 1;
+            _instance.testEnvironmentList[0].initialized = false;
         }
         
         _playTime = 0;
         _phaseClearTimeList.Clear();
 
-        Debug.Log(AgentList[testIndex].agent1);
-        _instance.testEnvironmentList[0].ClearEnvironment();
-        _instance.testEnvironmentList[0]._playerSpawner.spawnObject = AgentList[testIndex].agent1;
-        _instance.testEnvironmentList[0]._playerSpawner.spawnObject.GetComponent<GameAgents>().TeamID = 0;
-        _instance.testEnvironmentList[0]._selfPlaySpawner.spawnObject = AgentList[testIndex].agent2;
-        _instance.testEnvironmentList[0]._selfPlaySpawner.spawnObject.GetComponent<GameAgents>().TeamID = 1;
         _init = true;
-        _instance.testEnvironmentList[0].initialized = false;
     }
 
     private void Update()
@@ -211,68 +211,106 @@ public class GameManager : MonoBehaviour
     {
         environment.EndEpisode();
         ClearCount++;
-        _instance.GameCount++;
-        //Debug.Log(_gamePhase + " : " + ClearCount + " , " + RequireClear);
-
-        if (RequireClear <= ClearCount && _gamePhase != 8 && !_instance.IsTest)
+      
+        Debug.Log("Phase : " + _gamePhase + ", " + " / " + RequireClear);
+        if (RequireClear <= ClearCount && _gamePhase != 8)
         {
-            RestEnvrionment();
-            AddGamePhase();
-            ClearCount = 0;
-            if (_gamePhase >= 5)
+            if (_gamePhase >= 4)
+            {
                 RequireClear = 2;
+            }
+            ClearCount = 0;
+            AddGamePhase();
+            RestEnvrionment();
         }
 
-        if (_instance.EndGameCount <= ClearCount && _instance.IsTest)
-        {
+        if (_instance.IsTest) {
+
+            _instance.GameCount++;
+
             var agent1 = _instance.testEnvironmentList[0]._gameAgents;
-            Debug.Log(_instance.GameEpisodeCount  + "name : " + agent1.name);
-            Debug.Log(_instance.GameEpisodeCount + "KillCount : " + agent1._saveData.KillCount);
-            Debug.Log(_instance.GameEpisodeCount + "AttackCount : " + agent1._saveData.AttackCount);
-            Debug.Log(_instance.GameEpisodeCount + "MissCount : " + agent1._saveData.MissCount);
-            Debug.Log(_instance.GameEpisodeCount + "HitCount : " + agent1._saveData.HitCount);
-            Debug.Log(_instance.GameEpisodeCount + "DeathCount : " + agent1._saveData.DeathCount);
-            
             var agent2 = _instance.testEnvironmentList[0]._selfPlayAgents;
-            Debug.Log(_instance.GameEpisodeCount + "name : " + agent2.name);
-            Debug.Log(_instance.GameEpisodeCount + "KillCount : " + agent2._saveData.KillCount);
-            Debug.Log(_instance.GameEpisodeCount + "AttackCount : " + agent2._saveData.AttackCount);
-            Debug.Log(_instance.GameEpisodeCount + "MissCount : " + agent2._saveData.MissCount);
-            Debug.Log(_instance.GameEpisodeCount + "HitCount : " + agent2._saveData.HitCount);
-            Debug.Log(_instance.GameEpisodeCount + "DeathCount : " + agent2._saveData.DeathCount);
-            Debug.Log(_instance.GameEpisodeCount + "==============================================");
-
-
-            _instance.WriteToCSV(new string[] {
-                _instance.GameEpisodeCount.ToString(),
-                agent1.name,
-                agent1._saveData.KillCount.ToString(),
-                agent1._saveData.AttackCount.ToString(),
-                agent1._saveData.MissCount.ToString(),
-                agent1._saveData.HitCount.ToString(),
-                agent1._saveData.DeathCount.ToString()
+            
+            // 에피소드마다 데이터를 수집하여 리스트에 추가
+            _instance.allGameData.Add(new float[] {
+            agent1._saveData.KillCount,
+            agent1._saveData.AttackCount,
+            agent1._saveData.MissCount,
+            agent1._saveData.HitCount,
+            agent1._saveData.DeathCount,
+            agent2._saveData.KillCount,
+            agent2._saveData.AttackCount,
+            agent2._saveData.MissCount,
+            agent2._saveData.HitCount,
+            agent2._saveData.DeathCount
             });
 
+            // 에피소드 데이터를 기록
+            // (에피소드 번호, 에이전트 이름, 승리, 공격, 미스, 피격, 패배)
             _instance.WriteToCSV(new string[] {
-                _instance.GameEpisodeCount.ToString(),
-                agent2.name,
-                agent2._saveData.KillCount.ToString(),
-                agent2._saveData.AttackCount.ToString(),
-                agent2._saveData.MissCount.ToString(),
-                agent2._saveData.HitCount.ToString(),
-                agent2._saveData.DeathCount.ToString()
-            });
+            _instance.GameEpisodeCount.ToString(),
+            agent1.name,
+            agent1._saveData.KillCount.ToString(),
+            agent1._saveData.AttackCount.ToString(),
+            agent1._saveData.MissCount.ToString(),
+            agent1._saveData.HitCount.ToString(),
+            agent1._saveData.DeathCount.ToString()
+            }, agent1.name, agent2.name);
 
-            agent1._saveData.ResetCount();
-            agent2._saveData.ResetCount();
+            _instance.WriteToCSV(new string[] {
+            _instance.GameEpisodeCount.ToString(),
+            agent2.name,
+            agent2._saveData.KillCount.ToString(),
+            agent2._saveData.AttackCount.ToString(),
+            agent2._saveData.MissCount.ToString(),
+            agent2._saveData.HitCount.ToString(),
+            agent2._saveData.DeathCount.ToString()
+            }, agent1.name, agent2.name);
 
-            _instance.GameEpisodeCount++;
-            ClearCount = 0;
+
+            // 전체 평균 기록 (게임 에피소드가 종료되면 평균 기록)
             if (_instance.GameEpisodeCount >= _instance.EndGameEpisodeCount)
             {
+                float[] totalSums = new float[10]; // agent1과 agent2 각각의 데이터를 5개씩 기록하기 때문에 총 10개의 항목
+                foreach (var data in _instance.allGameData)
+                {
+                    for (int i = 0; i < data.Length; i++)
+                    {
+                        totalSums[i] += data[i];
+                    }
+                }
+
+                // 평균 값 계산
+                float[] averages = new float[10];
+                for (int i = 0; i < totalSums.Length; i++)
+                {
+                    averages[i] = totalSums[i] / _instance.allGameData.Count;
+                }
+
+                // 평균 기록
+                _instance.WriteToCSV(new string[] {
+                "Average",
+                agent1.name,
+                averages[0].ToString(), // KillCount
+                averages[1].ToString(), // AttackCount
+                averages[2].ToString(), // MissCount
+                averages[3].ToString(), // HitCount
+                averages[4].ToString()  // DeathCount
+            }, agent1.name, agent2.name);
+
+                _instance.WriteToCSV(new string[] {
+                "Average",
+                agent2.name,
+                averages[5].ToString(), // KillCount
+                averages[6].ToString(), // AttackCount
+                averages[7].ToString(), // MissCount
+                averages[8].ToString(), // HitCount
+                averages[9].ToString()  // DeathCount
+            }, agent1.name, agent2.name);
+
 #if UNITY_EDITOR
                 _instance.testIndex++;
-                if (_instance.testIndex >= 4)
+                if (_instance.testIndex >= _instance.AgentList.Count)
                 {
                     UnityEditor.EditorApplication.isPlaying = false;
                 }
@@ -281,14 +319,26 @@ public class GameManager : MonoBehaviour
                     _instance.Init();
                 }
 #else
-        Application.Quit(); // ?댄뵆由ъ??댁뀡 醫낅즺
+            Application.Quit();
 #endif
             }
+
+
+            // 에이전트 데이터 초기화
+            agent1._saveData.ResetCount();
+            agent2._saveData.ResetCount();
+
+            _instance.GameEpisodeCount++;
+            ClearCount = 0;
         }
     }
 
-    private void WriteToCSV(string[] data)
+    private void WriteToCSV(string[] data, string agent1Name, string agent2Name)
     {
+        // 파일명을 "{agent1이름}_vs_{agent2이름}.csv"로 설정
+        string filename = $"{agent1Name}1_vs_{agent2Name}2.csv";
+        string filePath = Path.Combine(Application.dataPath, filename);
+
         // 파일에 데이터를 쓰기
         using (StreamWriter sw = new StreamWriter(filePath, true))
         {

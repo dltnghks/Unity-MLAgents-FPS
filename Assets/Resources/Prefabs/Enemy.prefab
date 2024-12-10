@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3723167300939046594}
   m_Layer: 3
   m_Name: Enemy
-  m_TagString: Target
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc449b308a09e14086387a2e998ca6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeamID: 1
+  TeamID: 9
   maxHP: 100
   hp: 0
   moveRadius: 40

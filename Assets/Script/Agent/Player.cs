@@ -70,9 +70,6 @@ public class Player : Character
         switch (rewardType)
         {
             case ERewardType.KillTarget:
-                _saveData.AttackCount += _gameData.AttackCount;
-                _saveData.MissCount += _gameData.MissCount;
-
                 /*_gameData.AttackCount = 0;
                 _gameData.MissCount = 0;
                 _gameData.HitCount = 0;*/

@@ -40,7 +40,7 @@ public class Spawner : MonoBehaviour
     {
         if(spawnObjectList.Count > 0)
         {
-            foreach(var obj in spawnObjectList)
+            foreach (var obj in spawnObjectList)
             {
                 if (!obj.activeSelf)
                 {

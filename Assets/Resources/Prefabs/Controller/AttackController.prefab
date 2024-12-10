@@ -51,8 +51,8 @@ MonoBehaviour:
     NumStackedVectorObservations: 20
     m_ActionSpec:
       m_NumContinuousActions: 0
-      BranchSizes: 03000000
-    VectorActionSize: 03000000
+      BranchSizes: 02000000
+    VectorActionSize: 02000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
@@ -80,16 +80,18 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 5000
+  MaxStep: 6000
   environment: {fileID: 0}
   myAgent: {fileID: 0}
   KillTargetRewardValue: 1
   AttackHitRewardValue: 0.25
-  AttackMissRewardValue: -0.006
+  AttackMissRewardValue: 0
   AgentHitRewardValue: 0
-  AgentDieRewardValue: 0
-  TickRewardValue: -0.005
+  AgentDieRewardValue: -1
+  TickRewardValue: -0.0001666667
   SeeingEnemyRewardValue: 0
+  timeOutRewardValue: 0
+  agentPos: {x: 0, y: 0, z: 0}
 --- !u!114 &9088166209289288474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,5 +104,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 5
-  TakeActionsBetweenDecisions: 1
+  DecisionPeriod: 1
+  TakeActionsBetweenDecisions: 0

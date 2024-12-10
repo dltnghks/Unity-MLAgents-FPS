@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
     [SerializeField]
     protected int hp;
 
-    private bool _initialized = false;
+    protected bool _initialized = false;
 
     public virtual bool Init()
     {

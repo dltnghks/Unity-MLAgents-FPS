@@ -364,6 +364,7 @@ MonoBehaviour:
   targetDir: {x: 0, y: 0, z: 0}
   targetDistance: 0
   AttackObject: {fileID: 0}
+  target: {fileID: 0}
 --- !u!1 &9010273024106035454
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,18 +540,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5061432206791315978}
     m_Modifications:
-    - target: {fileID: 947252917157464048, guid: 16f9eb71cfad95b46bbe819384c224a7, type: 3}
-      propertyPath: m_DetectableTags.Array.data[0]
-      value: Target
-      objectReference: {fileID: 0}
-    - target: {fileID: 947252917157464048, guid: 16f9eb71cfad95b46bbe819384c224a7, type: 3}
-      propertyPath: m_DetectableTags.Array.data[1]
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 947252917157464048, guid: 16f9eb71cfad95b46bbe819384c224a7, type: 3}
-      propertyPath: m_DetectableTags.Array.data[2]
-      value: Wall
-      objectReference: {fileID: 0}
     - target: {fileID: 5374601108881601636, guid: 16f9eb71cfad95b46bbe819384c224a7, type: 3}
       propertyPath: m_Name
       value: MovementController

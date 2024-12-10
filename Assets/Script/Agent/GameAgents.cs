@@ -74,13 +74,17 @@ public class GameAgents : Player
 
     public void MovementAction(int[] act)
     {
+        if (!_initialized)
+        {
+            return;
+        }
         var smallGrounded = DoGroundCheck(true);
         var largeGrounded = DoGroundCheck(false);
 
         var dirToGo = Vector3.zero;
         var dirToGoForwardAction = act[0];
         var dirToGoSideAction = act[1];
-        var jumpAction = act[2];
+        //var jumpAction = act[2];
 
         if (dirToGoForwardAction == 1)
         {
@@ -99,10 +103,12 @@ public class GameAgents : Player
             dirToGo += -1f * transform.right;
         }
 
-        rBody.AddForce(dirToGo * m_WallJumpSettings.agentRunSpeed,
+        rBody.velocity = dirToGo * m_WallJumpSettings.agentRunSpeed;
+        /*rBody.AddForce(dirToGo * m_WallJumpSettings.agentRunSpeed,
         ForceMode.VelocityChange);
+        Debug.Log(rBody.velocity);*/
 
-        if (jumpAction == 1)
+        /*if (jumpAction == 1)
         {
             if ((jumpingTime <= 0f) && smallGrounded)
             {
@@ -125,24 +131,28 @@ public class GameAgents : Player
                 Vector3.down * fallingForce, ForceMode.Acceleration);
         }
 
-        jumpingTime -= Time.fixedDeltaTime;
+        jumpingTime -= Time.fixedDeltaTime;*/
 
 
         // search
         var rotateDir = Vector3.zero;
-        var rotateDirAction = act[3];
+        var rotateDirAction = act[2];
 
         if (rotateDirAction == 1)
             rotateDir = transform.up * -1f;
         else if (rotateDirAction == 2)
             rotateDir = transform.up * 1f;
 
-        transform.Rotate(rotateDir, Time.fixedDeltaTime * 300f);
+        transform.Rotate(rotateDir, Time.fixedDeltaTime * 7.5f * m_WallJumpSettings.agentRunSpeed);
 
     }
 
     public void FixedUpdate()
     {
+        if (!_initialized)
+        {
+            return;
+        }
         //GameObject target;
         if (GameManager.GamePhase < 8)
             target = environment.Enemy.gameObject;
@@ -157,14 +167,25 @@ public class GameAgents : Player
         targetDir = (target.transform.position - transform.position).normalized;
         targetDistance = Vector3.Distance(transform.position, target.transform.position) / environment.MapSize;
         AddReward(ERewardType.Tick);
-        if(Vector3.Angle(transform.forward, targetDir) < 15.0f)
+        RaycastHit hit;
+        if (Vector3.Angle(transform.forward, targetDir) < 15.0f
+            && Physics.Raycast(transform.position, targetDir, out hit, targetDistance * AttackRange))
         {
-            AddReward(ERewardType.SeeingEnemy);
+            // Raycast가 타겟을 맞췄다면 장애물이 없는 것으로 간주
+            if (hit.collider.gameObject == target)
+            {
+                AddReward(ERewardType.SeeingEnemy);
+            }
+            
         }
     }
 
     public void AttackAction(int act)
     {
+        if (!_initialized)
+        {
+            return;
+        }
         // attack
         var AttackAction = act;
 
@@ -186,15 +207,17 @@ public class GameAgents : Player
                     AddReward(ERewardType.AttackHit);
                     if (hitinfo.collider.tag == "Player")
                     {
-                        hitinfo.collider.gameObject.GetComponent<GameAgents>().AddReward(ERewardType.AgentHit);
+                        if(hitinfo.collider.gameObject.GetComponent<GameAgents>() != null)
+                            hitinfo.collider.gameObject.GetComponent<GameAgents>().AddReward(ERewardType.AgentHit);
                     }
                     if (0 >= hitinfo.collider.gameObject.GetComponent<Character>().AddHP(-AttackDamage))
                     {
                         AddReward(ERewardType.KillTarget);
                         if(hitinfo.collider.tag == "Player")
                         {
-                            hitinfo.collider.gameObject.GetComponent<GameAgents>().AddReward(ERewardType.AgentDie);
-                            Debug.Log(name + " Win");
+                            if (hitinfo.collider.gameObject.GetComponent<GameAgents>() != null)
+                                hitinfo.collider.gameObject.GetComponent<GameAgents>().AddReward(ERewardType.AgentDie);
+                            //Debug.Log(name + " Win");
                         }
                         GameManager.GameClear(environment);
                     }
