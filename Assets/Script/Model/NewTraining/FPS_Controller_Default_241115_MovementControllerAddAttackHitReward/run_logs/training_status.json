@@ -1,0 +1,755 @@
+{
+    "Attack": {
+        "checkpoints": [
+            {
+                "steps": 23999943,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-23999943.onnx",
+                "reward": 1.9254165887832642,
+                "creation_time": 1731709927.2478445,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-23999943.pt"
+                ]
+            },
+            {
+                "steps": 25999651,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-25999651.onnx",
+                "reward": 0.40832664966583254,
+                "creation_time": 1731716074.6527207,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-25999651.pt"
+                ]
+            },
+            {
+                "steps": 27999748,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-27999748.onnx",
+                "reward": 0.6895713777769179,
+                "creation_time": 1731722125.95041,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-27999748.pt"
+                ]
+            },
+            {
+                "steps": 29999744,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-29999744.onnx",
+                "reward": 0.45816662546712905,
+                "creation_time": 1731728065.2263017,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-29999744.pt"
+                ]
+            },
+            {
+                "steps": 31999883,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-31999883.onnx",
+                "reward": 0.35492851052965435,
+                "creation_time": 1731733935.5960338,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-31999883.pt"
+                ]
+            },
+            {
+                "steps": 33999751,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-33999751.onnx",
+                "reward": 0.8353888442118963,
+                "creation_time": 1731739763.9185054,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-33999751.pt"
+                ]
+            },
+            {
+                "steps": 35999821,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-35999821.onnx",
+                "reward": -0.7440278083086014,
+                "creation_time": 1731745415.458596,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-35999821.pt"
+                ]
+            },
+            {
+                "steps": 37999712,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-37999712.onnx",
+                "reward": 1.0420118105996932,
+                "creation_time": 1731751076.68149,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-37999712.pt"
+                ]
+            },
+            {
+                "steps": 39999313,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-39999313.onnx",
+                "reward": null,
+                "creation_time": 1731756795.0198777,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-39999313.pt"
+                ]
+            },
+            {
+                "steps": 41999878,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-41999878.onnx",
+                "reward": 1.9145832061767578,
+                "creation_time": 1731762479.1545966,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-41999878.pt"
+                ]
+            },
+            {
+                "steps": 43999848,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-43999848.onnx",
+                "reward": -0.19622230778137842,
+                "creation_time": 1731768239.4983559,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-43999848.pt"
+                ]
+            },
+            {
+                "steps": 45999613,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-45999613.onnx",
+                "reward": 0.025090853260322052,
+                "creation_time": 1731773798.5813382,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-45999613.pt"
+                ]
+            },
+            {
+                "steps": 47999383,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-47999383.onnx",
+                "reward": 1.2052306753511612,
+                "creation_time": 1731779387.3968313,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-47999383.pt"
+                ]
+            },
+            {
+                "steps": 49999816,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-49999816.onnx",
+                "reward": null,
+                "creation_time": 1731785016.14476,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-49999816.pt"
+                ]
+            },
+            {
+                "steps": 51999336,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-51999336.onnx",
+                "reward": -1.0215833904221654,
+                "creation_time": 1731790506.7997246,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-51999336.pt"
+                ]
+            },
+            {
+                "steps": 53999679,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-53999679.onnx",
+                "reward": 0.014597179368138313,
+                "creation_time": 1731796044.2539227,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-53999679.pt"
+                ]
+            },
+            {
+                "steps": 55999688,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-55999688.onnx",
+                "reward": 0.3763808512261936,
+                "creation_time": 1731801632.3262327,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-55999688.pt"
+                ]
+            },
+            {
+                "steps": 57999816,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-57999816.onnx",
+                "reward": 1.9084999561309814,
+                "creation_time": 1731807232.5181806,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-57999816.pt"
+                ]
+            },
+            {
+                "steps": 59999187,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-59999187.onnx",
+                "reward": 0.18730298192663627,
+                "creation_time": 1731813028.8780017,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-59999187.pt"
+                ]
+            },
+            {
+                "steps": 61999808,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-61999808.onnx",
+                "reward": 1.049383321404457,
+                "creation_time": 1731818996.6448963,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-61999808.pt"
+                ]
+            },
+            {
+                "steps": 63999675,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-63999675.onnx",
+                "reward": 0.3319443389773369,
+                "creation_time": 1731824588.904211,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-63999675.pt"
+                ]
+            },
+            {
+                "steps": 65999026,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-65999026.onnx",
+                "reward": -0.08922227223714192,
+                "creation_time": 1731830078.3414233,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-65999026.pt"
+                ]
+            },
+            {
+                "steps": 67999891,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-67999891.onnx",
+                "reward": 0.30403322018682954,
+                "creation_time": 1731835607.9959562,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-67999891.pt"
+                ]
+            },
+            {
+                "steps": 69999827,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-69999827.onnx",
+                "reward": 0.07156658340245485,
+                "creation_time": 1731841176.0669215,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-69999827.pt"
+                ]
+            },
+            {
+                "steps": 71999692,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-71999692.onnx",
+                "reward": -0.42038894817233086,
+                "creation_time": 1731846787.9370492,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-71999692.pt"
+                ]
+            },
+            {
+                "steps": 73999365,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-73999365.onnx",
+                "reward": 0.3795356363324182,
+                "creation_time": 1731852454.8384562,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-73999365.pt"
+                ]
+            },
+            {
+                "steps": 75999994,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-75999994.onnx",
+                "reward": 0.8601110155383745,
+                "creation_time": 1731858245.6677866,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-75999994.pt"
+                ]
+            },
+            {
+                "steps": 77999597,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-77999597.onnx",
+                "reward": 0.8979422659254991,
+                "creation_time": 1731864349.8200471,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-77999597.pt"
+                ]
+            },
+            {
+                "steps": 79999310,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-79999310.onnx",
+                "reward": -0.06333342986181378,
+                "creation_time": 1731869960.7077599,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-79999310.pt"
+                ]
+            },
+            {
+                "steps": 81999531,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-81999531.onnx",
+                "reward": -0.70833345875144,
+                "creation_time": 1731875494.1437922,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-81999531.pt"
+                ]
+            },
+            {
+                "steps": 83999078,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-83999078.onnx",
+                "reward": 0.08770364109012815,
+                "creation_time": 1731881005.5433338,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-83999078.pt"
+                ]
+            },
+            {
+                "steps": 85999592,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-85999592.onnx",
+                "reward": 0.9140888322765629,
+                "creation_time": 1731886542.4238265,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-85999592.pt"
+                ]
+            },
+            {
+                "steps": 87999674,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-87999674.onnx",
+                "reward": 0.30666664242744446,
+                "creation_time": 1731892140.092777,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-87999674.pt"
+                ]
+            },
+            {
+                "steps": 89999861,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-89999861.onnx",
+                "reward": 1.1337777102986972,
+                "creation_time": 1731897794.0682387,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-89999861.pt"
+                ]
+            },
+            {
+                "steps": 91999612,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-91999612.onnx",
+                "reward": null,
+                "creation_time": 1731903736.081298,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-91999612.pt"
+                ]
+            },
+            {
+                "steps": 93999731,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-93999731.onnx",
+                "reward": null,
+                "creation_time": 1731909549.8942747,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-93999731.pt"
+                ]
+            },
+            {
+                "steps": 95999344,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-95999344.onnx",
+                "reward": -0.7295555720726649,
+                "creation_time": 1731915489.216597,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-95999344.pt"
+                ]
+            },
+            {
+                "steps": 97999767,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-97999767.onnx",
+                "reward": 0.6173483776775274,
+                "creation_time": 1731921320.5368161,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-97999767.pt"
+                ]
+            },
+            {
+                "steps": 99999728,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-99999728.onnx",
+                "reward": 0.05247217665115992,
+                "creation_time": 1731927252.5205765,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-99999728.pt"
+                ]
+            },
+            {
+                "steps": 100000728,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-100000728.onnx",
+                "reward": 0.05247217665115992,
+                "creation_time": 1731927253.0804417,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-100000728.pt"
+                ]
+            }
+        ],
+        "elo": 1367.0221552557268,
+        "final_checkpoint": {
+            "steps": 100000728,
+            "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack.onnx",
+            "reward": 0.05247217665115992,
+            "creation_time": 1731927253.0804417,
+            "auxillary_file_paths": [
+                "results\\FPS_Controller_Default_241115_AddAttackReward\\Attack\\Attack-100000728.pt"
+            ]
+        }
+    },
+    "Movement": {
+        "checkpoints": [
+            {
+                "steps": 23999943,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-23999943.onnx",
+                "reward": 2.13000026345253,
+                "creation_time": 1731709927.46253,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-23999943.pt"
+                ]
+            },
+            {
+                "steps": 25999651,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-25999651.onnx",
+                "reward": 0.4209268271923065,
+                "creation_time": 1731716074.8676264,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-25999651.pt"
+                ]
+            },
+            {
+                "steps": 27999748,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-27999748.onnx",
+                "reward": 0.544650932153066,
+                "creation_time": 1731722126.163903,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-27999748.pt"
+                ]
+            },
+            {
+                "steps": 29999744,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-29999744.onnx",
+                "reward": 0.3612396674579941,
+                "creation_time": 1731728065.4508798,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-29999744.pt"
+                ]
+            },
+            {
+                "steps": 31999883,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-31999883.onnx",
+                "reward": 0.34076201702867237,
+                "creation_time": 1731733935.7878952,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-31999883.pt"
+                ]
+            },
+            {
+                "steps": 33999751,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-33999751.onnx",
+                "reward": 1.130389153957367,
+                "creation_time": 1731739764.2857227,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-33999751.pt"
+                ]
+            },
+            {
+                "steps": 35999821,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-35999821.onnx",
+                "reward": -1.0868055894970894,
+                "creation_time": 1731745415.6695507,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-35999821.pt"
+                ]
+            },
+            {
+                "steps": 37999712,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-37999712.onnx",
+                "reward": 1.6429645681554186,
+                "creation_time": 1731751076.9138997,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-37999712.pt"
+                ]
+            },
+            {
+                "steps": 39999313,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-39999313.onnx",
+                "reward": null,
+                "creation_time": 1731756795.2239933,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-39999313.pt"
+                ]
+            },
+            {
+                "steps": 41999878,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-41999878.onnx",
+                "reward": 2.320417046546936,
+                "creation_time": 1731762479.353896,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-41999878.pt"
+                ]
+            },
+            {
+                "steps": 43999848,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-43999848.onnx",
+                "reward": 0.01766673227151235,
+                "creation_time": 1731768239.7274911,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-43999848.pt"
+                ]
+            },
+            {
+                "steps": 45999613,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-45999613.onnx",
+                "reward": 0.21963648904453625,
+                "creation_time": 1731773798.8020253,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-45999613.pt"
+                ]
+            },
+            {
+                "steps": 47999383,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-47999383.onnx",
+                "reward": 1.5980515323149471,
+                "creation_time": 1731779387.6296482,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-47999383.pt"
+                ]
+            },
+            {
+                "steps": 49999816,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-49999816.onnx",
+                "reward": null,
+                "creation_time": 1731785016.3429468,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-49999816.pt"
+                ]
+            },
+            {
+                "steps": 51999336,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-51999336.onnx",
+                "reward": -1.179083307273686,
+                "creation_time": 1731790507.036359,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-51999336.pt"
+                ]
+            },
+            {
+                "steps": 53999679,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-53999679.onnx",
+                "reward": 0.6461252601196369,
+                "creation_time": 1731796044.4828362,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-53999679.pt"
+                ]
+            },
+            {
+                "steps": 55999688,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-55999688.onnx",
+                "reward": 2.0256673640438487,
+                "creation_time": 1731801632.5842187,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-55999688.pt"
+                ]
+            },
+            {
+                "steps": 57999816,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-57999816.onnx",
+                "reward": 2.1585001945495605,
+                "creation_time": 1731807232.7455094,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-57999816.pt"
+                ]
+            },
+            {
+                "steps": 59999187,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-59999187.onnx",
+                "reward": 0.4629092948003249,
+                "creation_time": 1731813029.1121504,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-59999187.pt"
+                ]
+            },
+            {
+                "steps": 61999808,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-61999808.onnx",
+                "reward": 1.297383537888527,
+                "creation_time": 1731818996.869345,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-61999808.pt"
+                ]
+            },
+            {
+                "steps": 63999675,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-63999675.onnx",
+                "reward": 1.6597227851549785,
+                "creation_time": 1731824589.136339,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-63999675.pt"
+                ]
+            },
+            {
+                "steps": 65999026,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-65999026.onnx",
+                "reward": 0.4607781569163005,
+                "creation_time": 1731830078.5717354,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-65999026.pt"
+                ]
+            },
+            {
+                "steps": 67999891,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-67999891.onnx",
+                "reward": 1.6573671668767929,
+                "creation_time": 1731835608.2283404,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-67999891.pt"
+                ]
+            },
+            {
+                "steps": 69999827,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-69999827.onnx",
+                "reward": 1.2975670725107193,
+                "creation_time": 1731841176.2992077,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-69999827.pt"
+                ]
+            },
+            {
+                "steps": 71999692,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-71999692.onnx",
+                "reward": -0.5165000495811304,
+                "creation_time": 1731846788.1778324,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-71999692.pt"
+                ]
+            },
+            {
+                "steps": 73999365,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-73999365.onnx",
+                "reward": 0.7978693153709173,
+                "creation_time": 1731852455.0703123,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-73999365.pt"
+                ]
+            },
+            {
+                "steps": 75999994,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-75999994.onnx",
+                "reward": 1.286778102318446,
+                "creation_time": 1731858245.8981884,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-75999994.pt"
+                ]
+            },
+            {
+                "steps": 77999597,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-77999597.onnx",
+                "reward": 0.8758912430359767,
+                "creation_time": 1731864350.0356429,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-77999597.pt"
+                ]
+            },
+            {
+                "steps": 79999310,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-79999310.onnx",
+                "reward": 1.4016670585842803,
+                "creation_time": 1731869960.9378207,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-79999310.pt"
+                ]
+            },
+            {
+                "steps": 81999531,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-81999531.onnx",
+                "reward": -0.47749999165534973,
+                "creation_time": 1731875494.4070141,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-81999531.pt"
+                ]
+            },
+            {
+                "steps": 83999078,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-83999078.onnx",
+                "reward": 0.9390003830194473,
+                "creation_time": 1731881005.7913344,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-83999078.pt"
+                ]
+            },
+            {
+                "steps": 85999592,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-85999592.onnx",
+                "reward": 1.58286701599136,
+                "creation_time": 1731886542.6768172,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-85999592.pt"
+                ]
+            },
+            {
+                "steps": 87999674,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-87999674.onnx",
+                "reward": 0.7700002789497375,
+                "creation_time": 1731892140.2993603,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-87999674.pt"
+                ]
+            },
+            {
+                "steps": 89999861,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-89999861.onnx",
+                "reward": 2.7696116815010705,
+                "creation_time": 1731897794.3371615,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-89999861.pt"
+                ]
+            },
+            {
+                "steps": 91999612,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-91999612.onnx",
+                "reward": null,
+                "creation_time": 1731903736.3564,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-91999612.pt"
+                ]
+            },
+            {
+                "steps": 93999731,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-93999731.onnx",
+                "reward": null,
+                "creation_time": 1731909550.094331,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-93999731.pt"
+                ]
+            },
+            {
+                "steps": 95999344,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-95999344.onnx",
+                "reward": -0.8745554784933726,
+                "creation_time": 1731915489.474948,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-95999344.pt"
+                ]
+            },
+            {
+                "steps": 97999767,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-97999767.onnx",
+                "reward": 1.0555305460637265,
+                "creation_time": 1731921320.7766526,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-97999767.pt"
+                ]
+            },
+            {
+                "steps": 99999728,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-99999728.onnx",
+                "reward": 0.09191689640283585,
+                "creation_time": 1731927252.9099653,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-99999728.pt"
+                ]
+            },
+            {
+                "steps": 100000728,
+                "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-100000728.onnx",
+                "reward": 0.09191689640283585,
+                "creation_time": 1731927253.274944,
+                "auxillary_file_paths": [
+                    "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-100000728.pt"
+                ]
+            }
+        ],
+        "elo": 1380.0273362856242,
+        "final_checkpoint": {
+            "steps": 100000728,
+            "file_path": "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement.onnx",
+            "reward": 0.09191689640283585,
+            "creation_time": 1731927253.274944,
+            "auxillary_file_paths": [
+                "results\\FPS_Controller_Default_241115_AddAttackReward\\Movement\\Movement-100000728.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.1.2+cu118"
+    }
+}
