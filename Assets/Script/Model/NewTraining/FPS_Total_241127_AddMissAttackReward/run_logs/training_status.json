@@ -1,0 +1,381 @@
+{
+    "Total": {
+        "checkpoints": [
+            {
+                "steps": 23999744,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-23999744.onnx",
+                "reward": 1.744629984928502,
+                "creation_time": 1732735039.7977004,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-23999744.pt"
+                ]
+            },
+            {
+                "steps": 25999774,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-25999774.onnx",
+                "reward": -1.4661664962768555,
+                "creation_time": 1732738994.0964005,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-25999774.pt"
+                ]
+            },
+            {
+                "steps": 27999462,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-27999462.onnx",
+                "reward": -0.05606656670570374,
+                "creation_time": 1732742947.974351,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-27999462.pt"
+                ]
+            },
+            {
+                "steps": 29999922,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-29999922.onnx",
+                "reward": 1.7910479243312563,
+                "creation_time": 1732746905.2042484,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-29999922.pt"
+                ]
+            },
+            {
+                "steps": 31999656,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-31999656.onnx",
+                "reward": 1.4111156879136195,
+                "creation_time": 1732750970.2030718,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-31999656.pt"
+                ]
+            },
+            {
+                "steps": 33999145,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-33999145.onnx",
+                "reward": 0.5283812135457993,
+                "creation_time": 1732755057.9228396,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-33999145.pt"
+                ]
+            },
+            {
+                "steps": 35999173,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-35999173.onnx",
+                "reward": 1.876579168007562,
+                "creation_time": 1732759317.8552723,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-35999173.pt"
+                ]
+            },
+            {
+                "steps": 37999741,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-37999741.onnx",
+                "reward": 1.884722472478946,
+                "creation_time": 1732763666.8544173,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-37999741.pt"
+                ]
+            },
+            {
+                "steps": 39999998,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-39999998.onnx",
+                "reward": 0.0937223235766093,
+                "creation_time": 1732768045.2811182,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-39999998.pt"
+                ]
+            },
+            {
+                "steps": 41999661,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-41999661.onnx",
+                "reward": -0.028920204743095066,
+                "creation_time": 1732772583.764558,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-41999661.pt"
+                ]
+            },
+            {
+                "steps": 43999271,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-43999271.onnx",
+                "reward": 1.9218960627913475,
+                "creation_time": 1732777131.686372,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-43999271.pt"
+                ]
+            },
+            {
+                "steps": 45999716,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-45999716.onnx",
+                "reward": 0.9110668579737345,
+                "creation_time": 1732781633.0465844,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-45999716.pt"
+                ]
+            },
+            {
+                "steps": 47999595,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-47999595.onnx",
+                "reward": 2.3240003550753876,
+                "creation_time": 1732786154.4200664,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-47999595.pt"
+                ]
+            },
+            {
+                "steps": 49999855,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-49999855.onnx",
+                "reward": null,
+                "creation_time": 1732790759.7187948,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-49999855.pt"
+                ]
+            },
+            {
+                "steps": 51999061,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-51999061.onnx",
+                "reward": 2.2664346369830044,
+                "creation_time": 1732795375.656294,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-51999061.pt"
+                ]
+            },
+            {
+                "steps": 53999801,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-53999801.onnx",
+                "reward": 0.011913180999133898,
+                "creation_time": 1732799943.7151563,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-53999801.pt"
+                ]
+            },
+            {
+                "steps": 55999726,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-55999726.onnx",
+                "reward": 0.13694943552431854,
+                "creation_time": 1732804480.563783,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-55999726.pt"
+                ]
+            },
+            {
+                "steps": 57999951,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-57999951.onnx",
+                "reward": -0.6514847874641418,
+                "creation_time": 1732809022.4087524,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-57999951.pt"
+                ]
+            },
+            {
+                "steps": 59999611,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-59999611.onnx",
+                "reward": 1.2236252427101135,
+                "creation_time": 1732813602.0520859,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-59999611.pt"
+                ]
+            },
+            {
+                "steps": 61999028,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-61999028.onnx",
+                "reward": 2.1726253791712224,
+                "creation_time": 1732818174.353019,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-61999028.pt"
+                ]
+            },
+            {
+                "steps": 63999495,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-63999495.onnx",
+                "reward": 2.4087336480617525,
+                "creation_time": 1732822722.9643066,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-63999495.pt"
+                ]
+            },
+            {
+                "steps": 65999898,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-65999898.onnx",
+                "reward": 0.9555419012904167,
+                "creation_time": 1732827316.0435758,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-65999898.pt"
+                ]
+            },
+            {
+                "steps": 67999843,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-67999843.onnx",
+                "reward": 0.11439890946660723,
+                "creation_time": 1732831852.1389189,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-67999843.pt"
+                ]
+            },
+            {
+                "steps": 69999902,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-69999902.onnx",
+                "reward": 2.249617990325479,
+                "creation_time": 1732836414.1709917,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-69999902.pt"
+                ]
+            },
+            {
+                "steps": 71999932,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-71999932.onnx",
+                "reward": 0.7844429118558764,
+                "creation_time": 1732840925.0823965,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-71999932.pt"
+                ]
+            },
+            {
+                "steps": 73999987,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-73999987.onnx",
+                "reward": 1.1836517927321522,
+                "creation_time": 1732845483.9729183,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-73999987.pt"
+                ]
+            },
+            {
+                "steps": 75999092,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-75999092.onnx",
+                "reward": -1.6925666809082032,
+                "creation_time": 1732850084.7196503,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-75999092.pt"
+                ]
+            },
+            {
+                "steps": 77999682,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-77999682.onnx",
+                "reward": -0.2977618064199175,
+                "creation_time": 1732854657.5787241,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-77999682.pt"
+                ]
+            },
+            {
+                "steps": 79999405,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-79999405.onnx",
+                "reward": 0.7263334904398236,
+                "creation_time": 1732859236.7575922,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-79999405.pt"
+                ]
+            },
+            {
+                "steps": 81999932,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-81999932.onnx",
+                "reward": -0.19639377160505814,
+                "creation_time": 1732863755.9827137,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-81999932.pt"
+                ]
+            },
+            {
+                "steps": 83999597,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-83999597.onnx",
+                "reward": 0.11901530487970872,
+                "creation_time": 1732868147.673271,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-83999597.pt"
+                ]
+            },
+            {
+                "steps": 85999551,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-85999551.onnx",
+                "reward": 0.040333449840545654,
+                "creation_time": 1732872575.848762,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-85999551.pt"
+                ]
+            },
+            {
+                "steps": 87999543,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-87999543.onnx",
+                "reward": 0.08907908828634965,
+                "creation_time": 1732877041.1472907,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-87999543.pt"
+                ]
+            },
+            {
+                "steps": 89999457,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-89999457.onnx",
+                "reward": -0.7617332749068737,
+                "creation_time": 1732881490.6011815,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-89999457.pt"
+                ]
+            },
+            {
+                "steps": 91999753,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-91999753.onnx",
+                "reward": 2.4323338816563287,
+                "creation_time": 1732885986.1970763,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-91999753.pt"
+                ]
+            },
+            {
+                "steps": 93999108,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-93999108.onnx",
+                "reward": 1.4309926472011616,
+                "creation_time": 1732890472.475188,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-93999108.pt"
+                ]
+            },
+            {
+                "steps": 95999513,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-95999513.onnx",
+                "reward": 2.3792502880096436,
+                "creation_time": 1732894927.71951,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-95999513.pt"
+                ]
+            },
+            {
+                "steps": 97999748,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-97999748.onnx",
+                "reward": -1.278154761663505,
+                "creation_time": 1732899435.4557307,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-97999748.pt"
+                ]
+            },
+            {
+                "steps": 99999687,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-99999687.onnx",
+                "reward": null,
+                "creation_time": 1732903891.3904662,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-99999687.pt"
+                ]
+            },
+            {
+                "steps": 100000687,
+                "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-100000687.onnx",
+                "reward": null,
+                "creation_time": 1732903891.6099122,
+                "auxillary_file_paths": [
+                    "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-100000687.pt"
+                ]
+            }
+        ],
+        "elo": 2080.859245331491,
+        "final_checkpoint": {
+            "steps": 100000687,
+            "file_path": "results\\FPS_Total_241127_AddMissAttackReward\\Total.onnx",
+            "reward": null,
+            "creation_time": 1732903891.6099122,
+            "auxillary_file_paths": [
+                "results\\FPS_Total_241127_AddMissAttackReward\\Total\\Total-100000687.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.1.2+cu118"
+    }
+}
