@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     
     [Header("Test Environment")]
     public bool IsTest;
+    public bool IsEnemy;
     int testIndex = 0;
     [SerializeField]
     public List<BattleAgent> AgentList= new List<BattleAgent>();
@@ -78,7 +79,22 @@ public class GameManager : MonoBehaviour
         _init = false;
         ClearCount = 0;
         _gamePhase = 1;
-        if (IsTest)
+
+        if (IsEnemy)
+        {
+            _gamePhase = 5;
+            GameCount = 0;
+            GameEpisodeCount = 0;
+            Time.timeScale = 4;
+            //Debug.Log(AgentList[testIndex].agent1);
+            _instance.testEnvironmentList[0].ClearEnvironment();
+            _instance.testEnvironmentList[0]._playerSpawner.spawnObject = AgentList[testIndex].agent1;
+            _instance.testEnvironmentList[0]._playerSpawner.spawnObject.GetComponent<GameAgents>().TeamID = 0;
+            // _instance.testEnvironmentList[0]._selfPlaySpawner.spawnObject = AgentList[testIndex].agent2;
+            // _instance.testEnvironmentList[0]._selfPlaySpawner.spawnObject.GetComponent<GameAgents>().TeamID = 1;
+            _instance.testEnvironmentList[0].initialized = false;
+        }
+        else if (IsTest)
         {
             _gamePhase = 8;
             GameCount = 0;
@@ -200,7 +216,7 @@ public class GameManager : MonoBehaviour
 
     public static void AddGamePhase()
     {
-        if(_gamePhase <= 7)
+        if(_gamePhase <= 7 && !_instance.IsTest && !_instance.IsEnemy)
             _gamePhase++;
         Debug.Log("AddGamePhase : " + _gamePhase + ", ClearTime : " + _playTime);
         _phaseClearTimeList.Add(_playTime);
@@ -213,7 +229,7 @@ public class GameManager : MonoBehaviour
         ClearCount++;
       
         Debug.Log("Phase : " + _gamePhase + ", " + " / " + RequireClear);
-        if (RequireClear <= ClearCount && _gamePhase != 8)
+        if (RequireClear <= ClearCount && _gamePhase != 8 && !_instance.IsEnemy)
         {
             if (_gamePhase >= 4)
             {
@@ -256,6 +272,7 @@ public class GameManager : MonoBehaviour
             agent1._saveData.HitCount.ToString(),
             agent1._saveData.DeathCount.ToString()
             }, agent1.name, agent2.name);
+
 
             _instance.WriteToCSV(new string[] {
             _instance.GameEpisodeCount.ToString(),
@@ -337,7 +354,13 @@ public class GameManager : MonoBehaviour
     {
         // ���ϸ��� "{agent1�̸�}_vs_{agent2�̸�}.csv"�� ����
         string filename = $"결과/{agent1Name}1_vs_{agent2Name}2.csv";
+        if (IsTest)
+        {
+            filename = $"결과/{agent1Name}1_vs_Enemy.csv";
+        }
+
         string filePath = Path.Combine(Application.dataPath, filename);
+
 
         // ���Ͽ� �����͸� ����
         using (StreamWriter sw = new StreamWriter(filePath, true))

@@ -38,7 +38,7 @@ public class GameEnvironment : MonoBehaviour
         _playerSpawner.Clear();
         _enemySpawner.Clear();
         _obstacleSpawner.Clear();
-        // ?�동 ???��??�간만큼 ?��?
+        // ?�동 ???��??�간만큼 ?��?
         yield return new WaitForSeconds(1f);
         StartEpisode();
     }
@@ -58,43 +58,43 @@ public class GameEnvironment : MonoBehaviour
         switch (GameManager.GamePhase)
         {
             case 1:
-                // Player - ?�터
-                // Enemy - ?�이?�트 ?�면 ?�성
+                // Player - ?�터
+                // Enemy - ?�이?�트 ?�면 ?�성
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 8).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerDirectSpawn(_gameAgents.transform.localPosition, _gameAgents.transform.forward).GetComponent<NonPlayerCharacter>();
                 break;
             case 2:
-                // Player - ?�터
-                // Enemy - ?�터?�서 ?�짝 벗어?�게
+                // Player - ?�터
+                // Enemy - ?�터?�서 ?�짝 벗어?�게
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition, 10, 0.7f * Mathf.PI, 0.3f*Mathf.PI).GetComponent<NonPlayerCharacter>();
                 break;
             case 3:
-                // Player - ?�터
-                // Enemy - ?�터 주위???�덤 ?�성
+                // Player - ?�터
+                // Enemy - ?�터 주위???�덤 ?�성
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
                 break;
             case 4:
-                // Player - ?�터
-                // Enemy - ?�터 주위???�덤 ?�성 + ?�직임
+                // Player - ?�터
+                // Enemy - ?�터 주위???�덤 ?�성 + ?�직임
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
                 _enemySpawner.OnEnemyRandomMove();
                 break;
             case 5:
-                // Player - ?�터
-                // Enemy - ?�터 주위???�덤 ?�성 + ?�직임
-                // Obstacle - 4�??�성
+                // Player - ?�터
+                // Enemy - ?�터 주위???�덤 ?�성 + ?�직임
+                // Obstacle - 4�??�성
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
                 Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
                 _enemySpawner.OnEnemyRandomMove();
                 _obstacleSpawner.AllPointSpawn();
                 break;
             case 6:
-                // Player - 8�??�인???�덤 ?�성
-                // Enemy - Player 반�??? ?�직임
-                // Obstacle - 4�??�성
+                // Player - 8�??�인???�덤 ?�성
+                // Enemy - Player 반�??? ?�직임
+                // Obstacle - 4�??�성
                 randomIndex = Random.Range(0, 8);
                 //Debug.Log("randomIndex : " + randomIndex);
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
@@ -105,9 +105,9 @@ public class GameEnvironment : MonoBehaviour
                 _obstacleSpawner.AllPointSpawn();
                 break;
             case 7:
-                // Player - 8�??�인???�덤 ?�성
-                // Enemy - Player 반�???+ ?�직임
-                // Obstacle - 4�??�성
+                // Player - 8�??�인???�덤 ?�성
+                // Enemy - Player 반�???+ ?�직임
+                // Obstacle - 4�??�성
                 randomIndex = Random.Range(0, 8);
                 _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
                 npcIndex = (randomIndex + 4) % 8;
@@ -138,7 +138,7 @@ public class GameEnvironment : MonoBehaviour
         }
 
         _gameAgents.Init(this);
-        if (_selfPlayAgents)
+        if (_selfPlayAgents && !GameManager.Instance.IsEnemy)
         {
             _selfPlayAgents.Init(this);
             var _selfAgentControllerList = _selfPlayAgents.GetComponentsInChildren<Controller>();
