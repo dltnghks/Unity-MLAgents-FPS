@@ -86,9 +86,21 @@ public class GameEnvironment : MonoBehaviour
                 // Player - ?�터
                 // Enemy - ?�터 주위???�덤 ?�성 + ?�직임
                 // Obstacle - 4�??�성
-                _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
-                Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
-                _enemySpawner.OnEnemyRandomMove();
+                
+                // 동일한 적과 테스트할 때 세팅
+                if (GameManager.Instance.IsEnemy)
+                {
+                    _gameAgents = _playerSpawner.OnePointRandomSpawn(0, 1).GetComponent<GameAgents>();
+                    Enemy = _enemySpawner.PlayerCenterRandomSpawn(new Vector3(0,0,0), 0, 0, 0).GetComponent<NonPlayerCharacter>();
+                    _enemySpawner.OnEnemyMovePointSetting();
+                }
+                else
+                {
+                    _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
+                    Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
+                    _enemySpawner.OnEnemyRandomMove();
+                }
+                
                 _obstacleSpawner.AllPointSpawn();
                 break;
             case 6:

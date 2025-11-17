@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class EnemySpawner : Spawner
 {
+    [Header("ê³ ì • ì´ë™ í¬ì¸íŠ¸")]
+    [SerializeField] private Transform p1;
+    [SerializeField] private Transform p2;
 
     public override void Clear()
     {
@@ -32,6 +35,15 @@ public class EnemySpawner : Spawner
         }
     }
 
+    public void OnEnemyMovePointSetting()
+    {
+        foreach(var enemy in spawnObjectList)
+        {
+            enemy.GetComponent<NonPlayerCharacter>().SetMovePoint(p1, p2);
+            OnEnemyRandomMove();
+        }
+    }
+
     public GameObject PlayerDirectSpawn(Vector3 playerPosition, Vector3 playerDirectionVector, float range = 10f)
     {
         var spawnedObject = InstantiateObject();
@@ -44,10 +56,10 @@ public class EnemySpawner : Spawner
     public GameObject PlayerCenterRandomSpawn(Vector3 playerPosition, float range = 10f, float start = 0.0f, float end = 2.0f * 2f * Mathf.PI)
     {
         var spawnedObject = InstantiateObject();
-        // 0¿¡¼­ 2¥ğ »çÀÌÀÇ ·£´ı °¢µµ¸¦ »ı¼ºÇÕ´Ï´Ù.
+        // 0ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
         float angle = Random.Range(start, end);
 
-        // °¢µµ¿¡ ±â¹İÇÑ ·£´ı ¹æÇâ º¤ÅÍ¸¦ »ı¼ºÇÕ´Ï´Ù.
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
         Vector3 randomDirection = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));
         var position = playerPosition + randomDirection*range;
         SetEnemyPosition(spawnedObject, position);

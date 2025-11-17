@@ -6,16 +6,20 @@ using UnityEngine.AI;
 
 public class NonPlayerCharacter : Character
 {
-    public float moveRadius = 10f;    // NPC가 ?�동??범위
-    public float moveSpeed = 3.5f;    // ?�동 ?�도
-    public float waitTime = 2f;       // ?�음 ?�동 ???��??�간
+    public float moveRadius = 10f;    // NPC가 ?�동??범위
+    public float moveSpeed = 3.5f;    // ?�동 ?�도
+    public float waitTime = 2f;       // ?�음 ?�동 ???��??�간
 
-    private Vector3 targetPosition;   // 목표 ?�치
-    private NavMeshAgent navMeshAgent;       // NavMeshAgent 컴포?�트
+    private Vector3 targetPosition;   // 목표 ?�치
+    private NavMeshAgent navMeshAgent;       // NavMeshAgent 컴포?�트
+
+    public bool IsRandomMove = true;
+    private Transform[] movePoint = new Transform[2];
 
     public override bool Init()
     {
         if (!base.Init()) return false;
+        IsRandomMove = true;
         navMeshAgent = GetComponent<NavMeshAgent>();
         //Debug.Log("NPC Init");
         return true;
@@ -35,45 +39,71 @@ public class NonPlayerCharacter : Character
         StartCoroutine(MoveToRandomPosition());
     }
 
+    public void SetMovePoint(Transform p1, Transform p2)
+    {
+        IsRandomMove = false;
+        movePoint[0] = p1;
+        movePoint[1] = p2;
+    }
+
     IEnumerator MoveToRandomPosition()
     {
+        bool targetPoint = true;
         while (true)
         {
-            // ?�덤???�치�??�성
-            targetPosition = GetRandomPosition();
+            // ?�덤???�치�??�성
+            if(IsRandomMove)
+            {
+                targetPosition = GetRandomPosition();
+            }
+            else
+            {
+                targetPosition = GetMovePosition(targetPoint ? 1 : 0);
+                targetPoint = !targetPoint;
+            }
 
-            // NPC�??�당 ?�치�??�동
+            // NPC�??�당 ?�치�??�동
             navMeshAgent.SetDestination(targetPosition);
 
-            // 경로가 ?�효?��? ?�인
+            // 경로가 ?�효?��? ?�인
             yield return new WaitUntil(() => !navMeshAgent.pathPending);
 
             if (navMeshAgent.pathStatus == NavMeshPathStatus.PathInvalid || !navMeshAgent.hasPath)
             {
-                //Debug.LogWarning("경로가 ?�효?��? ?�음. ?�른 ?�치�??�도?�니??");
-                // 경로가 ?�효?��? ?�다�? ?�시 ?�로???�치�??�도
+                //Debug.LogWarning("경로가 ?�효?��? ?�음. ?�른 ?�치�??�도?�니??");
+                // 경로가 ?�효?��? ?�다�? ?�시 ?�로???�치�??�도
                 continue;
             }
 
-            // NPC가 목표 ?�치???�착???�까지 ?��?
+            // NPC가 목표 ?�치???�착???�까지 ?��?
             while (!navMeshAgent.pathPending && navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
             {
                 yield return null;
             }
 
-            // ?�동 ???��??�간만큼 ?��?
+            // ?�동 ???��??�간만큼 ?��?
             yield return new WaitForSeconds(waitTime);
         }
     }
 
     Vector3 GetRandomPosition()
     {
-        // NPC???�재 ?�치�?기�??�로 moveRadius 범위 ?�의 ?�덤 ?�치�?찾음
+        // NPC???�재 ?�치�?기�??�로 moveRadius 범위 ?�의 ?�덤 ?�치�?찾음
         Vector3 randomDirection = Random.insideUnitSphere * moveRadius;
         randomDirection += transform.position;
 
         NavMeshHit navHit;
         NavMesh.SamplePosition(randomDirection, out navHit, moveRadius, -1);
+
+        return navHit.position;
+    }
+
+    private Vector3 GetMovePosition(int targetPoint)
+    { 
+        Vector3 pos = movePoint[targetPoint].position;
+
+        NavMeshHit navHit;
+        NavMesh.SamplePosition(pos, out navHit, moveRadius, -1);
 
         return navHit.position;
     }
