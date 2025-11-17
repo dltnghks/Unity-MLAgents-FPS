@@ -17,7 +17,7 @@ public struct BattleAgent
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance = null;
-    private List<float[]> allGameData = new List<float[]>();  // ¿¡ÇÇ¼Òµå µ¥ÀÌÅÍ¸¦ ÀúÀåÇÒ ¸®½ºÆ®
+    private List<float[]> allGameData = new List<float[]>();  // ï¿½ï¿½ï¿½Ç¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 
     private static int _gamePhase = 1;
 
@@ -65,9 +65,9 @@ public class GameManager : MonoBehaviour
     private string fileName;
     private void Start()
     {
-        // CSV ÆÄÀÏ °æ·Î ¼³Á¤
+        // CSV ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         filePath = Path.Combine(Application.dataPath, "game_log.csv");
-        // ÆÄÀÏ Çì´õ ÀÛ¼º
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½
         //WriteToCSV(new string[] { "Episode", "Agent Name", "Kill Count", "Attack Count", "Miss Count", "Hit Count", "Death Count" });
     }
 
@@ -109,14 +109,14 @@ public class GameManager : MonoBehaviour
             {
                 Vector3 newPosition = gameEnvironmentList[i].transform.position;
                 newPosition.y = 50.0f;
-                // ì¹´ë©”???„ì¹˜?????„ì¹˜ ? ë‹¹
+                // ì¹´ë©”???ï¿½ì¹˜?????ï¿½ì¹˜ ?ï¿½ë‹¹
                 MyCamera.transform.position = newPosition;
             }
         }
         if (Input.GetKeyDown(KeyCode.F12))
         {
             Vector3 newPosition = new Vector3(50, 150, 50);
-            // ì¹´ë©”???„ì¹˜?????„ì¹˜ ? ë‹¹
+            // ì¹´ë©”???ï¿½ì¹˜?????ï¿½ì¹˜ ?ï¿½ë‹¹
             MyCamera.transform.position = newPosition;
         }
 
@@ -231,7 +231,7 @@ public class GameManager : MonoBehaviour
             var agent1 = _instance.testEnvironmentList[0]._gameAgents;
             var agent2 = _instance.testEnvironmentList[0]._selfPlayAgents;
             
-            // ¿¡ÇÇ¼Òµå¸¶´Ù µ¥ÀÌÅÍ¸¦ ¼öÁýÇÏ¿© ¸®½ºÆ®¿¡ Ãß°¡
+            // ï¿½ï¿½ï¿½Ç¼Òµå¸¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß°ï¿½
             _instance.allGameData.Add(new float[] {
             agent1._saveData.KillCount,
             agent1._saveData.AttackCount,
@@ -245,8 +245,8 @@ public class GameManager : MonoBehaviour
             agent2._saveData.DeathCount
             });
 
-            // ¿¡ÇÇ¼Òµå µ¥ÀÌÅÍ¸¦ ±â·Ï
-            // (¿¡ÇÇ¼Òµå ¹øÈ£, ¿¡ÀÌÀüÆ® ÀÌ¸§, ½Â¸®, °ø°Ý, ¹Ì½º, ÇÇ°Ý, ÆÐ¹è)
+            // ï¿½ï¿½ï¿½Ç¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½
+            // (ï¿½ï¿½ï¿½Ç¼Òµï¿½ ï¿½ï¿½È£, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ì¸ï¿½, ï¿½Â¸ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½Ì½ï¿½, ï¿½Ç°ï¿½, ï¿½Ð¹ï¿½)
             _instance.WriteToCSV(new string[] {
             _instance.GameEpisodeCount.ToString(),
             agent1.name,
@@ -268,10 +268,10 @@ public class GameManager : MonoBehaviour
             }, agent1.name, agent2.name);
 
 
-            // ÀüÃ¼ Æò±Õ ±â·Ï (°ÔÀÓ ¿¡ÇÇ¼Òµå°¡ Á¾·áµÇ¸é Æò±Õ ±â·Ï)
+            // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¼Òµå°¡ ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
             if (_instance.GameEpisodeCount >= _instance.EndGameEpisodeCount)
             {
-                float[] totalSums = new float[10]; // agent1°ú agent2 °¢°¢ÀÇ µ¥ÀÌÅÍ¸¦ 5°³¾¿ ±â·ÏÇÏ±â ¶§¹®¿¡ ÃÑ 10°³ÀÇ Ç×¸ñ
+                float[] totalSums = new float[10]; // agent1ï¿½ï¿½ agent2 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ 5ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 10ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½
                 foreach (var data in _instance.allGameData)
                 {
                     for (int i = 0; i < data.Length; i++)
@@ -280,14 +280,14 @@ public class GameManager : MonoBehaviour
                     }
                 }
 
-                // Æò±Õ °ª °è»ê
+                // ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
                 float[] averages = new float[10];
                 for (int i = 0; i < totalSums.Length; i++)
                 {
                     averages[i] = totalSums[i] / _instance.allGameData.Count;
                 }
 
-                // Æò±Õ ±â·Ï
+                // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
                 _instance.WriteToCSV(new string[] {
                 "Average",
                 agent1.name,
@@ -324,7 +324,7 @@ public class GameManager : MonoBehaviour
             }
 
 
-            // ¿¡ÀÌÀüÆ® µ¥ÀÌÅÍ ÃÊ±âÈ­
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
             agent1._saveData.ResetCount();
             agent2._saveData.ResetCount();
 
@@ -335,11 +335,11 @@ public class GameManager : MonoBehaviour
 
     private void WriteToCSV(string[] data, string agent1Name, string agent2Name)
     {
-        // ÆÄÀÏ¸íÀ» "{agent1ÀÌ¸§}_vs_{agent2ÀÌ¸§}.csv"·Î ¼³Á¤
-        string filename = $"{agent1Name}1_vs_{agent2Name}2.csv";
+        // ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ "{agent1ï¿½Ì¸ï¿½}_vs_{agent2ï¿½Ì¸ï¿½}.csv"ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        string filename = $"ê²°ê³¼/{agent1Name}1_vs_{agent2Name}2.csv";
         string filePath = Path.Combine(Application.dataPath, filename);
 
-        // ÆÄÀÏ¿¡ µ¥ÀÌÅÍ¸¦ ¾²±â
+        // ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½
         using (StreamWriter sw = new StreamWriter(filePath, true))
         {
             string line = string.Join(",", data);
