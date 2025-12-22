@@ -1,3 +1,4 @@
+열1,열2,열3,열4,열5,열6,열7
 1,TestControllerAgent_MissReward(Clone),1,4,31,2,0
 1,TestTotalAgent_MissReward(Clone),0,2,32,4,1
 2,TestControllerAgent_MissReward(Clone),1,4,27,0,0
@@ -1998,5 +1999,5 @@
 999,TestTotalAgent_MissReward(Clone),0,0,11,4,1
 1000,TestControllerAgent_MissReward(Clone),1,4,39,0,0
 1000,TestTotalAgent_MissReward(Clone),0,0,41,4,1
-Average,TestControllerAgent_MissReward(Clone),0.808048,3.435641,28.18545,1.389653,0.1482129
+Average,TestControllerAgent_MissReward(Clone),38,896,38491,3705,878
 Average,TestTotalAgent_MissReward(Clone),0.1482129,1.389653,30.9895,3.435641,0.808048

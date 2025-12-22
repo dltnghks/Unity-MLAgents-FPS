@@ -74,6 +74,11 @@ public class GameAgents : Player
 
     public void MovementAction(int[] act)
     {
+        if (!GameManager.Instance.IsEpisodeInit)
+        {
+            return;
+        }
+
         if (!_initialized)
         {
             return;
@@ -171,7 +176,7 @@ public class GameAgents : Player
         if (Vector3.Angle(transform.forward, targetDir) < 15.0f
             && Physics.Raycast(transform.position, targetDir, out hit, targetDistance * AttackRange))
         {
-            // Raycast°¡ Å¸°ÙÀ» ¸ÂÃè´Ù¸é Àå¾Ö¹°ÀÌ ¾ø´Â °ÍÀ¸·Î °£ÁÖ
+            // Raycastï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (hit.collider.gameObject == target)
             {
                 AddReward(ERewardType.SeeingEnemy);

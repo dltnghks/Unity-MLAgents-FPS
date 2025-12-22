@@ -552,6 +552,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5061432206791315978}
     m_Modifications:
+    - target: {fileID: 947252917157464048, guid: 16f9eb71cfad95b46bbe819384c224a7, type: 3}
+      propertyPath: m_RaysPerDirection
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4867427006318490629, guid: 16f9eb71cfad95b46bbe819384c224a7, type: 3}
       propertyPath: TeamId
       value: 2

@@ -44,6 +44,15 @@ public class EnemySpawner : Spawner
         }
     }
 
+    public void OnEnemyMoveTargetSetting(Transform target)
+    {
+        foreach(var enemy in spawnObjectList)
+        {
+            enemy.GetComponent<NonPlayerCharacter>().SetMoveTarget(target);
+            OnEnemyRandomMove();
+        }
+    }
+
     public GameObject PlayerDirectSpawn(Vector3 playerPosition, Vector3 playerDirectionVector, float range = 10f)
     {
         var spawnedObject = InstantiateObject();

@@ -13,13 +13,17 @@ public class NonPlayerCharacter : Character
     private Vector3 targetPosition;   // 목표 ?�치
     private NavMeshAgent navMeshAgent;       // NavMeshAgent 컴포?�트
 
-    public bool IsRandomMove = true;
+    public bool IsPointMove = false;
+    public bool IsTargetMove = false;
     private Transform[] movePoint = new Transform[2];
+    private Transform target;
 
     public override bool Init()
     {
         if (!base.Init()) return false;
-        IsRandomMove = true;
+        
+        IsPointMove = false;
+        IsTargetMove = false;
         navMeshAgent = GetComponent<NavMeshAgent>();
         //Debug.Log("NPC Init");
         return true;
@@ -41,9 +45,19 @@ public class NonPlayerCharacter : Character
 
     public void SetMovePoint(Transform p1, Transform p2)
     {
-        IsRandomMove = false;
+        IsPointMove = true;
+        IsTargetMove = false;
+
         movePoint[0] = p1;
         movePoint[1] = p2;
+    }
+
+    public void SetMoveTarget(Transform _target)
+    {
+        IsPointMove = false;
+        IsTargetMove = true;
+
+        target = _target;
     }
 
     IEnumerator MoveToRandomPosition()
@@ -51,15 +65,22 @@ public class NonPlayerCharacter : Character
         bool targetPoint = true;
         while (true)
         {
+            if(!GameManager.Instance.IsEpisodeInit)
+                yield return null;
+            
             // ?�덤???�치�??�성
-            if(IsRandomMove)
-            {
-                targetPosition = GetRandomPosition();
-            }
-            else
+            if(IsPointMove)
             {
                 targetPosition = GetMovePosition(targetPoint ? 1 : 0);
                 targetPoint = !targetPoint;
+            }
+            else if (IsTargetMove)
+            {
+                targetPosition = target.position;
+            }
+            else
+            {
+                targetPosition = GetRandomPosition();
             }
 
             // NPC�??�당 ?�치�??�동

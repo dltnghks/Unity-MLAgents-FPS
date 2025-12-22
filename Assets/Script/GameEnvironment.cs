@@ -48,6 +48,7 @@ public class GameEnvironment : MonoBehaviour
 
     public void StartEpisode()
     {
+        //Random.InitState(GameManager.Instance.GameCount);
         _playerSpawner.Clear();
         _enemySpawner.Clear();
         _obstacleSpawner.Clear();
@@ -90,9 +91,18 @@ public class GameEnvironment : MonoBehaviour
                 // 동일한 적과 테스트할 때 세팅
                 if (GameManager.Instance.IsEnemy)
                 {
+                    
                     _gameAgents = _playerSpawner.OnePointRandomSpawn(0, 1).GetComponent<GameAgents>();
-                    Enemy = _enemySpawner.PlayerCenterRandomSpawn(new Vector3(0,0,0), 0, 0, 0).GetComponent<NonPlayerCharacter>();
+                    Enemy = _enemySpawner.PlayerCenterRandomSpawn(Vector3.zero, 0, 0, 0).GetComponent<NonPlayerCharacter>();
+                    
+                    // 고정 이동
                     _enemySpawner.OnEnemyMovePointSetting();
+
+                    // 타겟 이동
+                    //_enemySpawner.OnEnemyMoveTargetSetting(_gameAgents.transform);
+                    
+                    // 랜덤 이동
+                    //_enemySpawner.OnEnemyMovePointSetting();
                 }
                 else
                 {
@@ -181,7 +191,7 @@ public class GameEnvironment : MonoBehaviour
     private void ResetEnvironment()
     {
         StopAllCoroutines();
-        _environmentPlayTime = 0;
+        EnvironmentPlayTime = 0;
         _playerSpawner.Clear();
         _enemySpawner.Clear();
         _obstacleSpawner.Clear();
@@ -196,7 +206,7 @@ public class GameEnvironment : MonoBehaviour
         _selfPlaySpawner.SpawnObjectListClear();
      }
 
-    public float _environmentPlayTime = 0.0f;
+    public float EnvironmentPlayTime = 0.0f;
     public float EvironmentMaxTime = 20.0f;
     void Update()
     {
@@ -208,8 +218,14 @@ public class GameEnvironment : MonoBehaviour
             }
             else
             {
-                _environmentPlayTime += Time.deltaTime;
-                if (_environmentPlayTime >= EvironmentMaxTime)
+
+                if (!GameManager.Instance.IsEpisodeInit)
+                {
+                    return;
+                }
+
+                EnvironmentPlayTime += Time.deltaTime;
+                if (EnvironmentPlayTime >= EvironmentMaxTime)
                 {
                     Debug.Log("Time Out");
                     foreach (var controller in ControllerList)

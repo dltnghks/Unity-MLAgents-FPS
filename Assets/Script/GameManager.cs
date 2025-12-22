@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     public int GameEpisodeCount;
     public int EndGameEpisodeCount;
 
+    public bool IsEpisodeInit;
+
     public static GameManager Instance
     {
         get { return _instance; }
@@ -85,7 +87,7 @@ public class GameManager : MonoBehaviour
             _gamePhase = 5;
             GameCount = 0;
             GameEpisodeCount = 0;
-            Time.timeScale = 4;
+            Time.timeScale = 7;
             //Debug.Log(AgentList[testIndex].agent1);
             _instance.testEnvironmentList[0].ClearEnvironment();
             _instance.testEnvironmentList[0]._playerSpawner.spawnObject = AgentList[testIndex].agent1;
@@ -99,7 +101,7 @@ public class GameManager : MonoBehaviour
             _gamePhase = 8;
             GameCount = 0;
             GameEpisodeCount = 0;
-            Time.timeScale = 4;
+            Time.timeScale = 7;
             //Debug.Log(AgentList[testIndex].agent1);
             _instance.testEnvironmentList[0].ClearEnvironment();
             _instance.testEnvironmentList[0]._playerSpawner.spawnObject = AgentList[testIndex].agent1;
@@ -113,6 +115,7 @@ public class GameManager : MonoBehaviour
         _phaseClearTimeList.Clear();
 
         _init = true;
+        _instance.IsEpisodeInit = true;
     }
 
     private void Update()
@@ -225,6 +228,8 @@ public class GameManager : MonoBehaviour
 
     public static void GameClear(GameEnvironment environment)
     {
+        _instance.IsEpisodeInit = false;
+        float episodePlayTime = environment.EnvironmentPlayTime;
         environment.EndEpisode();
         ClearCount++;
       
@@ -258,7 +263,8 @@ public class GameManager : MonoBehaviour
             agent2._saveData.AttackCount,
             agent2._saveData.MissCount,
             agent2._saveData.HitCount,
-            agent2._saveData.DeathCount
+            agent2._saveData.DeathCount,
+            episodePlayTime,
             });
 
             // ���Ǽҵ� �����͸� ���
@@ -270,25 +276,27 @@ public class GameManager : MonoBehaviour
             agent1._saveData.AttackCount.ToString(),
             agent1._saveData.MissCount.ToString(),
             agent1._saveData.HitCount.ToString(),
-            agent1._saveData.DeathCount.ToString()
+            agent1._saveData.DeathCount.ToString(),
+            episodePlayTime.ToString()
             }, agent1.name, agent2.name);
 
-
-            _instance.WriteToCSV(new string[] {
-            _instance.GameEpisodeCount.ToString(),
-            agent2.name,
-            agent2._saveData.KillCount.ToString(),
-            agent2._saveData.AttackCount.ToString(),
-            agent2._saveData.MissCount.ToString(),
-            agent2._saveData.HitCount.ToString(),
-            agent2._saveData.DeathCount.ToString()
-            }, agent1.name, agent2.name);
-
+            if(!_instance.IsEnemy){
+                _instance.WriteToCSV(new string[] {
+                _instance.GameEpisodeCount.ToString(),
+                agent2.name,
+                agent2._saveData.KillCount.ToString(),
+                agent2._saveData.AttackCount.ToString(),
+                agent2._saveData.MissCount.ToString(),
+                agent2._saveData.HitCount.ToString(),
+                agent2._saveData.DeathCount.ToString(),
+                _playTime.ToString()
+                }, agent1.name, agent2.name);
+            }
 
             // ��ü ��� ��� (���� ���Ǽҵ尡 ����Ǹ� ��� ���)
             if (_instance.GameEpisodeCount >= _instance.EndGameEpisodeCount)
             {
-                float[] totalSums = new float[10]; // agent1�� agent2 ������ �����͸� 5���� ����ϱ� ������ �� 10���� �׸�
+                float[] totalSums = new float[11]; // agent1�� agent2 ������ �����͸� 5���� ����ϱ� ������ �� 10���� �׸�
                 foreach (var data in _instance.allGameData)
                 {
                     for (int i = 0; i < data.Length; i++)
@@ -298,7 +306,7 @@ public class GameManager : MonoBehaviour
                 }
 
                 // ��� �� ���
-                float[] averages = new float[10];
+                float[] averages = new float[11];
                 for (int i = 0; i < totalSums.Length; i++)
                 {
                     averages[i] = totalSums[i] / _instance.allGameData.Count;
@@ -315,16 +323,17 @@ public class GameManager : MonoBehaviour
                 averages[4].ToString()  // DeathCount
             }, agent1.name, agent2.name);
 
+            if(!_instance.IsEnemy){
                 _instance.WriteToCSV(new string[] {
-                "Average",
-                agent2.name,
-                averages[5].ToString(), // KillCount
-                averages[6].ToString(), // AttackCount
-                averages[7].ToString(), // MissCount
-                averages[8].ToString(), // HitCount
-                averages[9].ToString()  // DeathCount
-            }, agent1.name, agent2.name);
-
+                    "Average",
+                    agent2.name,
+                    averages[5].ToString(), // KillCount
+                    averages[6].ToString(), // AttackCount
+                    averages[7].ToString(), // MissCount
+                    averages[8].ToString(), // HitCount
+                    averages[9].ToString()  // DeathCount
+                }, agent1.name, agent2.name);
+            }
 #if UNITY_EDITOR
                 _instance.testIndex++;
                 if (_instance.testIndex >= _instance.AgentList.Count)
@@ -348,13 +357,15 @@ public class GameManager : MonoBehaviour
             _instance.GameEpisodeCount++;
             ClearCount = 0;
         }
+
+        _instance.IsEpisodeInit = true;
     }
 
     private void WriteToCSV(string[] data, string agent1Name, string agent2Name)
     {
         // ���ϸ��� "{agent1�̸�}_vs_{agent2�̸�}.csv"�� ����
         string filename = $"결과/{agent1Name}1_vs_{agent2Name}2.csv";
-        if (IsTest)
+        if (IsEnemy)
         {
             filename = $"결과/{agent1Name}1_vs_Enemy.csv";
         }
