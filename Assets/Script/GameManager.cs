@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Diagnostics;
 using System.IO;
+using Unity.MLAgents;
 
 [System.Serializable]
 public struct BattleAgent
@@ -25,7 +26,6 @@ public class GameManager : MonoBehaviour
     private static List<float> _phaseClearTimeList = new List<float>();
 
     public static int ClearCount = 0;
-    public static int RequireClear = 1;
 
     public Camera MyCamera;
     public List<GameEnvironment> gameEnvironmentList = new List<GameEnvironment>();
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     {
         _init = false;
         ClearCount = 0;
-        _gamePhase = 8;
+        _gamePhase = 1;
 
         if (IsEnemy)
         {
@@ -231,17 +231,15 @@ public class GameManager : MonoBehaviour
         _instance.IsEpisodeInit = false;
         float episodePlayTime = environment.EnvironmentPlayTime;
         environment.EndEpisode();
-        ClearCount++;
-      
-        Debug.Log("Phase : " + _gamePhase + ", " + " / " + RequireClear);
-        if (RequireClear <= ClearCount && _gamePhase != 8 && !_instance.IsEnemy)
+        
+        float mapLevelFloat = Academy.Instance.EnvironmentParameters.GetWithDefault("map_level", 0.0f);
+        int mapLevel = Mathf.RoundToInt(mapLevelFloat) + 1;
+
+        // 레벨이 변경되었을 때만 맵을 교체 (성능 최적화)
+        if (_gamePhase != mapLevel && _gamePhase != 8 && !_instance.IsEnemy)
         {
-            if (_gamePhase >= 4)
-            {
-                RequireClear = 2;
-            }
+            _gamePhase = mapLevel;
             ClearCount = 0;
-            AddGamePhase();
             RestEnvrionment();
         }
 
