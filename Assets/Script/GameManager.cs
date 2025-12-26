@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     {
         _init = false;
         ClearCount = 0;
-        _gamePhase = 1;
+        _gamePhase = 8;
 
         if (IsEnemy)
         {
