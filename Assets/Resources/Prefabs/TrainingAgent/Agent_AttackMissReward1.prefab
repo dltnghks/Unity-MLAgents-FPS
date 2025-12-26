@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 5160145975814829563}
   - component: {fileID: 7373816576511341814}
   m_Layer: 0
-  m_Name: Agent
+  m_Name: Agent_AttackMissReward1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ Transform:
   - {fileID: 1732562219191378448}
   - {fileID: 8877414720930595732}
   - {fileID: 6543516247544550244}
-  - {fileID: 8137897400825928713}
+  - {fileID: 4912892961707665941}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2038809017627091127
@@ -173,7 +173,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 04be259c590de46f69db4cbd1da877d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c679a60b65e45240b476bec3bf8dcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeamID: 0
+  TeamID: 1
   maxHP: 100
   hp: 100
   _controllerList: []
@@ -270,7 +270,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   AttackDamage: 25
-  AttackRange: 60
+  AttackRange: 40
   ShootCoolDown: 0.5
   ShootTime: 0
   ShootAmount: 150
@@ -469,7 +469,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &8611948878532497064
+--- !u!1001 &4846521288813394100
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -477,6 +477,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5061432206791315978}
     m_Modifications:
+    - target: {fileID: 526989278883435667, guid: e6af0a5b49e742f4fabf555f1120cca6, type: 3}
+      propertyPath: AttackMissRewardValue
+      value: -0.006666667
+      objectReference: {fileID: 0}
     - target: {fileID: 534898599969755809, guid: e6af0a5b49e742f4fabf555f1120cca6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -517,6 +521,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2524623920990009922, guid: e6af0a5b49e742f4fabf555f1120cca6, type: 3}
+      propertyPath: TeamId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5639967881274360289, guid: e6af0a5b49e742f4fabf555f1120cca6, type: 3}
       propertyPath: m_Name
       value: TotalController
@@ -526,8 +534,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6af0a5b49e742f4fabf555f1120cca6, type: 3}
---- !u!4 &8137897400825928713 stripped
+--- !u!4 &4912892961707665941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 534898599969755809, guid: e6af0a5b49e742f4fabf555f1120cca6, type: 3}
-  m_PrefabInstance: {fileID: 8611948878532497064}
+  m_PrefabInstance: {fileID: 4846521288813394100}
   m_PrefabAsset: {fileID: 0}

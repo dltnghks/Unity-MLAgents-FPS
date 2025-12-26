@@ -227,7 +227,7 @@ public class GameEnvironment : MonoBehaviour
                 EnvironmentPlayTime += Time.deltaTime;
                 if (EnvironmentPlayTime >= EvironmentMaxTime)
                 {
-                    Debug.Log("Time Out");
+                    //Debug.Log("Time Out");
                     foreach (var controller in ControllerList)
                     {
                         //Debug.Log(controller.GetCumulativeReward());
