@@ -11,10 +11,10 @@ public class MovementController : Controller
     public Vector3 agentPos;
     public override void CollectObservations(VectorSensor sensor)
     {
-        // ¿¡ÀÌÀüÆ®ÀÇ ÇöÀç À§Ä¡¸¦ »ó´ë ÁÂÇ¥·Î °è»ê
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½
         agentPos = myAgent.transform.position - environment.transform.position;
 
-        // »ó´ë ÁÂÇ¥¸¦ Á¤±ÔÈ­ÇÏ°í °üÃø µ¥ÀÌÅÍ·Î Ãß°¡ 3, map scale·Î ³ª´²ÁÜ
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ß°ï¿½ 3, map scaleï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         sensor.AddObservation(agentPos / environment.MapSize);
 
         // Agent rotation 1
@@ -27,9 +27,8 @@ public class MovementController : Controller
         sensor.AddObservation(localVelocity.z);
 
         sensor.AddObservation(myAgent.targetDir);
-        // °ø°Ý »ç°Å¸®·Î ÇØº¸±â
-        //sensor.AddObservation(targetDistance / AttackRange);
-        sensor.AddObservation(myAgent.targetDistance / environment.MapSize);
+        sensor.AddObservation(myAgent.targetDistance);
+        //sensor.AddObservation(myAgent.targetDistance / environment.MapSize);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -68,7 +67,7 @@ public class MovementController : Controller
             discreteActionsOut[2] = 2;
         }
 
-        // Á¡ÇÁ
+        // ï¿½ï¿½ï¿½ï¿½
         //discreteActionsOut[2] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
 }

@@ -11,17 +11,18 @@ public class AttackController : Controller
     public Vector3 agentPos;
     public override void CollectObservations(VectorSensor sensor)
     {
-        // ¿¡ÀÌÀüÆ®ÀÇ ÇöÀç À§Ä¡¸¦ »ó´ë ÁÂÇ¥·Î °è»ê
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½
         agentPos = myAgent.transform.position - environment.transform.position;
 
-        // »ó´ë ÁÂÇ¥¸¦ Á¤±ÔÈ­ÇÏ°í °üÃø µ¥ÀÌÅÍ·Î Ãß°¡ 3, map scale·Î ³ª´²ÁÜ
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ß°ï¿½ 3, map scaleï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         sensor.AddObservation(agentPos / environment.MapSize);
 
         // Agent rotation 1
         sensor.AddObservation(myAgent.rBody.transform.eulerAngles.y / 360);
 
         sensor.AddObservation(myAgent.targetDir);
-        sensor.AddObservation(myAgent.targetDistance / environment.MapSize);
+        sensor.AddObservation(myAgent.targetDistance);
+        //sensor.AddObservation(myAgent.targetDistance / environment.MapSize);
     }
 
     public override void OnActionReceived(ActionBuffers actions)

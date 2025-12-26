@@ -170,7 +170,7 @@ public class GameAgents : Player
         }
         
         targetDir = (target.transform.position - transform.position).normalized;
-        targetDistance = Vector3.Distance(transform.position, target.transform.position) / environment.MapSize;
+        targetDistance = AttackRange / Vector3.Distance(transform.position, target.transform.position);
         AddReward(ERewardType.Tick);
         RaycastHit hit;
         if (Vector3.Angle(transform.forward, targetDir) < 15.0f
@@ -201,7 +201,7 @@ public class GameAgents : Player
             ShootTime = ShootCoolDown;
             ShootCount--;
 
-            StartCoroutine(AttackDelay());
+            //StartCoroutine(AttackDelay());
             Debug.DrawRay(rBody.position, transform.forward * AttackRange, Color.blue);
             RaycastHit hitinfo;
             if (Physics.Raycast(rBody.position, transform.forward, out hitinfo, AttackRange))

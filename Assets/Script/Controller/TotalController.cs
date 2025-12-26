@@ -12,10 +12,10 @@ public class TotalController : Controller
     public Vector3 agentPos;
     public override void CollectObservations(VectorSensor sensor)
     {
-        // ?ì´?„íŠ¸???„ì¬ ?„ì¹˜ë¥??ë? ì¢Œí‘œë¡?ê³„ì‚°
+        // ?ï¿½ì´?ï¿½íŠ¸???ï¿½ì¬ ?ï¿½ì¹˜ï¿½??ï¿½ï¿½? ì¢Œí‘œï¿½?ê³„ì‚°
         agentPos = myAgent.transform.position - environment.transform.position;
 
-        // ?ë? ì¢Œí‘œë¥??•ê·œ?”í•˜ê³?ê´€ì¸??°ì´?°ë¡œ ì¶”ê? 3, map scaleë¡??˜ëˆ ì¤?
+        // ?ï¿½ï¿½? ì¢Œí‘œï¿½??ï¿½ê·œ?ï¿½í•˜ï¿½?ê´€ï¿½??ï¿½ì´?ï¿½ë¡œ ì¶”ï¿½? 3, map scaleï¿½??ï¿½ëˆ ï¿½?
         sensor.AddObservation(agentPos / environment.MapSize);
 
         // Agent rotation 1
@@ -28,8 +28,6 @@ public class TotalController : Controller
         sensor.AddObservation(localVelocity.z);
 
         sensor.AddObservation(myAgent.targetDir);
-        // ê³µê²© ?¬ê±°ë¦¬ë¡œ ?´ë³´ê¸?
-        //sensor.AddObservation(targetDistance / AttackRange);
         sensor.AddObservation(myAgent.targetDistance);
     }
 
@@ -77,7 +75,7 @@ public class TotalController : Controller
             }
         }
 
-        // ?í”„
+        // ?ï¿½í”„
         //discreteActionsOut[2] = Input.GetKey(KeyCode.Space) ? 1 : 0;
     }
 }
