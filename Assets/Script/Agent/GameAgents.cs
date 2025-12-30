@@ -34,7 +34,7 @@ public class GameAgents : Player
     public Vector3 targetDir;
     public float targetDistance;
     public GameObject AttackObject;
-    public GameObject target;
+    public GameObject target; // This is a reference to the actual GameObject of the target
 
     public override bool Init()
     {
@@ -109,37 +109,7 @@ public class GameAgents : Player
         }
 
         rBody.velocity = dirToGo * m_WallJumpSettings.agentRunSpeed;
-        /*rBody.AddForce(dirToGo * m_WallJumpSettings.agentRunSpeed,
-        ForceMode.VelocityChange);
-        Debug.Log(rBody.velocity);*/
-
-        /*if (jumpAction == 1)
-        {
-            if ((jumpingTime <= 0f) && smallGrounded)
-            {
-                Jump();
-            }
-        }
-
-        if (jumpingTime > 0f)
-        {
-            m_JumpTargetPos =
-                new Vector3(rBody.position.x,
-                    m_JumpStartingPos.y + m_WallJumpSettings.agentJumpHeight,
-                    rBody.position.z) + dirToGo;
-            MoveTowards(m_JumpTargetPos, rBody, m_WallJumpSettings.agentJumpVelocity,
-                m_WallJumpSettings.agentJumpVelocityMaxChange);
-        }
-        if (!(jumpingTime > 0f) && !largeGrounded)
-        {
-            rBody.AddForce(
-                Vector3.down * fallingForce, ForceMode.Acceleration);
-        }
-
-        jumpingTime -= Time.fixedDeltaTime;*/
-
-
-        // search
+        
         var rotateDir = Vector3.zero;
         var rotateDirAction = act[2];
 
@@ -149,7 +119,6 @@ public class GameAgents : Player
             rotateDir = transform.up * 1f;
 
         transform.Rotate(rotateDir, Time.fixedDeltaTime * 7.5f * m_WallJumpSettings.agentRunSpeed);
-
     }
 
     public void FixedUpdate()
@@ -158,30 +127,74 @@ public class GameAgents : Player
         {
             return;
         }
-        //GameObject target;
-        if (GameManager.GamePhase < 8)
-            target = environment.Enemy.gameObject;
+
+        GameObject currentTarget = null;
+
+        if (TestManager.Instance != null && (TestManager.Instance.IsTest || TestManager.Instance.IsEnemy))
+        {
+            List<GameAgents> opposingTeamAgents = null;
+            if (TeamID == 0)
+            {
+                opposingTeamAgents = environment.team2Agents;
+            }
+            else // TeamID == 1
+            {
+                opposingTeamAgents = environment.team1Agents;
+            }
+
+            if (opposingTeamAgents != null)
+            {
+                foreach (var agent in opposingTeamAgents)
+                {
+                    if (agent != null && agent.gameObject.activeSelf && agent.HP > 0)
+                    {
+                        currentTarget = agent.gameObject;
+                        break;
+                    }
+                }
+            }
+        }
+        else 
+        {
+            if (GameManager.GamePhase < 8)
+            {
+                if (environment.Enemy != null)
+                {
+                    currentTarget = environment.Enemy.gameObject;
+                }
+            }
+            else 
+            {
+                if (TeamID == 0 && environment.team2Agents.Count > 0 && environment.team2Agents[0] != null)
+                {
+                    currentTarget = environment.team2Agents[0].gameObject;
+                }
+                else if (TeamID == 1 && environment.team1Agents.Count > 0 && environment.team1Agents[0] != null)
+                {
+                    currentTarget = environment.team1Agents[0].gameObject;
+                }
+            }
+        }
+
+        if (currentTarget != null)
+        {
+            target = currentTarget;
+            targetDir = (target.transform.position - transform.position).normalized;
+            targetDistance = AttackRange / Vector3.Distance(transform.position, target.transform.position);
+            AddReward(ERewardType.Tick);
+            RaycastHit hit;
+            if (Vector3.Angle(transform.forward, targetDir) < 15.0f
+                && Physics.Raycast(transform.position, targetDir, out hit, targetDistance * AttackRange))
+            {
+                if (hit.collider.gameObject == target)
+                {
+                    AddReward(ERewardType.SeeingEnemy);
+                }
+            }
+        }
         else
         {
-            if (TeamID == 0)
-                target = environment._selfPlayAgents.gameObject;
-            else
-                target = environment._gameAgents.gameObject;
-        }
-        
-        targetDir = (target.transform.position - transform.position).normalized;
-        targetDistance = AttackRange / Vector3.Distance(transform.position, target.transform.position);
-        AddReward(ERewardType.Tick);
-        RaycastHit hit;
-        if (Vector3.Angle(transform.forward, targetDir) < 15.0f
-            && Physics.Raycast(transform.position, targetDir, out hit, targetDistance * AttackRange))
-        {
-            // Raycast�� Ÿ���� ����ٸ� ��ֹ��� ���� ������ ����
-            if (hit.collider.gameObject == target)
-            {
-                AddReward(ERewardType.SeeingEnemy);
-            }
-            
+            AddReward(ERewardType.SeeingEnemy);
         }
     }
 
@@ -191,47 +204,41 @@ public class GameAgents : Player
         {
             return;
         }
-        // attack
+        
         var AttackAction = act;
 
         ShootTime -= Time.deltaTime;
         if (ShootCount > 0 && ShootTime <= 0 && AttackAction == 1)
         {
-            //Debug.Log("Attack");
             ShootTime = ShootCoolDown;
             ShootCount--;
 
-            //StartCoroutine(AttackDelay());
-            Debug.DrawRay(rBody.position, transform.forward * AttackRange, Color.blue);
             RaycastHit hitinfo;
-            if (Physics.Raycast(rBody.position, transform.forward, out hitinfo, AttackRange))
+            bool hasHit = Physics.Raycast(rBody.position, transform.forward, out hitinfo, AttackRange);
+
+            if (hasHit && (hitinfo.collider.tag == "Target" || (hitinfo.collider.tag == "Player" && hitinfo.collider.gameObject.GetComponent<Character>().TeamID != this.TeamID)))
             {
-                if (hitinfo.collider.tag == "Target" || (hitinfo.collider.tag == "Player" && hitinfo.collider.gameObject.GetComponent<Character>().TeamID != this.TeamID))
+                // My attack was successful, so increment my AttackCount
+                AddReward(ERewardType.AttackHit);
+
+                var victimAgent = hitinfo.collider.gameObject.GetComponent<GameAgents>();
+                if (victimAgent != null)
                 {
-                    //Debug.Log("Hit");
-                    AddReward(ERewardType.AttackHit);
-                    if (hitinfo.collider.tag == "Player")
-                    {
-                        if(hitinfo.collider.gameObject.GetComponent<GameAgents>() != null)
-                            hitinfo.collider.gameObject.GetComponent<GameAgents>().AddReward(ERewardType.AgentHit);
-                    }
-                    if (0 >= hitinfo.collider.gameObject.GetComponent<Character>().AddHP(-AttackDamage))
-                    {
-                        AddReward(ERewardType.KillTarget);
-                        if(hitinfo.collider.tag == "Player")
-                        {
-                            if (hitinfo.collider.gameObject.GetComponent<GameAgents>() != null)
-                                hitinfo.collider.gameObject.GetComponent<GameAgents>().AddReward(ERewardType.AgentDie);
-                            //Debug.Log(name + " Win");
-                        }
-                        GameManager.GameClear(environment);
-                    }
+                    // Notify the victim that it was hit, so it can increment its HitCount
+                    victimAgent.AddReward(ERewardType.AgentHit);
                 }
-                else
+
+                // Damage the target and check for kill
+                if (0 >= hitinfo.collider.gameObject.GetComponent<Character>().AddHP(-AttackDamage))
                 {
-                    //Debug.Log("Miss");
-                    AddReward(ERewardType.AttackMiss);
+                    // I killed the target, so increment my KillCount
+                    AddReward(ERewardType.KillTarget);
                 }
+            }
+            else
+            {
+                // My attack missed
+                AddReward(ERewardType.AttackMiss);
             }
         }
     }
@@ -245,10 +252,10 @@ public class GameAgents : Player
 
     public void Jump()
     {
-        //finalAgent.bJump = true;
         jumpingTime = 0.3f;
         m_JumpStartingPos = rBody.position;
     }
+
     protected void MoveTowards(Vector3 targetPos, Rigidbody rb, float targetVel, float maxVel)
     {
         var moveToPos = targetPos - rb.worldCenterOfMass;
@@ -279,7 +286,7 @@ public class GameAgents : Player
                      col.CompareTag("Obstacle") ||
                      col.CompareTag("Wall")))
                 {
-                    grounded = true; //then we're grounded
+                    grounded = true; 
                     break;
                 }
             }
@@ -288,8 +295,7 @@ public class GameAgents : Player
         else
         {
             RaycastHit hit;
-            Physics.Raycast(transform.position + new Vector3(0, -0.05f, 0), -Vector3.up, out hit,
-                1f);
+            Physics.Raycast(transform.position + new Vector3(0, -0.05f, 0), -Vector3.up, out hit, 1f);
 
             if (hit.collider != null &&
                 (hit.collider.CompareTag("WalkableSurface") ||
@@ -299,7 +305,6 @@ public class GameAgents : Player
             {
                 return true;
             }
-
             return false;
         }
     }
@@ -307,15 +312,13 @@ public class GameAgents : Player
     public override int AddHP(int val)
     {
         int curHP = base.AddHP(val);
-        if (curHP <= 0)
+        if (curHP <= 0 && gameObject.activeSelf) // ensure it only happens once
         {
-            //AddReward(ERewardType.AgentDie);
-        }
-        if (val > 0)
-        {
-            AddReward(ERewardType.AgentHit);
+            // I died, so increment my DeathCount
+            AddReward(ERewardType.AgentDie); 
+            CharacterSetActive(false); 
+            environment.OnAgentDied(this);
         }
         return curHP;
     }
-
 }

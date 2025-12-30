@@ -4,23 +4,13 @@ using UnityEngine;
 using UnityEngine.Diagnostics;
 using System.IO;
 using Unity.MLAgents;
-
-[System.Serializable]
-public struct BattleAgent
-{
-    [SerializeField]
-    public GameObject agent1;
-
-    [SerializeField]
-    public GameObject agent2;
-}
+using UnityEditor.MPE;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance = null;
-    private List<float[]> allGameData = new List<float[]>();  // ���Ǽҵ� �����͸� ������ ����Ʈ
-
-    private static int _gamePhase = 1;
+    
+    [SerializeField] private int _gamePhase = 1;
 
     private static float _playTime;
     private static List<float> _phaseClearTimeList = new List<float>();
@@ -30,19 +20,6 @@ public class GameManager : MonoBehaviour
     public Camera MyCamera;
     public List<GameEnvironment> gameEnvironmentList = new List<GameEnvironment>();
     
-    [Header("Test Environment")]
-    public bool IsTest;
-    public bool IsEnemy;
-    int testIndex = 0;
-    [SerializeField]
-    public List<BattleAgent> AgentList= new List<BattleAgent>();
-
-    public List<GameEnvironment> testEnvironmentList = new List<GameEnvironment>();
-    public int GameCount;
-    public int EndGameCount;
-    public int GameEpisodeCount;
-    public int EndGameEpisodeCount;
-
     public bool IsEpisodeInit;
 
     public static GameManager Instance
@@ -52,8 +29,8 @@ public class GameManager : MonoBehaviour
 
     public static int GamePhase
     {
-        get { return _gamePhase; }
-        set { _gamePhase = value; }
+        get { return Instance._gamePhase; }
+        set { Instance._gamePhase = value; }
     }
 
     private void Awake()
@@ -64,52 +41,13 @@ public class GameManager : MonoBehaviour
         Random.InitState(0);
     }
 
-    private string filePath;
-    private string fileName;
-    private void Start()
-    {
-        // CSV ���� ��� ����
-        filePath = Path.Combine(Application.dataPath, "game_log.csv");
-        // ���� ��� �ۼ�
-        //WriteToCSV(new string[] { "Episode", "Agent Name", "Kill Count", "Attack Count", "Miss Count", "Hit Count", "Death Count" });
-    }
-
     public bool _init = false;
 
     private void Init()
     {
         _init = false;
         ClearCount = 0;
-        _gamePhase = 1;
-
-        if (IsEnemy)
-        {
-            _gamePhase = 5;
-            GameCount = 0;
-            GameEpisodeCount = 0;
-            Time.timeScale = 7;
-            //Debug.Log(AgentList[testIndex].agent1);
-            _instance.testEnvironmentList[0].ClearEnvironment();
-            _instance.testEnvironmentList[0]._playerSpawner.spawnObject = AgentList[testIndex].agent1;
-            _instance.testEnvironmentList[0]._playerSpawner.spawnObject.GetComponent<GameAgents>().TeamID = 0;
-            // _instance.testEnvironmentList[0]._selfPlaySpawner.spawnObject = AgentList[testIndex].agent2;
-            // _instance.testEnvironmentList[0]._selfPlaySpawner.spawnObject.GetComponent<GameAgents>().TeamID = 1;
-            _instance.testEnvironmentList[0].initialized = false;
-        }
-        else if (IsTest)
-        {
-            _gamePhase = 8;
-            GameCount = 0;
-            GameEpisodeCount = 0;
-            Time.timeScale = 7;
-            //Debug.Log(AgentList[testIndex].agent1);
-            _instance.testEnvironmentList[0].ClearEnvironment();
-            _instance.testEnvironmentList[0]._playerSpawner.spawnObject = AgentList[testIndex].agent1;
-            _instance.testEnvironmentList[0]._playerSpawner.spawnObject.GetComponent<GameAgents>().TeamID = 0;
-            _instance.testEnvironmentList[0]._selfPlaySpawner.spawnObject = AgentList[testIndex].agent2;
-            _instance.testEnvironmentList[0]._selfPlaySpawner.spawnObject.GetComponent<GameAgents>().TeamID = 1;
-            _instance.testEnvironmentList[0].initialized = false;
-        }
+        Instance._gamePhase = 1;
         
         _playTime = 0;
         _phaseClearTimeList.Clear();
@@ -128,14 +66,14 @@ public class GameManager : MonoBehaviour
             {
                 Vector3 newPosition = gameEnvironmentList[i].transform.position;
                 newPosition.y = 50.0f;
-                // 카메???�치?????�치 ?�당
+                // 카메라 위치를 해당 위치로 할당
                 MyCamera.transform.position = newPosition;
             }
         }
         if (Input.GetKeyDown(KeyCode.F12))
         {
             Vector3 newPosition = new Vector3(50, 150, 50);
-            // 카메???�치?????�치 ?�당
+            // 카메라 위치를 해당 위치로 할당
             MyCamera.transform.position = newPosition;
         }
 
@@ -195,187 +133,57 @@ public class GameManager : MonoBehaviour
 
     public static void RestEnvrionment()
     {
-        if (!_instance.IsTest)
+        // In Test Mode, TestManager will handle this.
+        if (TestManager.Instance != null && (TestManager.Instance.IsTest || TestManager.Instance.IsEnemy))
         {
-            foreach (var gameEnvironment in _instance.gameEnvironmentList)
-            {
-                gameEnvironment.EndEpisode();
-            }
+            TestManager.RestEnvrionment();
+            return;
         }
-        else
+
+        foreach (var gameEnvironment in _instance.gameEnvironmentList)
         {
-            foreach (var gameEnvironment in _instance.testEnvironmentList)
-            {
-                gameEnvironment.EndEpisode();
-            }
+            gameEnvironment.EndEpisode();
         }
     }
 
     public static void AddGamePhase(int value)
     {
-        _gamePhase = (_gamePhase + value) % 8;
-        if (_gamePhase == 0) _gamePhase = 8;
+        Instance._gamePhase = (Instance._gamePhase + value) % 8;
+        if (Instance._gamePhase == 0) Instance._gamePhase = 8;
     }
 
     public static void AddGamePhase()
     {
-        if(_gamePhase <= 7 && !_instance.IsTest && !_instance.IsEnemy)
-            _gamePhase++;
-        Debug.Log("AddGamePhase : " + _gamePhase + ", ClearTime : " + _playTime);
+        if(Instance._gamePhase <= 7)
+            Instance._gamePhase++;
+        Debug.Log("AddGamePhase : " + Instance._gamePhase + ", ClearTime : " + _playTime);
         _phaseClearTimeList.Add(_playTime);
         _playTime = 0;
     }
 
     public static void GameClear(GameEnvironment environment)
     {
+        // If TestManager exists and is in test mode, delegate to it.
+        if (TestManager.Instance != null && (TestManager.Instance.IsTest || TestManager.Instance.IsEnemy))
+        {
+            TestManager.Instance.TestGameClear(environment);
+            return;
+        }
+
         _instance.IsEpisodeInit = false;
-        float episodePlayTime = environment.EnvironmentPlayTime;
         environment.EndEpisode();
         
         float mapLevelFloat = Academy.Instance.EnvironmentParameters.GetWithDefault("map_level", 0.0f);
         int mapLevel = Mathf.RoundToInt(mapLevelFloat) + 1;
 
         // 레벨이 변경되었을 때만 맵을 교체 (성능 최적화)
-        if (_gamePhase != mapLevel && _gamePhase != 8 && !_instance.IsEnemy)
+        if (Instance._gamePhase != mapLevel && Instance._gamePhase != 8)
         {
-            _gamePhase = mapLevel;
+            Instance._gamePhase = mapLevel;
             ClearCount = 0;
             RestEnvrionment();
         }
 
-        if (_instance.IsTest) {
-
-            _instance.GameCount++;
-
-            var agent1 = _instance.testEnvironmentList[0]._gameAgents;
-            var agent2 = _instance.testEnvironmentList[0]._selfPlayAgents;
-            
-            // ���Ǽҵ帶�� �����͸� �����Ͽ� ����Ʈ�� �߰�
-            _instance.allGameData.Add(new float[] {
-            agent1._saveData.KillCount,
-            agent1._saveData.AttackCount,
-            agent1._saveData.MissCount,
-            agent1._saveData.HitCount,
-            agent1._saveData.DeathCount,
-            agent2._saveData.KillCount,
-            agent2._saveData.AttackCount,
-            agent2._saveData.MissCount,
-            agent2._saveData.HitCount,
-            agent2._saveData.DeathCount,
-            episodePlayTime,
-            });
-
-            // ���Ǽҵ� �����͸� ���
-            // (���Ǽҵ� ��ȣ, ������Ʈ �̸�, �¸�, ����, �̽�, �ǰ�, �й�)
-            _instance.WriteToCSV(new string[] {
-            _instance.GameEpisodeCount.ToString(),
-            agent1.name,
-            agent1._saveData.KillCount.ToString(),
-            agent1._saveData.AttackCount.ToString(),
-            agent1._saveData.MissCount.ToString(),
-            agent1._saveData.HitCount.ToString(),
-            agent1._saveData.DeathCount.ToString(),
-            episodePlayTime.ToString()
-            }, agent1.name, agent2.name);
-
-            if(!_instance.IsEnemy){
-                _instance.WriteToCSV(new string[] {
-                _instance.GameEpisodeCount.ToString(),
-                agent2.name,
-                agent2._saveData.KillCount.ToString(),
-                agent2._saveData.AttackCount.ToString(),
-                agent2._saveData.MissCount.ToString(),
-                agent2._saveData.HitCount.ToString(),
-                agent2._saveData.DeathCount.ToString(),
-                _playTime.ToString()
-                }, agent1.name, agent2.name);
-            }
-
-            // ��ü ��� ��� (���� ���Ǽҵ尡 ����Ǹ� ��� ���)
-            if (_instance.GameEpisodeCount >= _instance.EndGameEpisodeCount)
-            {
-                float[] totalSums = new float[11]; // agent1�� agent2 ������ �����͸� 5���� ����ϱ� ������ �� 10���� �׸�
-                foreach (var data in _instance.allGameData)
-                {
-                    for (int i = 0; i < data.Length; i++)
-                    {
-                        totalSums[i] += data[i];
-                    }
-                }
-
-                // ��� �� ���
-                float[] averages = new float[11];
-                for (int i = 0; i < totalSums.Length; i++)
-                {
-                    averages[i] = totalSums[i] / _instance.allGameData.Count;
-                }
-
-                // ��� ���
-                _instance.WriteToCSV(new string[] {
-                "Average",
-                agent1.name,
-                averages[0].ToString(), // KillCount
-                averages[1].ToString(), // AttackCount
-                averages[2].ToString(), // MissCount
-                averages[3].ToString(), // HitCount
-                averages[4].ToString()  // DeathCount
-            }, agent1.name, agent2.name);
-
-            if(!_instance.IsEnemy){
-                _instance.WriteToCSV(new string[] {
-                    "Average",
-                    agent2.name,
-                    averages[5].ToString(), // KillCount
-                    averages[6].ToString(), // AttackCount
-                    averages[7].ToString(), // MissCount
-                    averages[8].ToString(), // HitCount
-                    averages[9].ToString()  // DeathCount
-                }, agent1.name, agent2.name);
-            }
-#if UNITY_EDITOR
-                _instance.testIndex++;
-                if (_instance.testIndex >= _instance.AgentList.Count)
-                {
-                    UnityEditor.EditorApplication.isPlaying = false;
-                }
-                else
-                {
-                    _instance.Init();
-                }
-#else
-            Application.Quit();
-#endif
-            }
-
-
-            // ������Ʈ ������ �ʱ�ȭ
-            agent1._saveData.ResetCount();
-            agent2._saveData.ResetCount();
-
-            _instance.GameEpisodeCount++;
-            ClearCount = 0;
-        }
-
         _instance.IsEpisodeInit = true;
-    }
-
-    private void WriteToCSV(string[] data, string agent1Name, string agent2Name)
-    {
-        // ���ϸ��� "{agent1�̸�}_vs_{agent2�̸�}.csv"�� ����
-        string filename = $"결과/{agent1Name}1_vs_{agent2Name}2.csv";
-        if (IsEnemy)
-        {
-            filename = $"결과/{agent1Name}1_vs_Enemy.csv";
-        }
-
-        string filePath = Path.Combine(Application.dataPath, filename);
-
-
-        // ���Ͽ� �����͸� ����
-        using (StreamWriter sw = new StreamWriter(filePath, true))
-        {
-            string line = string.Join(",", data);
-            sw.WriteLine(line);
-        }
     }
 }

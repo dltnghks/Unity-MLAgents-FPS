@@ -21,7 +21,18 @@ public class Spawner : MonoBehaviour
     {
         foreach(var obj in spawnObjectList)
         {
-            obj.SetActive(false);
+            // obj.SetActive(false);
+            if(obj == null)
+            {
+                continue;
+            }
+            var character = obj.GetComponent<Character>();
+            if(character == null)
+            {
+                continue;
+            }
+
+            character.CharacterSetActive(false);
         }
         //spawnObjectList.Clear();
     }
@@ -42,7 +53,7 @@ public class Spawner : MonoBehaviour
         {
             foreach (var obj in spawnObjectList)
             {
-                if (!obj.activeSelf)
+                if (obj!= null && !obj.activeSelf)
                 {
                     obj.SetActive(true);
                     return obj;
@@ -54,6 +65,46 @@ public class Spawner : MonoBehaviour
         spawnObjectList.Add(returnObject);
         returnObject.transform.SetParent(this.transform);
         return returnObject;
+    }
+
+    public List<GameAgents> SpawnTeam(List<GameObject> agentPrefabs, int teamId)
+    {
+        var spawnedAgents = new List<GameAgents>();
+        var availableSpawnPoints = new List<GameObject>(spawnPointList);
+
+        int agentIndex = 0; // Declare agentIndex here
+        foreach (var agentPrefab in agentPrefabs)
+        {
+            if (availableSpawnPoints.Count == 0)
+            {
+                Debug.LogWarning("Not enough spawn points for all agents in the team.");
+                break;
+            }
+
+            var spawnedObject = Instantiate(agentPrefab, transform);
+            spawnedObject.name = $"{agentPrefab.name}_Team{teamId}_Agent{agentIndex}"; // New line for naming
+            spawnObjectList.Add(spawnedObject);
+
+            int pointIndex = Random.Range(0, availableSpawnPoints.Count);
+            GameObject spawnPoint = availableSpawnPoints[pointIndex];
+            availableSpawnPoints.RemoveAt(pointIndex);
+
+            spawnedObject.transform.position = spawnPoint.transform.position;
+            spawnedObject.transform.rotation = spawnPoint.transform.rotation;
+
+            var gameAgent = spawnedObject.GetComponent<GameAgents>();
+            if (gameAgent != null)
+            {
+                gameAgent.TeamID = teamId;
+                spawnedAgents.Add(gameAgent);
+            }
+            else
+            {
+                Debug.LogWarning($"The prefab '{agentPrefab.name}' was spawned, but it does not have a GameAgents component attached. It will not be added to the team.", agentPrefab);
+            }
+            agentIndex++; // Increment agentIndex
+        }
+        return spawnedAgents;
     }
 
     public virtual GameObject OnePointRandomSpawn(int startIndex = 0, int endIndex = -1)

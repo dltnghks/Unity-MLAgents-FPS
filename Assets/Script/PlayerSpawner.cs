@@ -8,7 +8,14 @@ public class PlayerSpawner : Spawner
     {
         foreach (var obj in spawnObjectList)
         {
-            obj.GetComponent<Character>().CharacterSetActive(false);
+            if (obj != null)
+            {
+                var character = obj.GetComponent<Character>();
+                if (character != null)
+                {
+                    character.CharacterSetActive(false);
+                }
+            }
         }
         //spawnObjectList.Clear();
     }

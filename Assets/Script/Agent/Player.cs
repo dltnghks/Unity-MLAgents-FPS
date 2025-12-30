@@ -3,16 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Player : Character
 {
     public struct FSaveData
     {
         public int KillCount;
         public int DeathCount;
-        public int HitCount;
-        public int AttackCount;
-        public int MissCount;
+        public int HitCount;      // 내가 맞은 횟수 (Times I was hit)
+        public int AttackCount;   // 내 공격이 성공(명중)한 횟수 (Successful attacks I landed)
+        public int MissCount;     // 내 공격이 빗나간 횟수 (Attacks I missed)
 
         public void ResetCount()
         {
@@ -31,14 +30,12 @@ public class Player : Character
         public int MissCount;
     }
 
-
-
     protected enum ERewardType
     {
         KillTarget,
-        AttackHit,
-        AttackMiss,
-        AgentHit,
+        AttackHit,  // Attack was successful (it hit an enemy)
+        AttackMiss, // Attack missed
+        AgentHit,   // This agent was hit by an enemy
         AgentDie,
         Tick,
         SeeingEnemy,
@@ -66,33 +63,22 @@ public class Player : Character
         {
             return;
         }
-            //Debug.Log(name + " : " + rewardType.ToString());
+        //Debug.Log(rewardType);
         switch (rewardType)
         {
             case ERewardType.KillTarget:
-                /*_gameData.AttackCount = 0;
-                _gameData.MissCount = 0;
-                _gameData.HitCount = 0;*/
-
                 _saveData.KillCount++;
                 break;
             case ERewardType.AttackHit:
-                _saveData.AttackCount++;
-                //_gameData.AttackCount++;
+                _saveData.AttackCount++; // 내 공격이 성공했으므로 AttackCount 증가
                 break;
             case ERewardType.AttackMiss:
                 _saveData.MissCount++;
-                //_gameData.MissCount++;
                 break;
             case ERewardType.AgentHit:
-                _saveData.HitCount++;
-                //_gameData.AttackCount++;
+                _saveData.HitCount++; // 내가 피격 당했으므로 HitCount 증가
                 break;
             case ERewardType.AgentDie:
-                /*_gameData.AttackCount = 0;
-                _gameData.MissCount = 0;
-                _gameData.HitCount = 0;*/
-
                _saveData.DeathCount++;
                 break;
             case ERewardType.Tick:
@@ -100,20 +86,16 @@ public class Player : Character
             case ERewardType.SeeingEnemy:
                 break;
             default:
-                Debug.LogError("���ǵ��� ���� ���� Ÿ���Դϴ�.");
+                Debug.LogError("Undefined reward type.");
                 break;
         }
-
-
-
-        //Debug.Log(name + " : " + rewardType.ToString());
+        
         foreach(var controller in _controllerList)
         {
             switch (rewardType)
             {
                 case ERewardType.KillTarget:
                     controller.KillTargetReward();
-                    //bKill = true;
                     break;
                 case ERewardType.AttackHit:
                     controller.AttackHitReward();
@@ -125,7 +107,6 @@ public class Player : Character
                     controller.AgentHitReward();
                     break;
                 case ERewardType.AgentDie:
-                    //bDeath = true;
                     controller.AgentDieReward();
                     break;
                 case ERewardType.Tick:
@@ -135,10 +116,9 @@ public class Player : Character
                     controller.SeeingEnemyReward();
                     break;
                 default:
-                    Debug.LogError("���ǵ��� ���� ���� Ÿ���Դϴ�.");
+                    Debug.LogError("Undefined reward type for controller.");
                     break;
             }
         }
     }
-    
 }

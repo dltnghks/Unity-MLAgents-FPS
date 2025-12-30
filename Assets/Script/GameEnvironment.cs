@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.AI;
+using Unity.MLAgents;
 
 public class GameEnvironment : MonoBehaviour
 {
@@ -10,18 +11,18 @@ public class GameEnvironment : MonoBehaviour
     public ObstacleSpawner _obstacleSpawner;
     public SelfPlaySpawner _selfPlaySpawner;
 
-    public GameAgents _gameAgents;
-    public GameAgents _selfPlayAgents;
+    public List<GameAgents> team1Agents = new List<GameAgents>();
+    public List<GameAgents> team2Agents = new List<GameAgents>();
     public NonPlayerCharacter Enemy;
 
     [Header("Agents")]
     public List<Controller> ControllerList = new List<Controller>();
     
     public float MapSize = 40;
-
-
     public bool initialized;
+    public int testIndex = 0;
 
+    private bool isGameOver = false; // Flag to defer GameClear call by one frame
 
     void Initialize()
     {
@@ -32,148 +33,104 @@ public class GameEnvironment : MonoBehaviour
         _selfPlaySpawner = GetComponentInChildren<SelfPlaySpawner>();
         StartEpisode();
     }
-
-    IEnumerator Delay()
-    {
-        _playerSpawner.Clear();
-        _enemySpawner.Clear();
-        _obstacleSpawner.Clear();
-        // ?�동 ???��??�간만큼 ?��?
-        yield return new WaitForSeconds(1f);
-        StartEpisode();
-    }
-
-    private int[] testPointList = { 0, 2, 4, 6};
-    private int randomIndex = 0;
-
+    
     public void StartEpisode()
     {
-        //Random.InitState(GameManager.Instance.GameCount);
-        _playerSpawner.Clear();
-        _enemySpawner.Clear();
-        _obstacleSpawner.Clear();
-        _selfPlaySpawner.Clear();
-        ControllerList.Clear();
+        isGameOver = false; // Reset game over flag at the start of an episode
+        if(_playerSpawner) _playerSpawner.SpawnObjectListClear();
+        if(_enemySpawner) _enemySpawner.SpawnObjectListClear();
+        if(_selfPlaySpawner) _selfPlaySpawner.SpawnObjectListClear();
+        if(_obstacleSpawner) _obstacleSpawner.SpawnObjectListClear();
 
-        //Debug.Log(GameManager.GamePhase);
+        ControllerList.Clear();
+        team1Agents.Clear();
+        team2Agents.Clear();
+        
         switch (GameManager.GamePhase)
         {
+            // Cases 1-7 remain the same
             case 1:
-                // Player - ?�터
-                // Enemy - ?�이?�트 ?�면 ?�성
-                _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 8).GetComponent<GameAgents>();
-                Enemy = _enemySpawner.PlayerDirectSpawn(_gameAgents.transform.localPosition, _gameAgents.transform.forward).GetComponent<NonPlayerCharacter>();
+                team1Agents.Add(_playerSpawner.OnePointRandomSpawn(8, 8).GetComponent<GameAgents>());
+                Enemy = _enemySpawner.PlayerDirectSpawn(team1Agents[0].transform.localPosition, team1Agents[0].transform.forward).GetComponent<NonPlayerCharacter>();
                 break;
             case 2:
-                // Player - ?�터
-                // Enemy - ?�터?�서 ?�짝 벗어?�게
-                _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
-                Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition, 10, 0.7f * Mathf.PI, 0.3f*Mathf.PI).GetComponent<NonPlayerCharacter>();
+                team1Agents.Add(_playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>());
+                Enemy = _enemySpawner.PlayerCenterRandomSpawn(team1Agents[0].transform.localPosition, 10, 0.7f * Mathf.PI, 0.3f*Mathf.PI).GetComponent<NonPlayerCharacter>();
                 break;
             case 3:
-                // Player - ?�터
-                // Enemy - ?�터 주위???�덤 ?�성
-                _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
-                Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
+                team1Agents.Add(_playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>());
+                Enemy = _enemySpawner.PlayerCenterRandomSpawn(team1Agents[0].transform.localPosition).GetComponent<NonPlayerCharacter>();
                 break;
             case 4:
-                // Player - ?�터
-                // Enemy - ?�터 주위???�덤 ?�성 + ?�직임
-                _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
-                Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
+                team1Agents.Add(_playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>());
+                Enemy = _enemySpawner.PlayerCenterRandomSpawn(team1Agents[0].transform.localPosition).GetComponent<NonPlayerCharacter>();
                 _enemySpawner.OnEnemyRandomMove();
                 break;
             case 5:
-                // Player - ?�터
-                // Enemy - ?�터 주위???�덤 ?�성 + ?�직임
-                // Obstacle - 4�??�성
-                
-                // 동일한 적과 테스트할 때 세팅
-                if (GameManager.Instance.IsEnemy)
+                if (TestManager.Instance != null && TestManager.Instance.IsEnemy)
                 {
-                    
-                    _gameAgents = _playerSpawner.OnePointRandomSpawn(0, 1).GetComponent<GameAgents>();
+                    var currentMatchup = TestManager.Instance.AgentList[TestManager.Instance.testIndex];
+                    team1Agents = _playerSpawner.SpawnTeam(currentMatchup.team1Agents, 0);
                     Enemy = _enemySpawner.PlayerCenterRandomSpawn(Vector3.zero, 0, 0, 0).GetComponent<NonPlayerCharacter>();
-                    
-                    // 고정 이동
                     _enemySpawner.OnEnemyMovePointSetting();
-
-                    // 타겟 이동
-                    //_enemySpawner.OnEnemyMoveTargetSetting(_gameAgents.transform);
-                    
-                    // 랜덤 이동
-                    //_enemySpawner.OnEnemyMovePointSetting();
                 }
                 else
                 {
-                    _gameAgents = _playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>();
-                    Enemy = _enemySpawner.PlayerCenterRandomSpawn(_gameAgents.transform.localPosition).GetComponent<NonPlayerCharacter>();
+                    team1Agents.Add(_playerSpawner.OnePointRandomSpawn(8, 9).GetComponent<GameAgents>());
+                    Enemy = _enemySpawner.PlayerCenterRandomSpawn(team1Agents[0].transform.localPosition).GetComponent<NonPlayerCharacter>();
                     _enemySpawner.OnEnemyRandomMove();
                 }
-                
                 _obstacleSpawner.AllPointSpawn();
                 break;
             case 6:
-                // Player - 8�??�인???�덤 ?�성
-                // Enemy - Player 반�??? ?�직임
-                // Obstacle - 4�??�성
-                randomIndex = Random.Range(0, 8);
-                //Debug.Log("randomIndex : " + randomIndex);
-                _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
-                int npcIndex = (randomIndex + 4) % 8;
-                //Debug.Log("npcIndex : " + npcIndex);
+                testIndex = Random.Range(0, 8);
+                team1Agents.Add(_playerSpawner.OnePointRandomSpawn(testIndex, testIndex).GetComponent<GameAgents>());
+                int npcIndex = (testIndex + 4) % 8;
                 Enemy = _enemySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<NonPlayerCharacter>();
                 _enemySpawner.OnEnemyRandomMove();
                 _obstacleSpawner.AllPointSpawn();
                 break;
             case 7:
-                // Player - 8�??�인???�덤 ?�성
-                // Enemy - Player 반�???+ ?�직임
-                // Obstacle - 4�??�성
-                randomIndex = Random.Range(0, 8);
-                _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
-                npcIndex = (randomIndex + 4) % 8;
+                testIndex = Random.Range(0, 8);
+                team1Agents.Add(_playerSpawner.OnePointRandomSpawn(testIndex, testIndex).GetComponent<GameAgents>());
+                npcIndex = (testIndex + 4) % 8;
                 Enemy = _enemySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<NonPlayerCharacter>();
                 _enemySpawner.OnEnemyRandomMove(0.5f, 40, 20);
                 _obstacleSpawner.AllPointSpawn();
                 break;
             case 8:
-                // self-play
-                if (GameManager.Instance.IsTest)
+                if (TestManager.Instance != null && TestManager.Instance.IsTest)
                 {
-                    randomIndex = Random.Range(0, 8);
-                    _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
-                    npcIndex = (randomIndex + 4) % 8;
-                    _selfPlayAgents = _selfPlaySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<GameAgents>();
-                    _obstacleSpawner.AllPointSpawn();
-                    break;
+                    var currentMatchup = TestManager.Instance.AgentList[TestManager.Instance.testIndex];
+                    team1Agents = _playerSpawner.SpawnTeam(currentMatchup.team1Agents, 0);
+                    team2Agents = _selfPlaySpawner.SpawnTeam(currentMatchup.team2Agents, 1);
                 }
-
-                randomIndex = Random.Range(0, 8);
-                _gameAgents = _playerSpawner.OnePointRandomSpawn(randomIndex, randomIndex).GetComponent<GameAgents>();
-                npcIndex = (randomIndex + 4) % 8;
-                _selfPlayAgents = _selfPlaySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<GameAgents>();
+                else
+                {
+                    testIndex = Random.Range(0, 8);
+                    team1Agents.Add(_playerSpawner.OnePointRandomSpawn(testIndex, testIndex).GetComponent<GameAgents>());
+                    npcIndex = (testIndex + 4) % 8;
+                    team2Agents.Add(_selfPlaySpawner.OnePointRandomSpawn(npcIndex, npcIndex).GetComponent<GameAgents>());
+                }
                 _obstacleSpawner.AllPointSpawn();
                 break;
             default:
                 break;
         }
 
-        _gameAgents.Init(this);
-        if (_selfPlayAgents && !GameManager.Instance.IsEnemy)
+        foreach(var agent in team1Agents)
         {
-            _selfPlayAgents.Init(this);
-            var _selfAgentControllerList = _selfPlayAgents.GetComponentsInChildren<Controller>();
-            foreach (var controller in _selfAgentControllerList)
-            {
-                ControllerList.Add(controller);
-            }
+            if (agent == null) continue;
+            agent.Init(this);
+            var controllers = agent.GetComponentsInChildren<Controller>();
+            foreach (var controller in controllers) ControllerList.Add(controller);
         }
-        
-        var controllerList = _gameAgents.GetComponentsInChildren<Controller>();
-        foreach (var controller in controllerList)
+        foreach(var agent in team2Agents)
         {
-            ControllerList.Add(controller);
+            if (agent == null) continue;
+            agent.Init(this);
+            var controllers = agent.GetComponentsInChildren<Controller>();
+            foreach (var controller in controllers) ControllerList.Add(controller);
         }
 
         NavMeshBuilder.ClearAllNavMeshes();
@@ -184,7 +141,6 @@ public class GameEnvironment : MonoBehaviour
 
     public void EndEpisode()
     {
-        //Debug.Log(gameObject.name);
         ResetEnvironment();
     }
 
@@ -192,25 +148,20 @@ public class GameEnvironment : MonoBehaviour
     {
         StopAllCoroutines();
         EnvironmentPlayTime = 0;
-        _playerSpawner.Clear();
-        _enemySpawner.Clear();
-        _obstacleSpawner.Clear();
-        _selfPlaySpawner.Clear();
-        ControllerList.Clear();
         StartEpisode();
     }
 
     public void ClearEnvironment()
     {
-        _playerSpawner.SpawnObjectListClear();
-        _selfPlaySpawner.SpawnObjectListClear();
-     }
+        if(_playerSpawner) _playerSpawner.SpawnObjectListClear();
+        if(_selfPlaySpawner) _selfPlaySpawner.SpawnObjectListClear();
+    }
 
     public float EnvironmentPlayTime = 0.0f;
     public float EvironmentMaxTime = 20.0f;
     void Update()
     {
-        if (GameManager.Instance._init)
+        if (GameManager.Instance != null && GameManager.Instance._init)
         {
             if (!initialized)
             {
@@ -218,8 +169,14 @@ public class GameEnvironment : MonoBehaviour
             }
             else
             {
+                if (isGameOver)
+                {
+                    isGameOver = false; // Reset flag
+                    GameManager.GameClear(this);
+                    return; // End update for this frame
+                }
 
-                if (!GameManager.Instance.IsEpisodeInit)
+                if (GameManager.Instance.IsEpisodeInit == false && (TestManager.Instance == null || TestManager.Instance.IsEpisodeInit == false))
                 {
                     return;
                 }
@@ -227,16 +184,14 @@ public class GameEnvironment : MonoBehaviour
                 EnvironmentPlayTime += Time.deltaTime;
                 if (EnvironmentPlayTime >= EvironmentMaxTime)
                 {
-                    //Debug.Log("Time Out");
                     foreach (var controller in ControllerList)
                     {
-                        //Debug.Log(controller.GetCumulativeReward());
-                        //controller.TimeOutReward();
                         controller.EpisodeInterrupted();
                     }
-                    if (GameManager.Instance.IsTest)
+
+                    if (TestManager.Instance != null && (TestManager.Instance.IsTest || TestManager.Instance.IsEnemy))
                     {
-                        GameManager.GameClear(this);
+                        isGameOver = true; // Set flag to end game on next frame
                     }
                     else
                     {
@@ -244,6 +199,34 @@ public class GameEnvironment : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void OnAgentDied(GameAgents deadAgent)
+    {
+        // For training vs NPC, a single death ends the game
+        if (GameManager.GamePhase < 8)
+        {
+            isGameOver = true;
+            return;
+        }
+
+        // For multi-agent scenarios, check for team wipe
+        List<GameAgents> teamToCheck = (deadAgent.TeamID == 0) ? team1Agents : team2Agents;
+        bool teamEliminated = true;
+        foreach (var agent in teamToCheck)
+        {
+            if (agent != null && agent.HP > 0)
+            {
+                teamEliminated = false;
+                break;
+            }
+        }
+
+        if (teamEliminated)
+        {
+            Debug.Log($"Team {deadAgent.TeamID} has been eliminated.");
+            isGameOver = true; // Set flag to end game on next frame
         }
     }
 }
