@@ -170,7 +170,12 @@ public class GameAgents : Player
         }
         
         targetDir = (target.transform.position - transform.position).normalized;
-        targetDistance = AttackRange / Vector3.Distance(transform.position, target.transform.position);
+        //targetDistance = AttackRange / Vector3.Distance(transform.position, target.transform.position);
+        
+        float dist = Mathf.Max(Vector3.Distance(transform.position, target.transform.position), 0.001f);
+        float raw = AttackRange / dist;
+        targetDistance = Mathf.Log(raw + 1f);
+        
         AddReward(ERewardType.Tick);
         RaycastHit hit;
         if (Vector3.Angle(transform.forward, targetDir) < 15.0f
