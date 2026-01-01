@@ -1,0 +1,231 @@
+default_settings: null
+behaviors:
+  Movement:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2048
+      buffer_size: 20480
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      shared_critic: false
+      learning_rate_schedule: constant
+      beta_schedule: constant
+      epsilon_schedule: constant
+    network_settings:
+      normalize: false
+      hidden_units: 256
+      num_layers: 3
+      vis_encode_type: simple
+      memory: null
+      goal_conditioning_type: none
+      deterministic: false
+    reward_signals:
+      extrinsic:
+        gamma: 0.999
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          memory: null
+          goal_conditioning_type: hyper
+          deterministic: false
+    init_path: null
+    keep_checkpoints: 40
+    checkpoint_interval: 2000000
+    max_steps: 50000000
+    time_horizon: 1000
+    summary_freq: 50000
+    threaded: false
+    self_play:
+      save_steps: 500000
+      team_change: 1000000
+      swap_steps: 200000
+      window: 100
+      play_against_latest_model_ratio: 0.5
+      initial_elo: 1200.0
+    behavioral_cloning: null
+  Attack:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2048
+      buffer_size: 20480
+      learning_rate: 0.0003
+      beta: 0.005
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+      shared_critic: false
+      learning_rate_schedule: constant
+      beta_schedule: constant
+      epsilon_schedule: constant
+    network_settings:
+      normalize: false
+      hidden_units: 128
+      num_layers: 2
+      vis_encode_type: simple
+      memory: null
+      goal_conditioning_type: none
+      deterministic: false
+    reward_signals:
+      extrinsic:
+        gamma: 0.999
+        strength: 1.0
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          memory: null
+          goal_conditioning_type: hyper
+          deterministic: false
+    init_path: null
+    keep_checkpoints: 40
+    checkpoint_interval: 2000000
+    max_steps: 50000000
+    time_horizon: 1000
+    summary_freq: 50000
+    threaded: false
+    self_play:
+      save_steps: 500000
+      team_change: 1000000
+      swap_steps: 200000
+      window: 100
+      play_against_latest_model_ratio: 0.5
+      initial_elo: 1200.0
+    behavioral_cloning: null
+env_settings:
+  env_path: null
+  env_args: null
+  base_port: 5005
+  num_envs: 1
+  num_areas: 1
+  seed: -1
+  max_lifetime_restarts: 10
+  restarts_rate_limit_n: 1
+  restarts_rate_limit_period_s: 60
+engine_settings:
+  width: 84
+  height: 84
+  quality_level: 5
+  time_scale: 20.0
+  target_frame_rate: -1
+  capture_frame_rate: 60
+  no_graphics: false
+environment_parameters:
+  map_level:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5100
+          value: 0.0
+      name: Stage0
+      completion_criteria:
+        behavior: Movement
+        measure: reward
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.7
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5101
+          value: 1.0
+      name: Stage1
+      completion_criteria:
+        behavior: Movement
+        measure: reward
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.7
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5102
+          value: 2.0
+      name: Stage2
+      completion_criteria:
+        behavior: Movement
+        measure: reward
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.7
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5103
+          value: 3.0
+      name: Stage3
+      completion_criteria:
+        behavior: Movement
+        measure: reward
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.7
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5104
+          value: 4.0
+      name: Stage4
+      completion_criteria:
+        behavior: Movement
+        measure: reward
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.7
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5105
+          value: 5.0
+      name: Stage5
+      completion_criteria:
+        behavior: Movement
+        measure: reward
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.7
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5106
+          value: 6.0
+      name: Stage6
+      completion_criteria:
+        behavior: Movement
+        measure: reward
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 0.7
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5107
+          value: 7.0
+      name: Stage7
+      completion_criteria: null
+checkpoint_settings:
+  run_id: ModularAgent_Default
+  initialize_from: null
+  load_model: false
+  resume: false
+  force: false
+  train_model: false
+  inference: false
+  results_dir: results
+torch_settings:
+  device: null
+debug: false

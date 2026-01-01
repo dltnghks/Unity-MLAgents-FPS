@@ -1,0 +1,258 @@
+{
+    "map_level": {
+        "lesson_num": 7
+    },
+    "Total": {
+        "checkpoints": [
+            {
+                "steps": 1999796,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-1999796.onnx",
+                "reward": null,
+                "creation_time": 1766730061.945547,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-1999796.pt"
+                ]
+            },
+            {
+                "steps": 3999275,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-3999275.onnx",
+                "reward": -2.222333535552025,
+                "creation_time": 1766733310.8483052,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-3999275.pt"
+                ]
+            },
+            {
+                "steps": 5999662,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-5999662.onnx",
+                "reward": -0.21191665530204773,
+                "creation_time": 1766737258.9148562,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-5999662.pt"
+                ]
+            },
+            {
+                "steps": 7999962,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-7999962.onnx",
+                "reward": -0.43327763179938,
+                "creation_time": 1766741189.0660708,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-7999962.pt"
+                ]
+            },
+            {
+                "steps": 9999215,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-9999215.onnx",
+                "reward": 0.17719060874411038,
+                "creation_time": 1766745143.9587634,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-9999215.pt"
+                ]
+            },
+            {
+                "steps": 11999147,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-11999147.onnx",
+                "reward": 0.4449584484100342,
+                "creation_time": 1766749098.8472238,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-11999147.pt"
+                ]
+            },
+            {
+                "steps": 13999249,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-13999249.onnx",
+                "reward": 0.14500009175390005,
+                "creation_time": 1766753067.2255363,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-13999249.pt"
+                ]
+            },
+            {
+                "steps": 15999868,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-15999868.onnx",
+                "reward": null,
+                "creation_time": 1766757022.1503718,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-15999868.pt"
+                ]
+            },
+            {
+                "steps": 17999820,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-17999820.onnx",
+                "reward": -0.3334665592759848,
+                "creation_time": 1766760985.2436147,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-17999820.pt"
+                ]
+            },
+            {
+                "steps": 19999079,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-19999079.onnx",
+                "reward": -0.19311101858814558,
+                "creation_time": 1766764947.3101325,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-19999079.pt"
+                ]
+            },
+            {
+                "steps": 21999755,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-21999755.onnx",
+                "reward": 0.8725280184298754,
+                "creation_time": 1766768918.222007,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-21999755.pt"
+                ]
+            },
+            {
+                "steps": 23999379,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-23999379.onnx",
+                "reward": 0.4490477851858096,
+                "creation_time": 1766772894.8945355,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-23999379.pt"
+                ]
+            },
+            {
+                "steps": 25999611,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-25999611.onnx",
+                "reward": 1.503278153638045,
+                "creation_time": 1766776881.696306,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-25999611.pt"
+                ]
+            },
+            {
+                "steps": 27999845,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-27999845.onnx",
+                "reward": 0.24836684428155423,
+                "creation_time": 1766780872.735971,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-27999845.pt"
+                ]
+            },
+            {
+                "steps": 29999633,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-29999633.onnx",
+                "reward": 1.747333649545908,
+                "creation_time": 1766784867.3676388,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-29999633.pt"
+                ]
+            },
+            {
+                "steps": 31999526,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-31999526.onnx",
+                "reward": -0.701638820891579,
+                "creation_time": 1766788849.609954,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-31999526.pt"
+                ]
+            },
+            {
+                "steps": 33999850,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-33999850.onnx",
+                "reward": 0.10107156953641347,
+                "creation_time": 1766792848.4971032,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-33999850.pt"
+                ]
+            },
+            {
+                "steps": 35999958,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-35999958.onnx",
+                "reward": -0.3058332222669075,
+                "creation_time": 1766796843.0109456,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-35999958.pt"
+                ]
+            },
+            {
+                "steps": 37999855,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-37999855.onnx",
+                "reward": 0.3390417906921357,
+                "creation_time": 1766800839.5054953,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-37999855.pt"
+                ]
+            },
+            {
+                "steps": 39999249,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-39999249.onnx",
+                "reward": -0.3106247279793024,
+                "creation_time": 1766804851.1083293,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-39999249.pt"
+                ]
+            },
+            {
+                "steps": 41999121,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-41999121.onnx",
+                "reward": -0.11246646903455257,
+                "creation_time": 1766808854.2207863,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-41999121.pt"
+                ]
+            },
+            {
+                "steps": 43999261,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-43999261.onnx",
+                "reward": 1.2401003032922744,
+                "creation_time": 1766812867.923001,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-43999261.pt"
+                ]
+            },
+            {
+                "steps": 45999996,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-45999996.onnx",
+                "reward": -0.0308748846873641,
+                "creation_time": 1766816876.0107508,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-45999996.pt"
+                ]
+            },
+            {
+                "steps": 47999174,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-47999174.onnx",
+                "reward": 0.7677780762314796,
+                "creation_time": 1766820864.4497657,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-47999174.pt"
+                ]
+            },
+            {
+                "steps": 49999550,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-49999550.onnx",
+                "reward": 1.6059746117546008,
+                "creation_time": 1766824872.0268824,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-49999550.pt"
+                ]
+            },
+            {
+                "steps": 50000550,
+                "file_path": "results\\MonolithicAgent_Default\\Total\\Total-50000550.onnx",
+                "reward": 1.6059746117546008,
+                "creation_time": 1766824872.2512875,
+                "auxillary_file_paths": [
+                    "results\\MonolithicAgent_Default\\Total\\Total-50000550.pt"
+                ]
+            }
+        ],
+        "elo": 1374.4747911698987,
+        "final_checkpoint": {
+            "steps": 50000550,
+            "file_path": "results\\MonolithicAgent_Default\\Total.onnx",
+            "reward": 1.6059746117546008,
+            "creation_time": 1766824872.2512875,
+            "auxillary_file_paths": [
+                "results\\MonolithicAgent_Default\\Total\\Total-50000550.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.2.1"
+    }
+}

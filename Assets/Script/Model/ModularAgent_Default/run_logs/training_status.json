@@ -1,0 +1,506 @@
+{
+    "map_level": {
+        "lesson_num": 7
+    },
+    "Attack": {
+        "checkpoints": [
+            {
+                "steps": 1999349,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-1999349.onnx",
+                "reward": null,
+                "creation_time": 1766829282.4217653,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-1999349.pt"
+                ]
+            },
+            {
+                "steps": 3999956,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-3999956.onnx",
+                "reward": null,
+                "creation_time": 1766833916.633308,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-3999956.pt"
+                ]
+            },
+            {
+                "steps": 5999807,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-5999807.onnx",
+                "reward": 0.6225237069385392,
+                "creation_time": 1766839377.6028523,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-5999807.pt"
+                ]
+            },
+            {
+                "steps": 7999994,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-7999994.onnx",
+                "reward": 0.8876110668535586,
+                "creation_time": 1766845041.5189855,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-7999994.pt"
+                ]
+            },
+            {
+                "steps": 9999973,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-9999973.onnx",
+                "reward": 0.8093938746235587,
+                "creation_time": 1766851044.312058,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-9999973.pt"
+                ]
+            },
+            {
+                "steps": 11999727,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-11999727.onnx",
+                "reward": -0.6196666844189167,
+                "creation_time": 1766856856.9857137,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-11999727.pt"
+                ]
+            },
+            {
+                "steps": 13999265,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-13999265.onnx",
+                "reward": 0.9914791146293283,
+                "creation_time": 1766862364.8243067,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-13999265.pt"
+                ]
+            },
+            {
+                "steps": 15999822,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-15999822.onnx",
+                "reward": 1.6989221046368281,
+                "creation_time": 1766867971.6592162,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-15999822.pt"
+                ]
+            },
+            {
+                "steps": 17999024,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-17999024.onnx",
+                "reward": 1.3568749530240893,
+                "creation_time": 1766873612.3905122,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-17999024.pt"
+                ]
+            },
+            {
+                "steps": 19999516,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-19999516.onnx",
+                "reward": -0.448893989013,
+                "creation_time": 1766879350.9147515,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-19999516.pt"
+                ]
+            },
+            {
+                "steps": 21999388,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-21999388.onnx",
+                "reward": 0.1265499409288168,
+                "creation_time": 1766884762.665664,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-21999388.pt"
+                ]
+            },
+            {
+                "steps": 23999658,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-23999658.onnx",
+                "reward": 1.004391259473303,
+                "creation_time": 1766890427.2096148,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-23999658.pt"
+                ]
+            },
+            {
+                "steps": 25999456,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-25999456.onnx",
+                "reward": 0.15008329786360264,
+                "creation_time": 1766896335.3796058,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-25999456.pt"
+                ]
+            },
+            {
+                "steps": 27999728,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-27999728.onnx",
+                "reward": -0.12308339234441519,
+                "creation_time": 1766901956.3024857,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-27999728.pt"
+                ]
+            },
+            {
+                "steps": 29999532,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-29999532.onnx",
+                "reward": 1.8606110165516536,
+                "creation_time": 1766907814.1851034,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-29999532.pt"
+                ]
+            },
+            {
+                "steps": 31999932,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-31999932.onnx",
+                "reward": 1.410666635259986,
+                "creation_time": 1766913606.8159752,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-31999932.pt"
+                ]
+            },
+            {
+                "steps": 33999617,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-33999617.onnx",
+                "reward": 0.6705103572458029,
+                "creation_time": 1766919422.1197684,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-33999617.pt"
+                ]
+            },
+            {
+                "steps": 35999773,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-35999773.onnx",
+                "reward": 0.31984842907298694,
+                "creation_time": 1766925407.738244,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-35999773.pt"
+                ]
+            },
+            {
+                "steps": 37999554,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-37999554.onnx",
+                "reward": 0.42987249353352713,
+                "creation_time": 1766931361.0313654,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-37999554.pt"
+                ]
+            },
+            {
+                "steps": 39999934,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-39999934.onnx",
+                "reward": 1.212309468765648,
+                "creation_time": 1766937455.2670536,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-39999934.pt"
+                ]
+            },
+            {
+                "steps": 41999681,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-41999681.onnx",
+                "reward": 1.7593595693378072,
+                "creation_time": 1766943571.9786687,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-41999681.pt"
+                ]
+            },
+            {
+                "steps": 43999969,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-43999969.onnx",
+                "reward": 1.7710207588970661,
+                "creation_time": 1766949455.580569,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-43999969.pt"
+                ]
+            },
+            {
+                "steps": 45999188,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-45999188.onnx",
+                "reward": 1.4197665993124247,
+                "creation_time": 1766955304.5585208,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-45999188.pt"
+                ]
+            },
+            {
+                "steps": 47999839,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-47999839.onnx",
+                "reward": -0.49750010296702385,
+                "creation_time": 1766960871.7513473,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-47999839.pt"
+                ]
+            },
+            {
+                "steps": 49999959,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-49999959.onnx",
+                "reward": 0.5746666106084982,
+                "creation_time": 1766966251.4962974,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-49999959.pt"
+                ]
+            },
+            {
+                "steps": 50000959,
+                "file_path": "results\\ModularAgent_Default\\Attack\\Attack-50000959.onnx",
+                "reward": 0.5746666106084982,
+                "creation_time": 1766966251.7805505,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Attack\\Attack-50000959.pt"
+                ]
+            }
+        ],
+        "elo": 1246.422195322144,
+        "final_checkpoint": {
+            "steps": 50000959,
+            "file_path": "results\\ModularAgent_Default\\Attack.onnx",
+            "reward": 0.5746666106084982,
+            "creation_time": 1766966251.7805505,
+            "auxillary_file_paths": [
+                "results\\ModularAgent_Default\\Attack\\Attack-50000959.pt"
+            ]
+        }
+    },
+    "Movement": {
+        "checkpoints": [
+            {
+                "steps": 1999349,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-1999349.onnx",
+                "reward": null,
+                "creation_time": 1766829282.5673118,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-1999349.pt"
+                ]
+            },
+            {
+                "steps": 3999956,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-3999956.onnx",
+                "reward": null,
+                "creation_time": 1766833916.7922304,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-3999956.pt"
+                ]
+            },
+            {
+                "steps": 5999807,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-5999807.onnx",
+                "reward": 0.58680973308427,
+                "creation_time": 1766839377.7659612,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-5999807.pt"
+                ]
+            },
+            {
+                "steps": 7999994,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-7999994.onnx",
+                "reward": 0.7766236199273003,
+                "creation_time": 1766845041.6876004,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-7999994.pt"
+                ]
+            },
+            {
+                "steps": 9999973,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-9999973.onnx",
+                "reward": 0.7833335453813727,
+                "creation_time": 1766851044.4789486,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-9999973.pt"
+                ]
+            },
+            {
+                "steps": 11999727,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-11999727.onnx",
+                "reward": -1.0463333912193775,
+                "creation_time": 1766856857.1633346,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-11999727.pt"
+                ]
+            },
+            {
+                "steps": 13999265,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-13999265.onnx",
+                "reward": 1.3589793317951262,
+                "creation_time": 1766862365.0234237,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-13999265.pt"
+                ]
+            },
+            {
+                "steps": 15999822,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-15999822.onnx",
+                "reward": 2.576144840195775,
+                "creation_time": 1766867971.8193715,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-15999822.pt"
+                ]
+            },
+            {
+                "steps": 17999024,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-17999024.onnx",
+                "reward": 1.704791939817369,
+                "creation_time": 1766873612.5954363,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-17999024.pt"
+                ]
+            },
+            {
+                "steps": 19999516,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-19999516.onnx",
+                "reward": -0.4016211357983676,
+                "creation_time": 1766879351.0955474,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-19999516.pt"
+                ]
+            },
+            {
+                "steps": 21999388,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-21999388.onnx",
+                "reward": 0.5883835207670927,
+                "creation_time": 1766884762.8278432,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-21999388.pt"
+                ]
+            },
+            {
+                "steps": 23999658,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-23999658.onnx",
+                "reward": 0.9216378486674764,
+                "creation_time": 1766890427.3801656,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-23999658.pt"
+                ]
+            },
+            {
+                "steps": 25999456,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-25999456.onnx",
+                "reward": 0.09675007145851851,
+                "creation_time": 1766896335.5629494,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-25999456.pt"
+                ]
+            },
+            {
+                "steps": 27999728,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-27999728.onnx",
+                "reward": -0.33758332785218953,
+                "creation_time": 1766901956.4635065,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-27999728.pt"
+                ]
+            },
+            {
+                "steps": 29999532,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-29999532.onnx",
+                "reward": 2.7150559425354004,
+                "creation_time": 1766907814.3504264,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-29999532.pt"
+                ]
+            },
+            {
+                "steps": 31999932,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-31999932.onnx",
+                "reward": 1.8162919031456113,
+                "creation_time": 1766913606.9948044,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-31999932.pt"
+                ]
+            },
+            {
+                "steps": 33999617,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-33999617.onnx",
+                "reward": 0.7029063641093671,
+                "creation_time": 1766919422.3047667,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-33999617.pt"
+                ]
+            },
+            {
+                "steps": 35999773,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-35999773.onnx",
+                "reward": 0.1703031604940241,
+                "creation_time": 1766925407.8974235,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-35999773.pt"
+                ]
+            },
+            {
+                "steps": 37999554,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-37999554.onnx",
+                "reward": 0.020754978937261245,
+                "creation_time": 1766931361.1886022,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-37999554.pt"
+                ]
+            },
+            {
+                "steps": 39999934,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-39999934.onnx",
+                "reward": 1.1159151439764061,
+                "creation_time": 1766937455.4011118,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-39999934.pt"
+                ]
+            },
+            {
+                "steps": 41999681,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-41999681.onnx",
+                "reward": 2.4644477673267065,
+                "creation_time": 1766943572.1666963,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-41999681.pt"
+                ]
+            },
+            {
+                "steps": 43999969,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-43999969.onnx",
+                "reward": 2.0396669432520866,
+                "creation_time": 1766949455.7497559,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-43999969.pt"
+                ]
+            },
+            {
+                "steps": 45999188,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-45999188.onnx",
+                "reward": 2.101100475341082,
+                "creation_time": 1766955304.7381926,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-45999188.pt"
+                ]
+            },
+            {
+                "steps": 47999839,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-47999839.onnx",
+                "reward": -0.10416657663881779,
+                "creation_time": 1766960871.9303222,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-47999839.pt"
+                ]
+            },
+            {
+                "steps": 49999959,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-49999959.onnx",
+                "reward": 0.9752224137385687,
+                "creation_time": 1766966251.6775038,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-49999959.pt"
+                ]
+            },
+            {
+                "steps": 50000959,
+                "file_path": "results\\ModularAgent_Default\\Movement\\Movement-50000959.onnx",
+                "reward": 0.9752224137385687,
+                "creation_time": 1766966251.9238245,
+                "auxillary_file_paths": [
+                    "results\\ModularAgent_Default\\Movement\\Movement-50000959.pt"
+                ]
+            }
+        ],
+        "elo": 1226.7967432133028,
+        "final_checkpoint": {
+            "steps": 50000959,
+            "file_path": "results\\ModularAgent_Default\\Movement.onnx",
+            "reward": 0.9752224137385687,
+            "creation_time": 1766966251.9238245,
+            "auxillary_file_paths": [
+                "results\\ModularAgent_Default\\Movement\\Movement-50000959.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.2.1"
+    }
+}
