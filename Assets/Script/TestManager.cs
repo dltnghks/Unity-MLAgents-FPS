@@ -47,6 +47,11 @@ public class TestManager : MonoBehaviour
     public int GameEpisodeCount;
     public int EndGameEpisodeCount;
 
+    private int team1Wins = 0;
+    private int team2Wins = 0;
+    private int draws = 0;
+    private float totalPlayTime = 0;
+
     private void Awake()
     {
         _instance = this;
@@ -68,6 +73,17 @@ public class TestManager : MonoBehaviour
 
     public void Init()
     {
+        if (testIndex >= AgentList.Count) return;
+
+        string team1Name = (AgentList[testIndex].team1Agents.Count > 0 && AgentList[testIndex].team1Agents[0] != null) ? AgentList[testIndex].team1Agents[0].name : "N/A";
+        string team2Name = "Enemy";
+        if (!IsEnemy)
+        {
+            team2Name = (AgentList[testIndex].team2Agents.Count > 0 && AgentList[testIndex].team2Agents[0] != null) ? AgentList[testIndex].team2Agents[0].name : "N/A";
+        }
+
+        Debug.Log($"[TestManager] Initializing Test Case {testIndex + 1} / {AgentList.Count}. Matchup: {team1Name} vs {team2Name}");
+
         if (useFixedSeed)
         {
             Random.InitState(randomSeed);
@@ -79,6 +95,11 @@ public class TestManager : MonoBehaviour
 
         allGameData.Clear();
         GameManager.ClearCount = 0;
+        
+        team1Wins = 0;
+        team2Wins = 0;
+        draws = 0;
+        totalPlayTime = 0;
         
         if (IsEnemy)
         {
@@ -120,39 +141,38 @@ public class TestManager : MonoBehaviour
 
         // 1. Determine Outcome
         EpisodeOutcome team1Outcome;
-        EpisodeOutcome team2Outcome;
-
         bool isTimeout = environment.EnvironmentPlayTime >= environment.EvironmentMaxTime;
 
         if (isTimeout)
         {
             team1Outcome = EpisodeOutcome.Draw;
-            team2Outcome = EpisodeOutcome.Draw;
+            draws++;
         }
         else
         {
-            // An agent's HP is a more reliable way to check for life than gameObject.activeSelf, which might be affected by the timing of deactivation.
             bool team1HasSurvivors = team1Agents.Exists(a => a != null && a.HP > 0);
             bool team2HasSurvivors = team2Agents.Exists(a => a != null && a.HP > 0);
 
             if (team1HasSurvivors && !team2HasSurvivors)
             {
                 team1Outcome = EpisodeOutcome.Win;
-                team2Outcome = EpisodeOutcome.Loss;
+                team1Wins++;
             }
             else if (!team1HasSurvivors && team2HasSurvivors)
             {
                 team1Outcome = EpisodeOutcome.Loss;
-                team2Outcome = EpisodeOutcome.Win;
+                team2Wins++;
             }
             else
             {
-                // Both teams wiped out, or both have survivors (e.g. from simultaneous projectiles)
                 team1Outcome = EpisodeOutcome.Draw;
-                team2Outcome = EpisodeOutcome.Draw;
+                draws++;
             }
         }
+        totalPlayTime += episodePlayTime;
         
+        EpisodeOutcome team2Outcome = (team1Outcome == EpisodeOutcome.Win) ? EpisodeOutcome.Loss : (team1Outcome == EpisodeOutcome.Loss) ? EpisodeOutcome.Win : EpisodeOutcome.Draw;
+
         // Determine names for logging filename
         string team1Name = AgentList[testIndex].team1Agents.Count > 0 ? AgentList[testIndex].team1Agents[0].name : "Team1";
         string team2Name = "Enemy";
@@ -165,7 +185,6 @@ public class TestManager : MonoBehaviour
         foreach (var agent in team1Agents)
         {
             if (agent == null) continue;
-            //Debug.Log($"[TestManager] Preparing to log data for agent '{agent.name}'.");
             GameLogger.WriteToCSV(new string[] {
                 team1Outcome.ToString(),
                 GameEpisodeCount.ToString(),
@@ -186,7 +205,6 @@ public class TestManager : MonoBehaviour
             foreach (var agent in team2Agents)
             {
                 if (agent == null) continue;
-                //Debug.Log($"[TestManager] Preparing to log data for agent '{agent.name}'.");
                 GameLogger.WriteToCSV(new string[] {
                     team2Outcome.ToString(),
                     GameEpisodeCount.ToString(),
@@ -207,11 +225,30 @@ public class TestManager : MonoBehaviour
 
         if (GameEpisodeCount >= EndGameEpisodeCount)
         {
-            GameLogger.WriteToCSV(new string[] { $"--- End of Matchup (Episodes: {GameEpisodeCount}) ---" }, team1Name, team2Name, IsEnemy);
-            
+            // Summary Logic
+            float totalEpisodes = (float)team1Wins + team2Wins + draws;
+            if (totalEpisodes > 0)
+            {
+                float team1WinRate = (team1Wins / totalEpisodes) * 100;
+                float team2WinRate = (team2Wins / totalEpisodes) * 100;
+                float drawRate = (draws / totalEpisodes) * 100;
+                float averagePlayTime = totalPlayTime / totalEpisodes;
+
+                GameLogger.WriteToCSV(new string[] { "" }, team1Name, team2Name, IsEnemy);
+                GameLogger.WriteToCSV(new string[] { "--- SUMMARY ---" }, team1Name, team2Name, IsEnemy);
+                GameLogger.WriteToCSV(new string[] { "Total Episodes", totalEpisodes.ToString() }, team1Name, team2Name, IsEnemy);
+                GameLogger.WriteToCSV(new string[] { $"Team1 ({team1Name}) Wins", team1Wins.ToString(), $"{team1WinRate:F2}%" }, team1Name, team2Name, IsEnemy);
+                GameLogger.WriteToCSV(new string[] { $"Team2 ({team2Name}) Wins", team2Wins.ToString(), $"{team2WinRate:F2}%" }, team1Name, team2Name, IsEnemy);
+                GameLogger.WriteToCSV(new string[] { "Draws", draws.ToString(), $"{drawRate:F2}%" }, team1Name, team2Name, IsEnemy);
+                GameLogger.WriteToCSV(new string[] { "Average Play Time", averagePlayTime.ToString("F2") }, team1Name, team2Name, IsEnemy);
+                GameLogger.WriteToCSV(new string[] { "--- END SUMMARY ---" }, team1Name, team2Name, IsEnemy);
+                GameLogger.WriteToCSV(new string[] { "" }, team1Name, team2Name, IsEnemy);
+            }
+
             testIndex++;
             if (testIndex >= AgentList.Count)
             {
+                Debug.Log("[TestManager] All test cases have been completed.");
                 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
                 #else
@@ -220,6 +257,7 @@ public class TestManager : MonoBehaviour
             }
             else
             {
+                Debug.Log($"[TestManager] Proceeding to the next test case: {testIndex + 1}");
                 Init();
             }
         }

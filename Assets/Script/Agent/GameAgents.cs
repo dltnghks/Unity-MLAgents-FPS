@@ -128,59 +128,43 @@ public class GameAgents : Player
             return;
         }
 
-        GameObject currentTarget = null;
+        GameObject closestTarget = null;
+        float minDistanceSqr = float.MaxValue;
 
-        if (TestManager.Instance != null && (TestManager.Instance.IsTest || TestManager.Instance.IsEnemy))
+        List<GameAgents> opposingTeamAgents = (TeamID == 0) ? environment.team2Agents : environment.team1Agents;
+
+        if (opposingTeamAgents != null)
         {
-            List<GameAgents> opposingTeamAgents = null;
-            if (TeamID == 0)
+            foreach (var agent in opposingTeamAgents)
             {
-                opposingTeamAgents = environment.team2Agents;
-            }
-            else // TeamID == 1
-            {
-                opposingTeamAgents = environment.team1Agents;
-            }
-
-            if (opposingTeamAgents != null)
-            {
-                foreach (var agent in opposingTeamAgents)
+                if (agent != null && agent.gameObject.activeSelf && agent.HP > 0)
                 {
-                    if (agent != null && agent.gameObject.activeSelf && agent.HP > 0)
+                    float sqrDistance = (agent.transform.position - transform.position).sqrMagnitude;
+                    if (sqrDistance < minDistanceSqr)
                     {
-                        currentTarget = agent.gameObject;
-                        break;
+                        minDistanceSqr = sqrDistance;
+                        closestTarget = agent.gameObject;
                     }
                 }
             }
         }
-        else 
+
+        if (environment.Enemy != null && environment.Enemy.gameObject.activeSelf && environment.Enemy.HP > 0)
         {
-            if (GameManager.GamePhase < 8)
+            float sqrDistance = (environment.Enemy.transform.position - transform.position).sqrMagnitude;
+            if (sqrDistance < minDistanceSqr)
             {
-                if (environment.Enemy != null)
-                {
-                    currentTarget = environment.Enemy.gameObject;
-                }
-            }
-            else 
-            {
-                if (TeamID == 0 && environment.team2Agents.Count > 0 && environment.team2Agents[0] != null)
-                {
-                    currentTarget = environment.team2Agents[0].gameObject;
-                }
-                else if (TeamID == 1 && environment.team1Agents.Count > 0 && environment.team1Agents[0] != null)
-                {
-                    currentTarget = environment.team1Agents[0].gameObject;
-                }
+                closestTarget = environment.Enemy.gameObject;
             }
         }
+        
+        GameObject currentTarget = closestTarget;
 
         if (currentTarget != null)
         {
             target = currentTarget;
             targetDir = (target.transform.position - transform.position).normalized;
-            targetDistance = AttackRange / Vector3.Distance(transform.position, target.transform.position);
+            targetDistance = AttackRange / (Vector3.Distance(transform.position, target.transform.position) + 0.0001f);
             AddReward(ERewardType.Tick);
             RaycastHit hit;
             if (Vector3.Angle(transform.forward, targetDir) < 15.0f
