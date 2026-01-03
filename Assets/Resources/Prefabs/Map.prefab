@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPointList: []
-  spawnObject: {fileID: 4563536745442894770, guid: 1c5c2506cbda657488f7a0545228e9fe, type: 3}
+  spawnObject: {fileID: 4563536745442894770, guid: d7ac56984b96f074686a00de8e663188, type: 3}
   spawnObjectList: []
 --- !u!1 &1109334457094025365
 GameObject:
@@ -1716,7 +1716,7 @@ MonoBehaviour:
   - {fileID: 3066144559761910196}
   - {fileID: 307541460472173857}
   - {fileID: 1501587927159289573}
-  spawnObject: {fileID: 4563536745442894770, guid: ad7f2d60d8622b9448a01e2465891e54, type: 3}
+  spawnObject: {fileID: 4563536745442894770, guid: 42c58392661601548be988b6dcb95c1d, type: 3}
   spawnObjectList: []
 --- !u!1 &9137038255342600182
 GameObject:
